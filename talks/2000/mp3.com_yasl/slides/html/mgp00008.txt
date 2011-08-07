@@ -1,0 +1,16 @@
+
+Overview
+
+Dynamic XML content :
+
+
+In cases where you would need unique content for each visitor you can 
+create the XML on the fly using mod_perl
+
+Instead of using an XMLWriter that writes to a static file, the XML is
+provided dynamicly by mod_perl via the XS XMLWriter module that calls
+yasl routines to store the XML elements.
+
+The template gets chosen on the fly by using an apache internal_redirect
+onto the template file.
+

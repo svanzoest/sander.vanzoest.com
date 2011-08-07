@@ -1,0 +1,19 @@
+
+Overview
+
+Tools :
+
+Apache Web Server
+
+Expat-lite from James Clark provided with Apache since 1.3.9
+
+Our own style language module named mod_yasl
+
+mod_perl for dynamic XML content
+
+MP3Com::XMLWriter perl module to generate XML
+
+XMLapi::XMLWriter XS perl module to provide XML to mod_yasl 
+
+
+

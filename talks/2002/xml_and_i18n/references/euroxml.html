@@ -1,0 +1,627 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/transitional.dtd"> 
+<html>
+<head>
+<title>XML.com: Euro-XML [Sep. 18, 2002]</title>
+<meta name="keywords" content="XML,XML.com, O'Reilly,O'Reilly Network,Programming,Web, Programming,euro,iso-8859-1,iso-8859-15,latin 1,latin 9,character sets,encodings,unicode,utf-8" />
+<meta name="description" content="The introduction of the Euro currency in Europe has brought about changes in commonly used character sets. Rick Jelliffe discusses the impact on XML applications." />
+
+<script language="JavaScript" src="http://www.xml.com/common.js" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">
+<!-- <![CDATA[
+if (navigator.userAgent.indexOf('Win') != -1 ) {
+     if (navigator.appName.indexOf('Microsoft') != -1)
+     document.write('<link rel="STYLESHEET" type="text/css" href="http://www.xml.com/styles/pc-px-msie.css" />');
+     else
+     document.write('<link rel="STYLESHEET" type="text/css" href="http://xml.com/styles/pc-px-net.css" />');
+     }
+else if (navigator.userAgent.indexOf('Mac') != -1 )
+     document.write('<link rel="STYLESHEET" type="text/css" href="http://www.xml.com/styles/mac-px.css" />');
+else
+     document.write('<link rel="STYLESHEET" type="text/css" href="http://www.xml.com/styles/linux-px.css" />');
+// ]]> -->
+</script>
+<noscript>
+<link rel="STYLESHEET" type="text/css" href="http://www.xml.com/styles/linux-px.css" />
+</noscript>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" alink="#000066">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td valign="top">
+<!--  logo  -->
+<a href="/index.csp"><img src="/images/logo_tagline.jpg" alt="XML.com" width="135" height="74" border="0" hspace="0" vspace="0" /></a></td><td valign="top" align="right">
+<!--  top banner ad  -->
+<table border="0" cellpadding="0" cellspacing="0" width="468"><tr><td><!-- dy -->
+				<iframe src="http://ad.doubleclick.net/adi/xml.ds/art;pos=top_art;sz=468x60;ord=1738679912?" width="468" height="60" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
+				<script type="text/javascript" language="JavaScript1.1" src="http://ad.doubleclick.net/adj/xml.ds/art;abr=!ie;pos=top_art;sz=468x60;ord=1738679912?"></script>
+				</iframe>
+				<noscript>
+				<a href="http://ad.doubleclick.net/jump/xml.ds/art;abr=!ie;pos=top_art;sz=468x60;ord=1738679912?"><img src="http://ad.doubleclick.net/ad/xml.ds/art;abr=!ie;kw=pos=top_art;sz=468x60;ord=1738679912?" border="0" width="468" height="60" alt="Advertisement" /></a>
+				</noscript></td></tr></table>
+
+</td>
+
+<td align="right" valign="top">
+<center><span class="tiny">&nbsp;&nbsp;&nbsp;Sponsored by:
+<br /><a href="http://www.ixiasoft.com?from=xml.com"><img src="/images/ads/IXIASoft/ixiaicon.gif" border="0" align="right" /></a></center></td>
+</tr></table><br /><!--  header  --><table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td valign="top">
+<!--  tabs  --> 
+<a href="http://www.xml.com/"><img src="/images/tab-xml.gif" alt="XML.com" width="97" height="18" border="0" /></a><a href="http://www.oreillynet.com/"><img src="/images/tab-on.gif" alt="O'Reilly Network" width="93" height="18" border="0" /></a><a href="http://www.oreilly.com/"><img src="/images/tab-oreilly.gif" alt="oreilly.com" width="94" height="18" border="0" /></a><a href="http://www.onjava.com/"><img src="/images/tab-onjava.gif" alt="ONJava.com" width="94" height="18" border="0" /></a></td></tr><tr><td valign="middle" bgcolor="#000066" class="header" height="26">
+&nbsp;&nbsp;<a class="header" href="http://www.xml.com/">Home</a><b> | </b><a class="header" href="/resourceguide/">Resources</a><b> | </b><a class="header" href="/buyersguide">Buyer's Guide</a><b> | </b><a class="header" href="http://www.oreillynet.com/faqs/list.csp?id_subject=23">FAQs</a><b> | </b><a class="header" href="/cs/user/register">Newsletter</a><b> | </b><a class="header" href="http://careers.xml.com/">Tech Jobs</a></td>
+<!-- search -->
+<td valign="middle" bgcolor="#000066" class="secondary" height="26" align="right">
+<form method="get" action="http://www.xml.com/search/index.ncsp" enctype="application/x-www-form-urlencoded">
+<input type="text" name="sp-q"  size="20 " maxlength="80">&nbsp;&nbsp;<input type="submit" name="search" value="search" class="secondary">&nbsp;&nbsp;</td></form></tr>
+
+
+
+<tr><td valign="top" colspan="2"><img src="/images/trans.gif" alt=" " width="1" height="5"></td></tr></table>
+<!--  main content table  -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td width="5" valign="top" rowspan="4"><img src="/images/trans.gif" alt=" " width="5" height="1" /></td><td width="130" valign="top" rowspan="4">
+<!--  navbar top  -->
+<noindex>
+<!--  lc/5  -->
+<table width="145" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top">
+<img src="/images/blue-arrow.gif" alt=" " width="10" height="12" border="0" align="top">&nbsp;<img src="/images/resource-centers.gif" width="130" height="25" alt="Resource Centers" border="0" align="top"><br />
+<img src="/images/redline.jpg" width="145" height="1" border="0" alt=" " vspace="0" hspace="0"></td></tr>
+
+<tr><td valign="top">
+<a href="/business/" class="navlink">Business</a></td></tr><tr><td valign="top"><img src="/images/redline.jpg" width="145" height="1" border="0" alt=" " vspace="0" hspace="0"></td></tr>
+<tr><td valign="top">
+<a href="/databases/" class="navlink">Databases</a></td></tr><tr><td valign="top"><img src="/images/redline.jpg" width="145" height="1" border="0" alt=" " vspace="0" hspace="0"></td></tr>
+
+<tr><td valign="top">
+<a href="/graphics/" class="navlink">Graphics</a></td></tr><tr><td valign="top"><img src="/images/redline.jpg" width="145" height="1" border="0" alt=" " hspace="0" vspace="0"></td></tr><tr><td valign="top">
+<a href="/metadata" class="navlink">Metadata</a></td></tr><tr><td valign="top"><img src="/images/redline.jpg" width="145" height="1" border="0" alt=" " vspace="0" hspace="0"></td></tr><tr><td valign="top">
+<a href="/mobile/" class="navlink">Mobile</a></td></tr><tr><td valign="top"><img src="/images/redline.jpg" width="145" height="1" border="0" alt=" " vspace="0" hspace="0"></td></tr><tr><td valign="top">
+<a href="/programming/" class="navlink">Programming</a></td>
+</tr><tr><td valign="top"><img src="/images/redline.jpg" width="145" height="1" border="0" alt=" " vspace="0" hspace="0"></td></tr>
+<tr><td valign="top">
+<a href="/schemas" class="navlink">Schemas</a></td></tr><tr><td valign="top"><img src="/images/redline.jpg" width="145" height="1" border="0" alt=" " vspace="0" hspace="0"></td></tr><tr><td valign="top">
+<a href="/style" class="navlink">Style</a></td></tr><tr><td valign="top"><img src="/images/redline.jpg" width="145" height="1" border="0" alt=" " vspace="0" hspace="0"></td></tr><tr><td valign="top"><a href="/web/" class="navlink">Web</a></td></tr><tr><td valign="top"><img src="/images/redline.jpg" width="145" height="1" border="0" alt=" " vspace="0" hspace="0"></td></tr>
+<tr><td valign="top"><a href="/webservices" class="navlink">Web Services</a></td></tr><tr><td valign="top"><img src="/images/redline.jpg" width="145" height="1" border="0" alt=" " vspace="0" hspace="0"></td></tr></table><br />
+
+<a href="http://www.xml.com/pub/a/survey/2002_08.html"><img src="/images/ads/120ad-xmlcom_survey.gif" width="120" height="240" alt="Winners Drawn September 15th" border="0"></a><br /><br />
+
+<!--  125 ad  -->
+<!--  <csinclude record="lc/79" field="html">  -->
+<span class="secondary">
+<img src="/images/blue-arrow.gif" alt=" " width="10" height="12" border="0" align="top">&nbsp;
+<img src="/images/essentials.gif" width="90" height="11" alt="Essentials" border="0"><br />
+<a href="/pub/a/axml/axmlintro.html">Annotated&nbsp;XML</a><br />
+<a href="/pub/a/98/10/guide0.html">What&nbsp;is&nbsp;XML?</a><br />
+<a href="/pub/a/2000/08/holman/index.html">What&nbsp;is&nbsp;XSLT?</a><br />
+<a href="/pub/a/2002/03/20/xsl-fo.html">What&nbsp;is&nbsp;XSL-FO?</a><br />
+<a href="/pub/a/2000/09/xlink/index.html">What&nbsp;is&nbsp;XLink?</a><br />
+<a href="/pub/a/2000/11/29/schemas/part1.html">What&nbsp;is&nbsp;XML&nbsp;Schema?</a><br />
+<a href="/pub/a/2001/01/24/rdf.html">What&nbsp;is&nbsp;RDF?</a><br />
+<a href="/pub/a/2002/09/11/topicmaps.html">What&nbsp;are&nbsp;Topic&nbsp;Maps?</a><br />
+<a href="/pub/a/2001/04/04/webservices/index.html">What&nbsp;are&nbsp;Web&nbsp;Services?</a><br />
+<a href="/pub/a/2001/09/05/xforms.html">What&nbsp;are&nbsp;XForms?</a><br />
+<br /></span>
+
+<!--  125 tile ad used to be here  -->
+
+
+<!--  navbar bottom  -->
+<!--  lc/53  -->
+
+<p>
+<span class="secondary">
+<a href="http://www.xml.com/cs/user/login">Manage Your Account</a><br />
+<a href="http://www.xml.com/cs/user/lostpw">Forgot Your Password?</a></span></p>
+
+<p class="secondary">
+<img src="/images/blue-arrow.gif" alt=" " width="10" height="12" border="0" align="top">&nbsp;<img src="/universal/images/find.gif" width="36" height="11" alt="Find" border="0"><br />
+<a href="http://www.xml.com/search/">Search</a><br />
+<a href="/ArticlesbyTopic/">Article Archive</a><br />
+<a href="http://www.oreillynet.com/faqs/list.csp?id_subject=23">FAQs</a><br /><br />
+</p>
+<a href="/pub/a/2001/03/21/xml_com_feed.html">
+<img src="/universal/images/add-xml.gif" width="120" height="60" alt="Add XML to your Website" border="0"></a>
+
+<p>
+<span class="secondary">
+<img src="/images/blue-arrow.gif" alt=" " width="10" height="12" border="0" align="top">&nbsp;<img src="/images/columns.gif" width="75" height="11" alt="Columns" border="0"><br />
+<a href="/pub/q/xmldeviant">XML-Deviant</a><br />
+<a href="/pub/q/stylematters">Style Matters</a><br />
+<a href="/pub/q/xmlqanda">XML Q&amp;A</a><br />
+<a href="/pub/q/transformingxml">Transforming XML</a><br />
+<a href="/pub/q/perlxml">Perl and XML</a><br />
+<a href="/pub/q/endpoints">XML Endpoints</a>
+<br />
+<a href="/pub/q/taglines">&lt;taglines&gt;</a>
+<br />
+<a href="/pub/q/sacresvg">Sacr&eacute; SVG</a><br /><br />
+<!--  tech jobs  -->
+
+<img src="/images/blue-arrow.gif" alt=" " width="10" height="12" border="0" align="top">&nbsp;<img src="/universal/images/guides.gif" width="54" height="11" alt="Guides" border="0"><br />
+<a href="/resourceguide/">XML&nbsp;Resources</a><br />
+<a href="/buyersguide/">Buyer's&nbsp;Guide</a><br />
+<a href="/events">Events&nbsp;Calendar</a><br />
+<a href="/pub/q/stdlist">Standards List</a><br />
+<a href="/pub/q/submlist">Submissions List</a><br /><br /></span>
+<!--  contest_winner  -->
+<!-- <table width="130" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top" bgcolor="#000066" colspan="3">
+<img src="/images/trans.gif" alt=" " width="130" height="2"></td>
+</tr>
+<tr>
+<td valign="top" bgcolor="#000066">
+<img src="/images/trans.gif" alt=" " width="2" height="10"></td>
+<td valign="top" bgcolor="#efefef">
+<img src="/images/trans.gif" alt=" " width="10" height="10"></td>
+<td valign="top" bgcolor="#efefef">
+<p class="secondary"><b>Congratulations!</b><br />
+Congratulations to our monthly contest winner for November, David Noble of Orangeville, Ontario.<br />
+<a href="http://www.xml.com/cs/user/register">Sign up to win!</a></p>
+</td>
+</tr>
+</table><br /> -->
+<p class="secondary">
+<img src="/images/blue-arrow.gif" alt=" " width="10" height="12" border="0" align="top">&nbsp;<img src="/universal/images/toolbox.gif" width="67" height="11" alt="Toolbox" border=0><br /><img src="/images/trans.gif" alt=" "width="150" height="5" border="0"><br />
+<a href="/pub/a/tools/ruwf/check.html">Syntax&nbsp;Checker</a><br /><br />
+
+<a href="http://www.oreillynet.com/"><img src="/images/sm-xml_logo.jpg" alt="This site is on the O'Reilly Network" width="120" height="98" border="0"></a><br />
+<img src="/images/trans.gif" width="140" height="10" alt="" border="0">
+</p><br />
+</noindex></td>
+<td width="10" valign="top">
+<img src="/images/trans.gif" alt=" " width="10" height="1" vspace="0" hspace="0" /></td>
+<td valign="top">
+<!--  print.view  -->
+
+<!--  begin discuss-print-email-spanish options  -->
+<table cellspacing="1" cellpadding="0" border="0" align="right" width="70"><tr><td rowspan="99">&nbsp;&nbsp;&nbsp;<!-- spacer column  --></td><td align="right" width="18"><a class="secondary" title="Go to a print-friendly version of this page." href="/lpt/a/2002/09/18/euroxml.html"><img src="/images/icons/print_18.gif" width="18" height="18" hspace="3" vspace="0" alt="Print." border="0" /></a></td><td align="left" class="secondary" nowrap><a class="secondary" title="Go to a print-friendly version of this page." href="/lpt/a/2002/09/18/euroxml.html">Print</a></td></tr><tr><td align="right" width="18"><a class="secondary" title="Send a link to this article to a friend." href="mailto:?subject=Euro-XML&body=http://www.xml.com/pub/a/2002/09/18/euroxml.html"><img src="/images/icons/mail_18.gif" width="18" height="18" hspace="3" vspace="0" border="0" alt="Email." /></a></td><td align="left" class="secondary" nowrap><a class="secondary" title="Send a link to this article to a friend." href="mailto:?subject=Euro-XML&body=http://www.xml.com/pub/a/2002/09/18/euroxml.html">Email article link</a></td></tr><tr><td align="right" width="18"><a class="secondary" title="Join the talkback discussion about this article" href="/pub/a/2002/09/18/euroxml.html?page=last#thread"><img src="/images/icons/discuss_18.gif" width="18" height="18" hspace="3" vspace="0" alt="Discuss." border="0" /></td><td align="left" class="secondary" nowrap><a class="secondary" title="Join the talkback discussion about this article" href="/pub/a/2002/09/18/euroxml.html?page=last#thread">Discuss</a></td></tr></table>
+<!--  end discuss-print-email-spanish options  -->
+
+
+
+<h2>Euro-XML</h2>
+<span class="secondary">by <a href="/pub/au/31">Rick Jelliffe</a></span><br />
+<span class="secondary">September 18, 2002</span><br clear="all" />
+
+
+	<!-- mega preparse mp: -->
+<!--  Euro-XML  -->
+
+
+
+
+
+<p><table border="0" cellpadding="0" cellspacing="0" align="right" width="336"><tr><td><!-- dy -->
+				<iframe src="http://ad.doubleclick.net/adi/xml.ds/art;pos=mega_art;sz=336x280;ord=1654635942?" width="336" height="280" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
+				<script type="text/javascript" language="JavaScript1.1" src="http://ad.doubleclick.net/adj/xml.ds/art;abr=!ie;pos=mega_art;sz=336x280;ord=1654635942?"></script>
+				</iframe>
+				<noscript>
+				<a href="http://ad.doubleclick.net/jump/xml.ds/art;abr=!ie;pos=mega_art;sz=336x280;ord=1654635942?"><img src="http://ad.doubleclick.net/ad/xml.ds/art;abr=!ie;kw=pos=mega_art;sz=336x280;ord=1654635942?" border="0" width="336" height="280" alt="Advertisement" /></a>
+				</noscript></td></tr></table>
+<!--  me  -->
+The new European currency, the euro, has a symbol &euro; in
+<a href="http://www.unicode.org">Unicode 3.2</a> as character U+20AC.
+How can we use it with XML?</p>
+
+<p>There are three ways of representing the euro in XML:</p>
+<ul><li>numeric character references,</li> <li>character entity
+references, and</li> <li>direct characters.</li></ul> <p>This article
+examines these and other more arcane but important ramifications.</p>
+<!--  sidebar begins  -->
+<!--  don't move sidebars  -->
+<!--  sidebar ends  -->
+
+
+<h3>Numeric Character References</h3>
+
+<!--  sidebar begins  -->
+<table width="140" border="1" cellspacing="2" cellpadding="10" align="right" style="border: 1px solid #333333; margin: 8px;"><tr>
+<td width="140" valign="top" bgcolor="#ffffff" style="border: none;">
+<p class="headline">Related Reading</p>
+
+<a href="http://www.oreilly.com/catalog/cjkvinfo/index.html?CMP=IL7015"><img src="http://www.oreilly.com//catalog/covers/cjkvinfo.s.gif" alt="CJKV Information Processing" border="0" /></a>
+<p class="medlist"><span class="title"><a href="http://www.oreilly.com/catalog/cjkvinfo/index.html?CMP=IL7015">CJKV Information Processing</a></span><strong><br />
+
+Chinese, Japanese, Korean &amp; Vietnamese Computing<br />
+
+By <a href="http://www.oreillynet.com/cs/catalog/view/au/297?x-t=book.view&CMP=IL7015">Ken Lunde</a></strong>
+</p>
+<div class="secondary">
+<!--  builds links to list in sidebar  -->
+ <a href="http://www.oreilly.com/catalog/cjkvinfo/toc.html?CMP=IL7015">Table of Contents</a><br /> 
+ 
+ <a href="http://www.oreilly.com/catalog/cjkvinfo/chapter/?CMP=IL7015">Sample Chapters</a><br /> 
+ 
+
+
+
+
+</div>
+</td>
+</tr></table>
+<!--  sidebar ends  -->
+
+
+
+<p>You can enter the Euro character as data in element content or
+attribute values using number character references in any XML document:
+hexadecimal <code>&amp;#x20AC;</code> or decimal <code>&amp;#8364;</code>.
+This character is allowed both in XML 1.0 and the proposed XML 1.1.</p>
+<p>Numeric character references will not be recognized in CDATA marked
+sections and cannot be used in XML names, such as element names, attribute
+names and IDs.
+</p>
+
+<h3>Character Entity References</h3>
+<p>A friendlier alternative is to use the standard entity
+<code>&amp;euro;</code>. This can be used in the same places that
+you can use numeric character references.</p>
+<p>An entity must have a declaration. The most failsafe approach
+is to supply your own: make sure your document has a 
+<code>DOCTYPE</code> declaration with the following declaration
+as part of its <i>internal subset</i>.</p>
+
+ <pre>
+	&lt;!ENTITY euro &quot;&#x20AC&quot;&gt;
+</pre>
+<p>The internal subset is the thing between the brackets
+in many <code>DOCTYPE</code> declarations:</p>
+<pre>
+ &lt;!DOCTYPE ...  [
+ 
+ 	&lt;!-- internal subset --&gt;
+ 	
+ ]&gt;
+</pre>
+ 
+<p>If you are using XHTML or HTML you are in luck:  there is already a
+declaration provided for the euro as part of the <a
+href="http://www.w3.org/TR/html401/sgml/entities.html#h-24.4">HTML
+Special</a> entity set.  If you wish to use those entity declarations,
+include the following markup declarations:</p>
+<pre>
+     &lt;!ENTITY % HTMLspecial PUBLIC
+       &quot;-//W3C//ENTITIES Special//EN//HTML&quot;&gt;
+     %HTMLspecial; 
+</pre>
+
+<p>Earlier this year, ISO JTC1 SC34 decided to add the Euro to the <a
+href="">ISONum</a> public entity set, with the same definition as HTML's.
+The updated version has not been released, and this will not be dependably
+available for some time. </p>
+
+<p>If you are using the <code>&amp;euro;</code> form in XML other than
+XHTML, you should provide your own definition.  It is not an error to have
+an entity defined multiply times; the first found is used in preference to
+subsequent versions. Because there is no different opinion on which
+Unicode character should be used, there should be no harm in putting the
+entity declaration at the end of the internal subset.</p>
+
+<h3>Direct Characters</h3>
+
+<p>Third, if you are using UTF-8 or UTF-16, then you can enter the
+character directly.  Your GUI may provide a mechanism, and editors aimed
+for publishing will also provide some mechanism.</p>
+
+<p>In Adobe&reg; FrameMaker&reg;, for example, you hold <code>Alt</code>
+down and type <code>0128</code> on the keypad. In my Topologi&trade;
+Collaborative Markup Editor, you can enter the character by hex number or
+use the <i>Keyboard&gt;Currency</i> menu.
+</p>
+
+<p>The character type of modern programming languages such as Java, C#,
+Python and recently Perl is Unicode, typically in the UTF-16 encoding
+which uses fixed 16-bit code points to represent characters.
+</p>
+
+<p>When a Unicode character greater than U+FFFF is needed, two UTF-16 code
+points are used, using a mechanism called <i>surrogates</i>, which
+complicate the simple expectation that one code should equal one character
+if you have 16-bit characters.  For more information on characters and
+encodings, there are two excellent books: Ken Lunde's <i><a
+href="http://www.oreilly.com/catalog/cjkvinfo/">CJKV Information
+Processing</a></i> (O'Reilly) which concentrates on East Asian encoding
+issues, and Tony Graham's <i>Unicode: a Primer</i> (IDG), which has useful
+information on Unicode in particular.
+</p>
+
+<h3>Goodbye ISO 8859-1?</h3>
+
+<p>However, the most common way that the Euro will be used will be as part
+of an XML document encoded using your system's local or regional character
+set. And this is where the Euro will complicate our lives in XML.
+</p>
+
+<p>Web developers familiar with HTML will typically choose to use ISO
+8859-1 (Latin 1) as the encoding for Western European documents: indeed,
+it is the default for HTML. </p>
+
+<p>The problem? ISO 8859-1 does not have the euro character in it.
+Instead, the developers of the ISO 8859 series have issued <a
+href="http://www.cs.tut.fi/~jkorpela/latin9.html">ISO 8859-15</a>
+ (Latin 9), which both adds the euro and
+replaces some unfortunate and rarely-used characters in 8859-1 
+with letters for better support of French and Finnish. 
+In particular, the euro takes over the 0xA4 code point 
+used as the generic CURRENCY SIGN in ISO 8859-1.
+</p>
+
+<p>Even more confusingly, this set, which is officially <i>Latin 9</i> is
+now being called, especially in Linux circles, <i>Latin 0</i>; probably a
+fitting brand name. </p>
+
+<p>Character encodings are registered with IANA. 
+Here is the registration:
+</p>
+<pre>
+Name: ISO-8859-15
+Alias: iso-ir-203
+Alias: iso-8859-15 (preferred MIME name)
+Alias: latin9
+Alias: latin0
+Alias: csISOLatin15
+</pre>
+<p>So if you are using <i>Latin 0</i> with XML,
+the preferred XML header is</p>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-15&quot;?&gt;</pre>
+
+<p>When sending XML documents as text over HTTP,
+use</p>
+<pre>Content-Type: text/xml;charset=iso-8859-15</pre>
+
+<!--  sidebar begins  -->
+<table width="220" border="0" cellspacing="8" cellpadding="4" align="right">
+<tr>
+<td width="220" valign="top" bgcolor="#efefef">
+<div class="secondary">
+
+<h3>The Case of the Missing On-Screen Character</h3>
+
+<p>This is a trap for new and old players: you look at the document on
+your screen and the character is not there. The obvious conclusion: the
+euro has been stripped out during some import or processing.  </p>
+
+<p>Not so fast.  While it may be that the euro was deleted during import
+(many transcoding systems just discard characters they don't know what to
+do with) the more likely explanation is that the current font does not
+have the Euro character.
+</p>
+
+<p> The place in your document where the euro character is expected may be
+empty, or perhaps have some other glyph (picture) showing (a square box,
+for example).</p>
+
+<p>Since Win98 and MacOS 8.5, operating systems, transcoders, fonts and
+applications have had a time to become euro-friendly in preparation for
+2002; check that your systems have been updated.</p>
+
+<p>Until last month, Microsoft had euro-friendly versions of their <i>Core
+Web Fonts</i> available at <a
+href="http://www.microsoft.com/typography">http://www.microsoft.com/typography</a>.
+This was a great way for older versions of Windows to keep abreast.
+Microsoft have removed this now, but the independent <a
+href="http://corefonts.sourceforge.net/">Corefonts</a> project has been
+set up to redistribute the fonts under the license originally granted by
+Microsoft, offering support for Windows and Linux systems.</p>
+
+<p>Linux systems are a little fiddly with respect to fonts.  You may have
+to check that you have Latin 0 fonts.  Try the utility
+<code>xfontsel</code> and look for iso8859-15 encodings.  The long font
+names used by X Windows includes the font mapping in the last position of
+the name: it would be <code>iso8859-15</code></p>
+
+</div>
+</td></tr></table>
+<!--  sidebar ends  -->
+
+<h3>Windows Code Pages</h3>
+
+<p>On the Windows side, the most common Windows <i>code page</i> for
+Western documents is <code>CP1252</code>, sometimes aliased as
+<code>ANSI</code>. (If you are at a party and wish to avoid
+standards-people, just loudly talk about <i>ANSI code page</i> and watch
+whose nostrils twitch.)  <code>CP 1252</code> is a superset of ISO 8859-1.
+</p>
+
+<p>The euro character has been introduced as 0x80 in 
+most Microsoft code pages for Europe: </p>
+<ul>
+<li>CP1252 (Western Europe),</li>
+<li>CP1250 (Eastern Europe),</li>
+<li>CP1253 (Greek),</li>
+<li>CP1254 (Turkish),</li>
+<li>CP1255 (Baltic)</li>
+</ul>
+<p>An exception is the Cyrillic code page CP 1521, it is code point 0x88.</p>
+
+<p>In Unicode, the character at U+0080 is reserved for control characters,
+to be determined by the application, but suggested as <a
+href="http://www.itscj.ipsj.or.jp/ISO-IR/077.pdf">ISO 6429 C1 set</a> by
+default. (The C1 controls are the characters in an 8-bit set between
+<code>0x80</code> and <code>0x9F</code>, reserved for control functions.)
+</p>
+
+<p>In any case, neither Unicode nor ISO 6429 specify a character for the
+control code <code>0x80</code>, so by any criteria if you find a character
+at <code>0x80</code> in your Unicode data there is something fishy going
+on.  The most likely explanation is that someone has used the new <code>CP
+1252</code> but has mislabeled it as ISO 8859-1 or ISO 8859-15.
+Developers should note that they cannot rely on transcoding software to
+catch the error where there is a 0x80 in data labeled ISO 8859-<i>n</i>;
+even though modern APIs such as Java 1.4's transcoders will generate
+exceptions when a bad encoding is detected, 0x80 is a legitimate (though
+unused) code in ISO 8859-<i>n</i> encodings and so will probably not
+generate an error. I note that at least some versions of MSXML 4 do the
+right thing and complain, but in XML 1.0 the behavior has been
+underspecified and largely up to the skills and expectations of the
+programmers creating XML parsers. </p>
+
+<!--  sidebar begins  -->
+<table width="220" border="0" cellspacing="8" cellpadding="4" align="left">
+<tr>
+<td width="220" valign="top" bgcolor="#efefef">
+<div class="secondary">
+
+<h3>How could XML 1.1 help?</h3>
+
+<p>There has been some discussion recently of how to treat those control
+characters in XML 1.1.  In order to catch as many encoding mislabeling
+problems as possible, it would be best to ban the C1 characters outright;
+but that would leave a range of characters that can appear in a DOM but
+not be interchanged.  </p>
+
+<p>The best compromise between the two conflicting requirements of
+interchange and error-detection will be to say that control characters,
+except for the various whitespace characters like CR, NL, SPACE, TAB and
+NEL, must be serialized in XML 1.1 as numeric character references. (The
+NEL character <code>U+0085</code> is used by some text applications on IBM
+OS/390 mainframes.)  This works around the layering problem that control
+characters in the C0 range are used for flow control in serial
+communications and so should never appear in their direct form in an XML
+document text. </p>
+
+</div>
+</td></tr></table>
+<!--  sidebar ends  -->
+
+<p>Until recently most people in Europe could get away with editing their
+documents with a <code>CP 1252</code> editor: the extra characters are not
+that common. </p>
+
+<p>But now XML developers in the West join their East Asian colleagues in
+being able to recognize encoding related problems.
+</p>
+
+<h3>Hints</h3>
+
+<p> If you are using <code>CP1252</code>, you may find some problems:
+older transcoders may not know the correct name, and transcoding software
+may not understand the correct alias. The official IANA name seems to be
+<code>windows-1252</code> but the Java transcoder uses the name
+<code>cp1252</code>.
+</p>
+
+<p>If you are using Windows, there is usually an an excellent Character
+Map utility available in the Accessories menu: look through each font to
+find one which has the euro glyph available, then use that font in the
+application in which you are trying viewing the XML document. Other
+operating systems have similar utilities available.
+</p>
+
+
+<!--  talk back  -->
+<a name="thread">
+
+    <hr noshade size="1" />
+    <p><img src="/images/talkback.gif" alt="Comment on this article" width="40" height="30" border="0" align="left">Do you have any Euro problems or success stories?  Share them in our forum.<br />
+    <i> (* You must be a <a href="/cs/user/create/cs_msg?x-lr=cs_disc/219&x-lr2=a/1032&page=">member</a> of XML.com to use this feature.)</i>
+    <br /><a class="headline" href="/cs/user/create/cs_msg?x-lr=cs_disc/219&x-lr2=a/1032&page=">Comment on this Article</a>
+    <br />
+
+
+
+
+<br />
+<img src="/images/trans.gif" alt=" " width="450" height="12" /></td>
+<td width="10" valign="top">
+<img src="/images/trans.gif" alt=" " width="10" height="1" vspace="0" hspace="0" /></td>
+<td width="130" valign="top" bgcolor="#efefef" align="center">
+<!--  sponsor column  -->
+<img src="/images/trans.gif" alt=" " width="130" height="1">
+
+<!--  sponsor tiles  -->
+
+
+
+
+<!--  skyscrapers  -->
+
+<table border="0" cellpadding="0" cellspacing="0" width="120"><tr><td><!-- dy -->
+				<iframe src="http://ad.doubleclick.net/adi/xml.ds/art;pos=r_art;sz=120x480;ord=1454695064?" width="120" height="480" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
+				<script type="text/javascript" language="JavaScript1.1" src="http://ad.doubleclick.net/adj/xml.ds/art;abr=!ie;pos=r_art;sz=120x480;ord=1454695064?"></script>
+				</iframe>
+				<noscript>
+				<a href="http://ad.doubleclick.net/jump/xml.ds/art;abr=!ie;pos=r_art;sz=120x480;ord=1454695064?"><img src="http://ad.doubleclick.net/ad/xml.ds/art;abr=!ie;kw=pos=r_art;sz=120x480;ord=1454695064?" border="0" width="120" height="480" alt="Advertisement" /></a>
+				</noscript></td></tr></table>
+<br />
+<center>
+<!--  <p><a href="http://www.arbango.com/att/index.html?dist=ory&source=itu"><img src="/images/sponsors/att_120x240a.gif" width="120" height="240" border="0" alt="Free cell phone!" /></a></p>  -->
+
+<!--  <a href="http://ad.doubleclick.net/clk;3598490;6477537;c?http://www.macromedia.com/software/jrun/download/" border="0"><img src="http://oreillynet.com/images/sponsors/JRun_120x240.gif" width="120" height="240" border="0"></a>  -->
+<br />
+
+</center></td>
+</tr>
+</table><br />
+<!--  footer  -->
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<!-- <td valign="top"> -->
+<!--  logo  -->
+<!-- <csinclude record="lc/3" field="html"></td> -->
+<td valign="top" align="right">
+<!--  bottom banner ad  -->
+<!--  9;5 -->
+<table border="0" cellpadding="0" cellspacing="0" align="right" width="468"><tr><td><!-- dy -->
+				<iframe src="http://ad.doubleclick.net/adi/xml.ds/art;pos=bot_art;sz=468x60;ord=1193013443?" width="468" height="60" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
+				<script type="text/javascript" language="JavaScript1.1" src="http://ad.doubleclick.net/adj/xml.ds/art;abr=!ie;pos=bot_art;sz=468x60;ord=1193013443?"></script>
+				</iframe>
+				<noscript>
+				<a href="http://ad.doubleclick.net/jump/xml.ds/art;abr=!ie;pos=bot_art;sz=468x60;ord=1193013443?"><img src="http://ad.doubleclick.net/ad/xml.ds/art;abr=!ie;kw=pos=bot_art;sz=468x60;ord=1193013443?" border="0" width="468" height="60" alt="Advertisement" /></a>
+				</noscript></td></tr></table>
+
+
+</td>
+</tr>
+<tr>
+<td valign="top" colspan="2">
+<img src="/images/trans.gif" alt=" " width="1" height="5" align="right" /></td>
+</tr>
+<!--  About links  -->
+<tr>
+<td valign="middle" colspan="2" bgcolor="#6699ff" align="center" height="20" class="tinywhite">
+<a href="/pub/a/admin/commune.html" class="header">Contact&nbsp;Us</a> | 
+<a href="/pub/a/admin/mission.html" class="header">Our&nbsp;Mission</a> | 
+<a href="/pub/a/admin/policy.html" class="header">Privacy&nbsp;Policy</a> | 
+<a href="http://www.oreillynet.com/pub/a/mediakit/index.html" class="header">Advertise With Us</a> | <a href="mailto:xml-help@xml.com" class="header">Site Help</a></td>
+</tr>
+<!--  copyright  -->
+<tr>
+<td valign="middle" colspan="2" bgcolor="#000066" align="center" height="20">
+<!--  copyright  -->
+<span class="tinywhite">Copyright &copy; 2002
+O'Reilly &amp; Associates, Inc.</span>
+<!-- BEGIN WEBSIDESTORY CODE v7.2 (no 1.0)-->
+<!-- COPYRIGHT 1997-2001 WEBSIDESTORY, INC. ALL RIGHTS RESERVED. U.S.PATENT PENDING. Privacy notice at: http://websidestory.com/privacy -->
+<script language="javascript" id="_hbc">
+var _pn="PUT+PAGE+NAME+HERE"; 	//page name(s)
+var _mlc="/CONTENT+CATEGORY";	//multi-level content category
+var _seg="";  // visitor segmentation
+var _cmp="";  // campaign analysis - id
+var _gp="";   // campaign analysis - goal page
+var _cmpn="CMP"; // campaign analysis - query name for id 
+var _gpn="";  // campaign analysis - query name for goal page
+var _cp="null"; 		// campaign
+var _acct="DM520402AEDE;DM520404M4ZR"; 	//account number(s) specific for xml
+var _pndef="title"; 		//default page name
+var _ctdef="full"; 		//default content category
+var _dlf="n";			//download filter
+var _elf="n";			//exit link filter
+var _epg="n"; 			//event page identifier
+var _mn="we36";			//machine name
+var _gn="ehg-oreilly.hitbox.com";			//gateway name
+var _lp=location.protocol.indexOf('https')>-1?'https://':'http://';
+var _hcv=68; </script>
+<script language="javascript1.1" src="http://www.oreillynet.com/hbe-11up.js"></script>
+<script language="javascript">document.write("<\!--");</script>
+<noscript>
+<img src="http://ehg-oreilly.hitbox.com/HG?hc=we36&cd=1&hv=6&ce=u&hb=DM520402AEDE;DM520404M4ZR&n=PUT+PAGE+NAME+HERE&vcon=/CONTENT+CATEGORY&seg=&cmp=&gp=" border="0" width="1" height="1" />
+</noscript><!--//-->
+<!-- END WEBSIDESTORY CODE  -->
+</td>
+</tr>
+</table></body>
+
+
+</html>

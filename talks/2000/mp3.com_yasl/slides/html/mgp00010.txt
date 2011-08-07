@@ -1,0 +1,16 @@
+
+Credits
+
+
+Project Manager:
+John Derose
+
+Developers:
+David Story
+Matt DiMeo
+Thomas Tarka
+Sander van Zoest
+
+Thanks:
+Open Source community, Apache Software Foundation, Perl, W3C and
+        everyone else that contributed in one way or another to this project.

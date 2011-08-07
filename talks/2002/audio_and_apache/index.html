@@ -1,0 +1,898 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+ <title>ApacheCon 2002, Las Vegas, NV: Audio and Apache by Sander van Zoest</title>
+ <link rel="stylesheet" type="text/css" media="screen, print, aural" href="/talks/talks.css" />
+ <link rel="stylesheet" type="text/css" media="screen, print, aural" href="audio-and-apache.css" />
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<h1>Audio and Apache HTTPD</h1>
+<dl>
+<dt>Sander van Zoest &lt;<a href="mailto:sander%40vanzoest.com">sander@vanzoest.com</a>&gt;</dt>
+<dt>ApacheCon 2002, Las Vegas, NV</dt>
+<dt>$Revision: 1.5 $</dt>
+<dt>&lt;<a href="http://sander.vanzoest.com/talks/2002/audio_and_apache/">http://sander.vanzoest.com/talks/2002/audio_and_apache/</a>&gt;
+</dt>
+</dl>
+<h1><a name="toc" id="toc"></a> Table of Contents </h1>
+<div class="toc">
+<ul class="toc">
+<li class="tocline">1. <a href="#why">Why serve Audio on the Net?</a></li>
+<li class="tocline">2. <a href="#difference">What makes delivering audio so different?</a></li>
+<li class="tocline">3. <a href="#ways">Different ways of delivery Audio on the Net</a></li>
+<li class="tocline">4. <a href="#mimetypes">Configuring Mime Types</a></li>
+<li class="tocline">5. <a href="#fileformats">Common Audio File Formats</a></li>
+<li class="tocline">6. <a href="#linking">Linking to Audio via Apache HTTPD</a></li>
+<li class="tocline">7. <a href="#config">Configuring Apache HTTPD specificly to serve large Audio Files</a></li>
+<li class="tocline">8. <a href="#icecast">Icecast/Shoutcast Protocol</a></li>
+<li class="tocline">9. <a href="#references">References and Further Reading</a></li>
+</ul>
+</div>
+
+<h1><a name="why"></a>1. Why serve Audio on the Net?</h1>
+<p>
+This is almost like asking, why are you reading this? it might be
+because of the excitement caused by the new media that has recently
+crazed upon the internet. People are looking to bring their lifes onto
+the net, one of the things that brings that closer to a reality is the
+ability to hear live broadcasts of the worlds news, favorite sport; 
+hear music and to teleconference with others. Sometimes it is simply
+to enhance the mood to a web site or to provide audio feedback of
+actions performed by the visitor of the web site.
+</p>
+<h1><a name="difference"></a>2. What makes delivering audio so different?</h1>
+<p>
+The biggest reason to what makes audio different then traditional
+web media such as graphics, text and HTML is the fact that timing
+is very important. This caused by the significant increase in size
+of the media and the different quality levels that exist.
+</p>
+<p>
+There really are two kinds of goals behind audio streams.
+In one case there is a need for immediate response the moment
+playback is requested and this can sacrifice quality. While
+in the other case quality and a non-interrupted stream are much
+more important.
+</p>
+<p>
+This sort of timing is not really required of any other media,
+with the exception of video. In the case of HTML and images the
+files sizes are usually a lot smaller which causes the objects
+to load much quicker and usually are not very useful without
+having the entire file. In audio the middle of a stream can have
+useful information and still set a particular mood.
+</p>
+<h1><a name="ways"></a>3. Different ways of delivery Audio on the Net.</h1>
+<h2>Embedding audio in your Web Page</h2>
+<p>
+This used to be a lot more common in the past. Just like embedding
+an image in a web page, it is possible to add a sound clip or score
+to the web page.
+</p>
+<p>
+The linked in audio files are usually short and of low quality to 
+avoid a long delay for downloading the rest of the web page and the
+audio format needs to be supported by the browser natively or with
+a browser plug-in to avoid annoying the visitor.
+</p>
+<p>
+This can be accomplished using the HTML 4.0 [<a href="#html4">HTML4</a>] object element which
+works similar to how to specify an applet with the object element.
+In the past this could also be accomplished using the embed and bgsound
+browser specific additions to HTML.
+</p>
+<h3 class="example">Example</h3>
+<pre class="code">
+ &lt;object type="audio/x-midi" data="../media/sound.mid" width="200" height="26"&gt;
+    &lt;param name="src" value="../media/sound.mid&gt;
+    &lt;param name="autostart" value="true"&gt;
+    &lt;param name="controls" value="ControlPanel"&gt;
+  &lt;/object&gt;
+</pre>
+<p>
+Each param element is specific to each browser. Please check with each
+browser for specific information in regards to what param elements are
+available.
+</p>
+<p>
+In this method of delivering audio the audio file is served up via the
+web server. When using an Apache HTTPD server make sure that the appropriate
+mime type is configured for the audio file and that the audio file is
+named and referenced by the appropriate extension.
+</p>
+<p>
+Although the current HTML 4.01 [<a href="#html4">HTML4</a>] says to use the object element
+many browsers out on the market today still look for the embed element.
+Below find a little snippet that will work work in many browsers.
+</p>
+<pre class="code">
+&lt;object type="audio/x-midi" data="../media/sound.mid" width="200" height="26"&gt;
+&lt;param name="src" value="../media/sound.mid"&gt;
+&lt;param name="autostart" value="true"&gt;
+&lt;param name="controls" value="ControlPanel"&gt;
+
+&lt;embed type="audio/x-midi" src="../media/sound.mid"
+     width="200" height="26" autoplay="true" controls="ControlPanel"&gt;
+    &lt;noembed&gt;Your browser does not support embedded MIDI files.&lt;/noembed&gt;
+  &lt;/object&gt;
+</pre>
+<p>
+With the increasing installation base of the Flash browser plug-in by
+Macromedia most developers that are looking to provide this kind of
+functionality to a web page are creating flash elements that have their
+own way of adding audio that is discussed in Flash specific documents.
+</p>
+<h2>Downloading via HTTP</h2>
+<p>
+Using this method the visitor to the website will have to download the
+entire audio file and save it to the hard drive before it can be
+listened to. (1) This is very popular with people that want to listen 
+to high quality streams of audio and have a 64 Kbps or below connection to
+the internet. In some cases where the demand for a stream is high or
+the internet is congested downloading the content even for high bandwidth
+users can be affective and useful.
+</p>
+<p>
+One of the advantages of downloading audio to the local computer hard
+drive is that it can be played back (once downloaded) any time as long
+as the audio file is accessable from the computer.
+</p>
+<p>
+There are a lot of sites on the internet that provide this functionality
+for music and other audio files. It is also one of the easiest ways to
+delivery high quality audio to visitors.
+</p>
+<dl> 
+<dd>
+ (1) Microsoft Windows Media Player in conjunction with the Microsoft
+     Internet Explorer Browser will automaticly start playing the 
+     audio stream after a sufficient amount of the file has been 
+     downloaded. This can be accomplished because of the tight 
+     integration of the Browser and Media Player. With most audio players
+     you can listen to a file being downloaded, but you will have to
+     invoke the action manually.
+</dd>
+</dl>
+<h2>On-Demand streaming via HTTP</h2>
+<p>
+The real difference between downloading and on-demand streaming is
+that in on-demand streaming the audio starts playing before the entire
+audio file has been downloaded. This is accomplished by a hand of off
+the browser to the audio player via an intermediate file format that
+has been configured by the browser to be handled by the audio player.
+</p>
+<p>
+Look in a further section entitled "Linking to Audio via Apache HTTPD"
+below for more information about the different intermediate file formats.
+</p>
+<p>
+This type of streaming is very popular among the open source crowd and
+is the most widely implemented using the MP3 file format. Apache,
+Shoutcast [<a href="#shoutcast">SHOUTCAST</a>] and Icecast [<a href="#icecast">ICECAST</a>] are the most common 
+software components used to provide on-demand streaming via HTTP. Both
+Icecast and Shoutcast are not fully HTTP compliant, but Icecast is 
+becoming closer. For more information about the Shoutcast and Icecast 
+differences see the section below.
+</p>
+<p>
+Sites like Live365.com and MP3.com are huge sites that rely on this
+method of delivery of audio.
+</p>
+<h2>On-Demand Streaming via RTSP/RTP</h2>
+<p>
+RTSP/RTP is a new set of streaming protocols that is getting more 
+backing and becoming more popular by the second. The specification
+was developed by the Internet Engineering Task Force Working Groups
+AVT [<a href="#ietfavt">IETFAVT</a>] and MMUSIC [<a href="#ietfmmusic">IETFMMUSIC</a>]. RTP the Realtime Transfer
+Protocol has been around longer then RTSP and originally came out
+of the work towards a better teleconferencing, mbone, type system.
+RTSP is the Real-Time Streaming Protocol that is used as a control
+protocol and acts similarily to HTTP except that it maintains state
+and is bi-directional.
+</p>
+<p>
+Currently the latest Real Networks Streaming Servers support RTSP
+and RTP and Real Networks own proprietary transfer protocol RDT.
+Apple's Darwin Streaming server is also RTSP/RTP compliant.
+</p>
+<p>
+The RTSP/RTP protocol suite is very powerful and flexable in regards
+to most streaming needs. It has the ability to suport "server-push"
+style stream redirects and has the ability to throttle streams to
+ensure the stream can sustain the limited bandwidth over the network.
+</p>
+<p>
+For On-Demand streams the RTP protocol would usually stream over
+UDP and have a TCP connection open for RTSP. Because of the
+rich features provided by the protocol suite, it is not very well
+suited to allow people to download the stream and therefore the
+download via HTTP method might still be prefered by some.
+</p>
+<h2>Live Broadcast Streaming via RTSP/RTP</h2>
+<p>
+In the case of a live broadcast streaming RTSP/RTP shines. RTP allowing
+for UDP datagrams to be transmitted to clients allows for fast immediate
+delivery of content with the sacrifice of reliability. The RTP stream
+can be send over IP Multicast to minimize bandwidth on the network.
+</p>
+<p>
+Many Content Delivery Networks (CDNs) are starting to provide support for
+RTSP/RTP proxies that should provide a better quality streaming environment
+on the internet. 
+</p>
+<p>
+Much work is also being done in the RTP space to provide transfers over 
+telecommunication networks such as cellular phones. Although not directly
+related, per se, it does provide a positive feeling knowing that all the
+audio related transfer groups seem to be working towards a common standard
+such as RTP.
+</p>
+<h2>On-Demand or Live Broadcast streaming via MMS.</h2>
+<p>
+This is the Microsoft Windows Media Technologies Streaming protocol. It
+is only supported by Microsoft Windows Media Player and currently only
+works on Microsoft Windows.
+</p>
+<h1><a name="mimetypes"></a>4. Configuring Mime Types</h1>
+<p>
+One of the most hardest things in serving audio has been the wide variety
+of audio codecs and mime types available. The battle of mime types on the
+audio player side of things isn't over, but it seems to be a little more
+controlled.
+</p>
+<p>
+On the server side of things provide the appropriate mime type for the 
+particular audio streams and/or files that are being served to the audio 
+players. Although some clients and operating systems handle files fully 
+based on the file extension. The mime type [<a href="#rfc2045">RFC2045</a>] is more specific 
+and more defined.
+</p>
+<p>
+The registered mime types are maintained by <abbr title="Internet Assigned Numbers Authority">IANA</abbr> [<a href="#iana">IANA</a>]. On their site
+they have a list of all the registered mime types and their name space.
+</p>
+<p>
+If you are planning on using a mime type that isn't registered by IANA
+then signal this in the name space by adding a "x-" before the subtype. 
+Because this was not done very often in the audio space, there was a 
+lot of confusion to what the real mime type should be.
+</p>
+<p>
+For example the MPEG 1.0 Layer 3 Audio (MP3) [<a href="#oramp3book">ORAMP3BOOK</a>] mime type 
+was not specified for the longest time. Because of this the mime type 
+was <code>audio/x-mpeg</code>. Although none of the audio players understood 
+<code>audio/x-mpeg</code>, but understood <code>audio/mpeg</code> it was not a technically 
+correct mime type. Later audio players recognized this and started 
+using the <code>audio/x-mpeg</code> mime type. Which in the end caused a lot 
+of hassles with clients needing to be configured differently depending
+on the website and client that was used. Last november we thanked
+Martin Nilsson of the ID3 tagging project for registering <code>audo/mpeg</code>
+with IANA. [<a href="#rfc3003">RFC3003</a>]
+</p>
+<p>
+Correct configuration of Mime Types is very important. Apache HTTPD
+ships with a fairly up to date copy of the mime.types file, so most
+of the default ones (including <code>audio/mpeg</code>) are there.
+</p>
+<p>
+But in case you run into some that are not defined use the <code>mod_mime.c</code>
+directives such as <code>AddType</code> to fix this.
+</p>
+<h2 class="example">Examples</h2>
+<pre class="code">
+	AddType audio/x-mpegurl .m3u
+	AddType audio/x-scpls   .pls
+	AddType application/x-ogg .ogg
+</pre>
+<h1><a name="fileformats"></a>5. Common Audio File Formats</h1>
+<p>
+There are many audio formats and metadata formats that exist. Many of
+them do not have registered mime types and are hardly documented.
+This section is an attempt at providing the most accurate mime type
+information for each format with a rough description of what the files
+are used for.
+</p>
+<h2>Real Audio</h2>
+<p> 
+Real Networks Proprietary audio format and meta formats. This is one
+of the more common streaming audio formats today. It comes in several
+sub flavors such as Real 5.0, Real G2 and Real 8.0 etc. The file size
+varies depending on the bitrates and what combination of bitrates are
+contained within the single file.
+The following mime types are used
+</p>
+<pre class="code">
+	audio/x-pn-realaudio .ra, .ram, .rm
+	audio/x-pn-realaudio-plugin .rpm
+	application/x-pn-realmedia
+</pre>
+<h2>MPEG 1.0 Layer 3 Audio (MP3)</h2>
+<p>
+This is currently one of the most popular downloaded audio formats
+that was originally developed by the Motion Pictures Experts Group
+and has patents by the Fraunhofer IIS Institute and Thompson 
+Multimedia. [<a href="#oramp3book">ORAMP3BOOK</a>] The file is a lossy compression that at
+a bitrate of 128kbps reduces the file size to roughly a MB/minute.
+The mime type is <code>audio/mpeg</code> with the extension of <code>.mp3</code> [<a href="#rfc3003">RFC3003</a>]
+</p>
+<h2>Windows Media Audio</h2>
+<p> 
+Originally known as MS Audio was developed by Microsoft as the MP3
+killer. Still relatively a new format but heavily marketed by
+and becoming more popular by the minute. It is a successor
+to the Microsoft Audio Streaming Format (ASF). The commonly used
+mime type is <code>audio/x-ms-wma</code> with the extension of <code>.wma</code>
+</p>
+<h2>WAV</h2>
+<p>
+Windows Audio Format is a pretty semi-complicated encapsulating 
+format that in the most common case is PCM with a WAV header up front.
+It has the mime type <code>audio/x-wav</code> with the extension <code>.wav</code>.
+</p>
+<h2>Vorbis</h2>
+<p>
+Ogg Vorbis [<a href="#vorbis">VORBIS</a>] is still a relatively new format brought to 
+life by CD Paranoia author Christopher Montgomery; known to the 
+world as Monty. It is an open source audio format free of patents 
+and gotchas. It is a codec/file format that is roughly as good as
+the MP3 format, if not much better. The mime type for Ogg Vorbis is
+<code>application/x-ogg</code> with the extension of <code>.ogg</code>.
+</p>
+<h2>MIDI</h2>
+<p>
+The MIDI standard and file format [<a href="#midispec">MIDISPEC</a>] have been used by 
+Musicians for a long time. It is a great format to add music to
+a website without the long download times and needing special players
+or plug-ins. The mime type is <code>audio/x-midi</code> and the extension is <code>.mid</code>
+</p>
+<h2>Shockwave Flash (ADPCM/MP3)</h2>
+<p>
+Macromedia Flash [<a href="#flashaudio">FLASHAUDIO</a>] uses its own internal audio format
+that is often used on Flash websites. It is based on Adaptive 
+Differential Pulse Code Modulation (ADPCM) and the MP3 file format.
+Because it is usually used from within Flash it usually isn't served
+up seperatedly but it's extension is <code>.swf</code>
+</p>
+<p>
+There are many many many more audio codecs and file formats that exist.
+I have listed a few that won't be discussed but should be kept in mind.
+Formats such as PCM/Raw Audio (<code>audio/basic</code>), MOD, MIDI (<code>audio/x-midi</code>),
+QDesign (used by Quicktime), Beatnik, Sun's AU, Apple/SGI's AIFF, AAC
+by the MPEG Group, Liquid Audio and AT&amp;T's a2b (AAC derivatives),
+Dolby AC-3, Yamaha's TwinVQ (originally by Nippon Telephone and Telegraph)
+and MPEG-4 audio.
+</p>
+<h1><a name="linking"></a>6. Linking to Audio via Apache HTTPD</h1>
+<p>
+There are many different ways to link to audio from the Apache HTTPD
+web server. It seems as if every codec has their own metafile format.
+The metafile format is provided to allow the browser to hand off the
+job of requesting the audio file to the audio player, because it is
+more familiar with the file format and how to handle streaming or how
+to actually connect to the audio server then the web browser is.
+</p>
+<p>
+This section will discuss the more common methods to provide streaming
+links to provide that gateway from the web to the audio world.
+</p>
+<p>
+Probably the one that is the most recognized file is the RAM file.
+</p>
+<h2>RAM</h2>
+<p>
+Real Audio Metafile. It is a pretty straight forward way that Real
+Networks allowed their Real Player to take more control over their
+proprietary audio streams. The file format is simply a URL on each
+line that will be streamed in order by the client. The mime type
+is the same as other RealAudio files <code>audio/x-pn-realaudio</code> where
+the pn stands for Progressive Networks the old name of the company.
+</p>
+<h3 class="example">Example</h3>
+<pre class="code">
+http://www.example.com/audio/file1.ra
+http://www.example.com/audio/file2.ra
+C:\audio\file1.ra
+</pre>
+<h2>PLS</h2>
+<p> 
+This is the playlist files used by Nullsoft's Winamp MP3 Player. Later
+on it got more widely used by Nullsoft's Shoutcast and has the mime
+type of <code>audio/x-scpls</code> with the extension <code>.pls</code>. Before shoutcast the
+mimetype was simply <code>audio/x-pls</code>. As you can see in the example 
+below it looks very much like a standard windows INI file format. 
+The <code>Length&lt;number&gt;</code> value can be either <code>-1</code> for 
+a continues live broadcast or the length of the track in seconds.
+</p>
+<h3 class="example">Example</h3>
+<pre class="code">
+[playlist]
+numberofentries=2
+File1=http://www.example.com/audio/talk.mp3
+Title1=ApacheCon 2002: Audio and Apache
+Length1=-1
+File2=http://www.example.com/audio/break.mp3
+Title2=Break Between Sessions
+Length2=900
+</pre>
+<h2>M3U</h2>
+<p> 
+This next one is the MPEG Layer 3 URL Metafile that has been around
+for a very long time as a playlist format for MP3 players. It supported
+URLs pretty early on by some players and got the mime type 
+<code>audio/x-mpegurl</code> and is now used by Icecast and many destination sites
+such as MP3.com. The format is exactly the same as that of the RAM
+file, just a list of urls that are seperated by line feeds.
+</p>
+<h3 class="example">Example</h3>
+<pre class="code">
+http://www.example.com/audio/file1.mp3
+http://www.example.com/audio/file2.mp3
+C:\audio\file1.mp3
+</pre>
+<p>
+Certain MP3 players found the simple M3U format limiting and have added
+additional capabilities. Most of these capabilities, were already present
+in the PLS format and therefore have limited support over all.
+The ability to add comments has been added. Comments in M3U start with
+a <code>#</code> symbol and will be ignored by most players. Within
+the comments special tags such as <code>EXTM3U</code>, <code>EXTINF</code>.
+</p>
+<p>
+<code>EXTM3U</code> signifies to the MP3 player that this M3U file has additional
+information. This extended data is provided before each URI with the
+<code>EXTINF:</code> tag.
+</p>
+<h3 class="example">Example</h3>
+<pre class="code">
+#EXTM3U
+#EXTINF:-1,ApacheCon 2002: Audio and Apache 
+http://www.example.com/audio/talk.mp3
+#EXTINF:900,Break Between Sessions
+http://www.example.com/audio/break.mp3
+</pre>
+<h2>SDP</h2>
+<p> 
+This is the Session Description Protocol [<a href="#rfc2327">RFC2327</a>] which is heavily
+used within RTSP and is a standard way of describing how to subscribe
+to a particular RTP stream. The mime type is <code>application/sdp</code> with the
+extension <code>.sdp</code>. 
+</p>
+<h3 class="example">Example</h3>
+<pre class="code">
+v=0	
+a=control:rtsp://stream.example.com/
+c=IN IP4 192.168.12.44
+a=lang:en
+a=recvonly
+m=audio 1554 RTP/AVP 96
+e=sander-sdp@vanzoest.com (Sander van Zoest)
+u=http://sander.vanzoest.com/talks/2002/audio_and_apache/
+s=ApacheCon 2002: Audio and Apache
+</pre>
+<p>
+Sometimes you might see RTSL (Real-Time Streaming Language) floating 
+around. This was an old Real Networks format that has been superseeded 
+by SDP. It's mimetype was <code>application/x-rtsl</code> with the extension of <code>.rtsl</code>
+</p> 
+<h2>ASX</h2>
+<p> 
+Is a Windows Media Metafile format [<a href="#msasx">MSASX</a>] that is based on early XML
+standards. It can be found with many extensions such as <code>.wvx</code>, <code>.wax</code>
+and <code>.asx</code>. The mime type is <code>video/x-ms-asf</code>.
+</p>
+<table>
+<tr>
+<th>Extension</th>
+<th>Usage</th>
+</tr>
+<tr>
+<td><code>.wax</code></td>
+<td>All digital media is audio-only, with <code>.wma</code> file name extensions.</td>
+</tr>
+<tr>
+<td><code>.wvx</code></td>
+<td>Media contains video, with a  <code>.wmv</code> file name extension.</td>
+</tr>
+<tr>
+<td><code>.asx</code></td>
+<td>Media created.  Old versions of Windows Media Technologies and has an <code>.asf</code> file name extension.</td>
+</tr>
+</table>
+
+<h3 class="example">Example</h3>
+<pre class="code">
+&lt;ASX version="3.0"&gt;
+   &lt;ABSTRACT&gt;Audio and Apache by Sander van Zoest explains on how
+   to tie an Apache Web Server to Multimedia Content.&lt;/ABSTRACT&gt;
+   &lt;TITLE&gt;ApacheCon 2002: Audio and Apache&lt;/TITLE&gt;
+   &lt;AUTHOR&gt;Sander van Zoest&lt;/AUTHOR&gt;
+   &lt;COPYRIGHT&gt;2002 Alexander van Zoest&lt;/COPYRIGHT&gt;
+   &lt;MoreInfo href="http://sander.vanzoest.com/talks/2002/audio_and_apache" /&gt;
+   &lt;Entry&gt;
+      &lt;Ref href="MMS://netshow.example.com/wtoc.asf" /&gt;
+      &lt;Banner href="http://www.example.com/banner1.gif"&gt;
+          &lt;MoreInfo href="http://sander.vanzoest.com/talks/2002/audio_and_apache" /&gt;
+          &lt;Abstract&gt;This is the description for this clip.&lt;/Abstract&gt;
+      &lt;/Banner&gt;
+   &lt;/Entry&gt;
+&lt;/ASX&gt;
+</pre>
+<h2>SMIL</h2>
+<p> 
+Is the Synchronized Multimedia Integration Language [<a href="#smil20">SMIL20</a>] that
+is now a W3C Recommendation [<a href="#w3symm">W3SYMM</a>]. It was originally developed
+by Real Networks to provide an HTML-like language to their Real Player
+that was more focused on multimedia. The mime type is <code>application/smil</code>
+with the extensions of either <code>.smil</code> or <code>.smi</code>
+</p>
+<h3 class="example">Example</h3>
+<pre class="code">
+&lt;smil&gt;
+  &lt;head&gt;
+    &lt;layout&gt;
+       &lt;root-layout id="video" width="159" height="20"/&gt;
+       &lt;region id="comment" left="10" top="9" width="34" height="29" z-index="1"/&gt;
+       &lt;region id="stats" left="105" top="14" width="43" height="75" z-index="1"/&gt;
+       &lt;region id="title" left="12" top="99" width="113" height="15" z-index="1"/&gt;
+       &lt;region id="caption" left="29" top="90" width="102" height="20" z-index="2"&gt;
+    &lt;/layout&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;seq&gt;
+      &lt;img src="intro1.gif" region="video" dur="2s"/&gt;
+      &lt;img src="Intro2.gif" region="video" begin="1.0s" end="3.0s"/&gt;
+    &lt;/seq&gt;
+  &lt;/body&gt;
+&lt;/smil&gt;
+</pre>
+<h2>MHEG</h2>
+<p>
+Is a hypermedia language developed by the ISO group. [<a href="#mheg1">MHEG1</a>] [<a href="#mheg5">MHEG5</a>] 
+and [<a href="#mheg5cor">MHEG5COR</a>]. It has been adopted by the Digital Audio Visual
+Council [<a href="#davic">DAVIC</a>]. It is more used for teleconferencing, broadcasting
+and television, but close enough related that it receives a mention
+here. The mime type is <code>application/x-mheg</code> with the extension of
+<code>.mheg</code>
+</p>
+<h3 class="example">Example</h3>
+<pre class="code">
+{:Application
+    ( '/startup' 0 )        // Application content reference
+    :Items (
+        {:Link
+            1
+            :EventSource 0          // Check this application...
+            :EventType IsRunning    // ... for the IsRunning event
+            :LinkEffect (
+                // Load the scene
+                :TransitionTo (( '~/hello.mhg' 0 ) )
+            )
+        }
+    )
+    :BackgroundColour '=FF=FF=FF=00'    // White
+    :TextColour '=00=00=00=00'          // Black
+    :Font "rec://font/us1"              // Font to use for text rendering
+    :FontAttributes "plain.26.32.0"     // Default font attributes
+    :BitmapCHook 4                      // Default bitmap content hook
+}
+
+
+{:Scene
+    ( "~/hello.mhg" 0 )
+    :Items
+    (
+        // Declare a background Rectangle that covers the screen.
+        {:Rectangle
+            1
+            :OrigBoxSize 640 480                // Size of rectangle
+            :OrigPosition 0 0                   // Position at top left
+            :OrigRefLineColour '=ff=ff=ff=00'   // White
+            :OrigRefFillColour '=ff=ff=ff=00'   // White
+        }
+    )
+
+    :SceneCS 640 480
+}
+
+</pre>
+<h1><a name="config"></a>7. Configuring Apache HTTPD specificly to serve large Audio Files</h1>
+<p>
+Some of the most common things that you will need to adjust to be
+able to serve many large audio files via the Apache HTTPD Server.
+Because of the difference in size between HTML files and Audio files,
+the <code>MaxClients</code> will need to be adjusted appropriatedly depending on
+the amount of time listeners end up tieing up a process. If you are
+serving high quality MP3 files at 128kbps for example you should
+expect more then 5 minute download times for most people.
+</p>
+<p>
+This will significantly impact your webserver since this means that
+that process is occupied for the entire time. Because of this you
+will also want to in crease the <code>TimeOut</code> Directive to a higher 
+number. This is to ensure that connections do not get disconnected
+half way through a transfer and having that person hit "reload"
+and connect again.
+</p>
+<p>
+Because of the amount of time the downloads tie up the processes
+of the server, the smallest footprint of the server in memory would
+be recommended because that would mean you could run more processes
+on the machine.
+</p>
+<p>
+After that normal performance tweaks such as max file descriptor
+changes and longer tcp listen queues apply.
+</p>
+<h1><a name="icecast"></a>8. Icecast/Shoutcast Protocol</h1>
+<p>
+Both protocols are very tightly based on HTTP/1.0. The main difference
+is a group of new headers such as the <code>icy</code>headers by Shoutcast and the
+new <code>x-audiocast</code> headers provided by Icecast.
+</p>
+<p>
+A typical shoutcast request from the client.
+</p>
+<pre class="code">
+GET / HTTP/1.0
+
+ICY 200 OK
+icy-notice1:&lt;BR&gt;This stream requires &lt;a href="http://www.winamp.com/"&gt;
+            Winamp&lt;/a&gt;&lt;BR&gt;
+icy-notice2:SHOUTcast Distributed Network Audio Server/posix v1.0b&lt;BR&gt;
+icy-name: Great Songs
+icy-genre: Jazz
+icy-url: http://shout.serv.dom/
+icy-pub: 1
+icy-br: 24
+  
+&lt;data&gt;&lt;songtitle&gt;&lt;data&gt;
+
+</pre>
+<p>
+The icy headers display the song title and other formation including if
+this stream is public and what the bitrate is.
+</p>
+<p>
+A typical icecast request from the client.
+</p>
+<pre class="code">
+GET / HTTP/1.0
+Host: icecast.serv.dom
+x-audiocast-udpport: 6000
+Icy-MetaData: 0
+Accept: */*
+
+HTTP/1.0 200 OK
+Server: Icecast/VERSION
+Content-Type: audio/mpeg
+x-audiocast-name: Great Songs
+x-audiocast-genre: Jazz
+x-audiocast-url: http://icecast.serv.dom/
+x-audiocast-streamid:
+x-audiocast-public: 0
+x-audiocast-bitrate: 24
+x-audiocast-description: served by Icecast 
+
+&lt;data&gt;
+
+</pre>
+<p>
+ NOTE: I am mixing the headers of the controlling client with those from
+       a listening client. 
+</p> 
+<p>
+The CPAN Perl Package <code>Apache::MP3</code> by Lincoln Stein implements a little of
+each which works because MP3 players tend to support both.
+</p>
+<p>
+One of the big differences in implementations between the listening clients 
+is that Icecast uses an out of band UDP channel to update metadata
+while the Shoutcast server gets it meta data from the client embedded within
+the MP3 stream. The general meta data for the stream is set up via the
+<code>icy</code> and <code>x-audiocast</code> HTTP headers.
+</p>
+<p>
+Although the MP3 standard documents were written for interrupted communication
+it is not very specific on that. So although it doesn't state that there is
+anything wrong with embedding garbage between MPEG frames the players that
+do not understand it might make a noisy bleep and chirps because of it.
+</p>
+<h1><a name="references"></a>9. References and Further Reading</h1>
+<dl>
+<dt>
+<a name="davic"></a>[<a href="http://www.davic.org/">DAVIC</a>]
+</dt>
+<dd>
+       Digital Audio Visual Council 
+       &lt;<a href="http://www.davic.org/">http://www.davic.org/</a>&gt;
+</dd>
+<dt>
+<a name="flashaudio"></a>[<a href="http://www.sonify.org/tutorials/links/pages/flash_audio/">FLASHAUDIO</a>]
+</dt>
+<dd>
+       Tony DeYoung, "Flash Audio Tutorials", ARTLab, 2002.
+       &lt;<a href="http://www.sonify.org/tutorials/links/pages/flash_audio/">http://www.sonify.org/tutorials/links/pages/flash_audio/</a>&gt;
+</dd>
+<dt>
+<a name="html4"></a>[<a href="http://www.w3.org/TR/html401/">HTML4</a>]
+</dt>
+<dd>
+       D. Ragget, A. Le Hors, I. Jacobs, "HTML 4.01 Specification", W3C
+       Recommendation, December, 1999.
+       &lt;<a href="http://www.w3.org/TR/html401/">http://www.w3.org/TR/html401/</a>&gt;
+</dd>
+<dt>
+<a name="iana"></a>[<a href="http://www.iana.org/">IANA</a>]
+</dt>
+<dd>
+        Internet Assigned Numbers Authority.
+        &lt;<a href="http://www.iana.org/">http:/www.iana.org/</a>&gt;
+</dd>
+<dt>
+<a name="icecast"></a>[<a href="http://www.icecast.org/">ICECAST</a>]
+</dt>
+<dd>
+        Icecast Open Source Streaming Audio System.
+        &lt;<a href="http://www.icecast.org/">http://www.icecast.org/</a>&gt;
+</dd>
+<dt>
+<a name="ietfavt"></a>[<a href="http://www.ietf.org/html.charters/avt-charter.html">IETFAVT</a>]
+</dt>
+<dd>
+Audio/Video Transport WG, Internet Engineering Task Force.
+&lt;<a href="http://www.ietf.org/html.charters/avt-charter.html">http://www.ietf.org/html.charters/avt-charter.html</a>&gt;
+</dd>
+<dt>
+<a name="ietfmmusic"></a>[<a href="http://www.ietf.org/html.charters/mmusic-charter.html">IETFMMUSIC</a>]
+</dt>
+<dd>
+       Multiparty Multimedia Session Control WG, Internet Engineering Task
+       Force. &lt;<a href="http://www.ietf.org/html.charters/mmusic-charter.html">http://www.ietf.org/html.charters/mmusic-charter.html</a>&gt;
+</dd>
+<dt>
+<a name="ietfsip"></a>[<a href="http://www.ietf.org/html.charters/sip-charter.html">IETFSIP</a>]
+</dt>
+<dd>
+       Session Initiation Protocol WG, Internet Engineering Task Force.
+       &lt;<a href="http://www.ietf.org/html.charters/sip-charter.html">http://www.ietf.org/html.charters/sip-charter.html</a>&gt;
+</dd>
+<dt>
+<a name="ipmulticast"></a>[<a href="http://www.ipmulticast.com/">IPMULTICAST</a>]
+</dt>
+<dd>
+       Transmit information to a group of recipients via a single transmittion
+       by the source, in contrast to unicast.
+       IP Multicast Initiative
+       &lt;<a href="http://www.ipmulticast.com/">http://www.ipmulticast.com/</a>&gt;
+</dd>
+<dt>
+<a name="midispec"></a>[<a href="midispec.html">MIDISPEC</a>]
+</dt>
+<dd>
+       The International MIDI Association,"MIDI File Format Spec 1.1",
+       &lt;<a href="midispec.html">http://sander.vanzoest.com/talks/2002/audio_and_apache/midispec.html</a>&gt;
+</dd>
+<dt>
+<a name="mheg1"></a>[<a href="http://www.iso.org/iso/en/CatalogueDetailPage.CatalogueDetail?CSNUMBER=22153">MHEG1</a>]
+</dt>
+<dd>
+       ISO/IEC, "Information Technology - Coding of Multimedia and Hypermedia
+       Information - Part 1: MHEG Object Representation, Base Notation (ASN.1)"; 
+       Draft International Standard ISO 13522-1;1997;
+       &lt;<a href="http://www.mheg.org/">http://www.mheg.org/</a>&gt;
+       &lt;<a href="http://www.iso.org/iso/en/CatalogueDetailPage.CatalogueDetail?CSNUMBER=22153">http://www.iso.org/</a>&gt;
+       &lt;<a href="http://www.ansi.org/">http://www.ansi.org/</a>&gt;
+</dd>
+<dt>
+<a name="mheg5"></a>[<a href="http://www.iso.org/iso/en/CatalogueDetailPage.CatalogueDetail?CSNUMBER=26876">MHEG5</a>]
+</dt>
+<dd>
+       ISO/IEC, "Information Technology - Coding of Multimedia and Hypermedia
+       Information  - Part 5: Support for Base-Level Interactive Applications";
+       Draft International Standard ISO 13522-5:1997;
+       &lt;<a href="http://www.mheg.org/">http://www.mheg.org/</a>&gt;
+       &lt;<a href="http://www.iso.org/iso/en/CatalogueDetailPage.CatalogueDetail?CSNUMBER=26876">http://www.iso.org/</a>&gt;
+       &lt;<a href="http://www.ansi.org/">http://www.ansi.org/</a>&gt;
+</dd>
+<dt>
+<a name="mheg5cor"></a>[<a href="http://www.iso.org/iso/en/CatalogueDetailPage.CatalogueDetail?CSNUMBER=31582">MHEG5COR</a>]
+</dt>
+<dd>
+       Information Technology - Coding of Multimedia and Hypermedia Information
+       - Part 5: Support for base-level interactive applications -
+       - Technical Corrigendum 1; ISO/IEC 13552-5:1997/Cor.1:1999(E)
+       &lt;<a href="http://www.mheg.org/">http://www.mheg.org/</a>&gt;
+       &lt;<a href="http://www.iso.org/iso/en/CatalogueDetailPage.CatalogueDetail?CSNUMBER=31582">http://www.iso.org/</a>&gt;
+       &lt;<a href="http://www.ansi.org/">http://www.ansi.org/</a>&gt;
+</dd>
+<dt>
+<a name="msasx"></a>[<a href="http://msdn.microsoft.com/library/en-us/dnwmt/html/asx.asp">MSASX</a>]
+</dt>
+<dd>
+        Microsoft Corp. "All About Windows Media Metafiles". October 2000.
+        &lt;<a href="http://msdn.microsoft.com/library/en-us/dnwmt/html/asx.asp">http://msdn.microsoft.com/library/en-us/dnwmt/html/asx.asp</a>&gt;
+</dd>
+<dt>
+<a name="oramp3book"></a>[<a href="http://www.oreilly.com/catalog/mp3/">ORAMP3BOOK</a>]
+</dt>
+<dd>
+	S. Hacker; MP3: The Definitive Guide; O'Reilly and Associates, Inc.
+        March, 2000.
+        &lt;<a href="http://www.oreilly.com/catalog/mp3/">http://www.oreilly.com/catalog/mp3/</a>&gt;
+</dd>
+<dt>
+<a name="rfc2045"></a>[<a href="http://www.ietf.org/rfc/rfc2045.txt">RFC2045</a>]
+</dt>
+<dd>
+        N. Freed and N. Borenstein, "Multipurpose Internet Mail 
+        Extensions (MIME) Part One: Format of Internet Message Bodies",
+        RFC 2045, November 1996. &lt;<a href="http://www.ietf.org/rfc/rfc2045.txt">http://www.ietf.org/rfc/rfc2045.txt</a>&gt;
+</dd>
+<dt>
+<a name="rfc2327"></a>[<a href="http://www.ietf.org/rfc/rfc2327.txt">RFC2327</a>]
+</dt>
+<dd>
+	M. Handley and V. Jacobson, "SDP: Session Description Protocol",
+        RFC 2327, April 1998. &lt;<a href="http://www.ietf.org/rfc/rfc2327.txt">http://www.ietf.org/rfc/rfc2327.txt</a>&gt;
+</dd>
+<dt>
+<a name="rfc3003"></a>[<a href="http://www.ietf.org/rfc/rfc3003.txt">RFC3003</a>] 
+</dt>
+<dd>
+        M. Nilsson, "The audio/mpeg Media Type", RFC 3003, November 2000.
+        &lt;<a href="http://www.ietf.org/rfc/rfc3003.txt">http://www.ietf.org/rfc/rfc3003.txt</a>&gt;
+</dd>
+<dt>
+<a name="shoutcast"></a>[<a href="http://www.shoutcast.com/">SHOUTCAST</a>]
+</dt>
+<dd>
+	Nullsoft Shoutcast MP3 Streaming Technology.
+        &lt;<a href="http://www.shoutcast.com/">http://www.shoutcast.com/</a>&gt;
+</dd>
+<dt>
+<a name="smil20"></a>[<a href="http://www8.org/w8-papers/3c-hypermedia-video/anticipating/anticipating.html">SMIL20</a>]
+</dt>
+<dd>
+        L. Rutledge, J. van Ossenbruggen, L. Hardman, D. Bulterman,
+        "Anticipating SMIL 2.0: The Developing Cooperative Infrastructure 
+        for Multimedia on the Web"; 8th International WWW Conference, 
+        Proc. May, 1999.
+        &lt;<a href="http://www8.org/w8-papers/3c-hypermedia-video/anticipating/anticipating.html">http://www8.org/w8-papers/3c-hypermedia-video/anticipating/anticipating.html</a>&gt;
+</dd>
+<dt>
+<a name="w39cir"></a>[<a href="http://www9.org/w9cdrom/353/353.html">W39CIR</a>]  
+</dt>
+<dd>
+        V. Krishnan and S. G. Chang, "Customized Internet Radio"; 9th
+        International WWW Conference Proc. May 2000.
+        &lt;<a href="http://www9.org/w9cdrom/353/353.html">http://www9.org/w9cdrom/353/353.html</a>&gt;
+</dd>
+<dt>
+<a name="vorbis"></a>[<a href="http://www.xiph.org/ogg/vorbis/">VORBIS</a>]
+</dt>
+<dd>
+	Ogg Vorbis - Open Source Audio Codec
+        &lt;<a href="http://www.xiph.org/ogg/vorbis/">http://www.xiph.org/ogg/vorbis/</a>&gt;
+</dd>
+<dt>
+<a name="w3symm"></a>[<a href="http://www.w3.org/AudioVideo/">W3SYMM</a>] 
+</dt>
+<dd>
+        W3C Synchronized Multimedia Activity (SYMM Working Group);
+        &lt;<a href="http://www.w3.org/AudioVideo/">http://www.w3.org/AudioVideo/</a>&gt;
+</dd>
+<dt>
+<a name="asx-mimetype"></a>[<a href="http://support.microsoft.com/default.aspx?scid=kb;en-us;189404">ASF and ASX MIME Type</a>] 
+</dt>
+<dd>
+</dd>
+</dl>
+
+<dl>
+<dd class="copyright">$Date: 2002/10/11 05:44:29 $</dd>
+<dd class="copyright">Copyright &#x00A9; 2002 Alexander van Zoest. All Rights Reserved.</dd>
+</dl>
+</body>
+</html>

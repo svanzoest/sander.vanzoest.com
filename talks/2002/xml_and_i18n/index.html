@@ -1,0 +1,534 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+ <title>ApacheCon 2002, Las Vegas, NV: XML and I18N by Sander van Zoest</title>
+ <link rel="stylesheet" type="text/css" media="screen, print, aural" href="/talks/talks.css" />
+ <link rel="stylesheet" type="text/css" media="screen, print, aural" href="xml-and-i18n.css" />
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<h1>XML and Internationalization</h1>
+<dl>
+<dt>Sander van Zoest &lt;<a href="mailto:sander%40vanzoest.com">sander@vanzoest.com</a>&gt;</dt>
+<dt>ApacheCon 2002, Las Vegas, NV</dt>
+<dt>$Revision: 1.7 $ -- Draft</dt>
+<dt>&lt;<a href="http://sander.vanzoest.com/talks/2002/xml_and_i18n/">http://sander.vanzoest.com/talks/2002/xml_and_i18n/</a>&gt;
+</dt>
+</dl>
+<h1><a name="toc" id="toc"></a> Table of Contents </h1>
+<div class="toc">
+<ul class="toc">
+<li class="tocline">1. <a href="#introduction">Introduction</a></li>
+<li class="tocline">2. <a href="#encoding">Document encoding</a></li>
+<li class="tocline">3. <a href="#language">Language Tags</a></li>
+<li class="tocline">4. <a href="#ncr">Numeric Character References</a></li>
+<li class="tocline">5. <a href="#entity">Character Entity References</a></li>
+<li class="tocline">6. <a href="#transcoding">Character set Transcoding</a></li>
+<li class="tocline">7. <a href="#presentation">Text Presentation</a></li>
+<li class="tocline">8. <a href="#references">References and Further Reading</a></li>
+</ul>
+</div>
+
+<h1><a name="introduction" id="introduction">1.</a> Introduction</h1>
+<p>
+In the last few years, both the Extensible Markup Language (XML) and 
+Internationalization (I18N) are gaining prominence on the Internet. 
+Since the rise of the Internet and the development of electronic access 
+to global information, it is becoming easier to stay in touch with, 
+share with and learn from people all around the world. Because of this,
+the importance of being able to provide data and methods that allow for 
+global consumption of the product is increasing.
+
+Localization is the process of tailoring products and content to a specific locale, i.e. to the
+language, cultural context, conventions and market requirements of that specific target market.
+This process normally has been a huge undertaking because of the lack of a superset one could
+develop their product in. With the rise of XML and Unicode the tasks required to properly localize
+a product is becoming easier. 
+</p>
+<p>
+With the turn to Web Services and Web accessible gateways; being able to determine the contents'
+country of origin, language and character set (the collection of elements used to represent textual 
+information) is increasingly becoming more important. 
+</p>
+<p>
+By the means of XML, one can abstract the design, layout and business logic from the content. 
+This process conveniently provides a layer to dynamically transform or to provide localized
+versions of the content. Specifying the language of the content provides the ability to 
+distinguish and extract the content to provide automated or systematic translations of
+the elements in the native tongue when the default language does not match
+the one of the consumer. Combining the language with the country provides the ability for
+ an even more localized version of the text in the particular countries dialect of 
+the desired language. Without the standardized abstraction provided by XML most software
+developers would have to develop their own abstraction layers or potentially alter the
+source code itself to generate the content for each locale.
+</p>
+<p>
+On the level of character sets, the Unicode Consortium (in cooperation with the International 
+Organization for Standardization ISO/IEC/JTC1) has provided us with character encoding 
+standards that define the identity of each character, its numeric value and how this value is 
+represented in bits. The Consortium has defined three encoding forms (mappings from a character
+set definition to the actual code units used to represent the data) that allow the data to be 
+transmitted in 8, 16 and 32-bits. These three forms, formally known as UTF-8, UTF-16 and UTF-32, 
+provide developers with three ways to use Unicode. The decision to which encoding form should
+be used can be determined by weighing the importance between the ease of access to the characters 
+and the memory footprint needed to represent the most commonly used characters. The ASCII 
+character set provides the base for the byte values in UTF-8 and therefore UTF-8 tends to be 
+the most popular encoding form for software developed in the ASCII character set. Using UTF-8 
+minimizes the need for software rewrites, while still providing a way to conform to the 
+Unicode Standard. Although, most of what is discussed in this paper will apply to all three 
+Unicode encoding forms, we will mostly be concentrating on UTF-8.
+</p>
+<p>
+In this paper we will explore how XML and Internationalization work together to provide
+a workable solution for localization of content. We will explore the ways to translate
+from other character sets to UTF-8
+</p>
+
+<h1><a name="encoding" id="encoding">2.</a> Specifying document encoding</h1>
+<p>
+An encoding of an XML document is specified in the XML declaration using the encoding
+attribute. The values for the encoding declarations are defined by the IANA (See the
+References section for more information).
+</p>
+<h2 class="example">Example</h2>
+<pre class="code">
+&lt;?xml version="1.0" encoding="iso-8859-1" ?&gt;
+</pre>
+<p>
+If the XML document is transferred over an application protocol, such as HTTP, the document encoding may be specified by the application protocol. For instance,
+in HTTP the encoding can be defined using the charset parameter in the <code>Content-Type</code> header.
+</p>
+<p>
+If the encoding is not specified using the above two methods, the XML document is considered to be of Unicode encoding. The type of unicode is specified by 
+the Byte-Order-Mark (BOM). The BOM is a Unicode special marker placed at the 
+top of the file that indicates its encoding. The BOM is optional for UTF-8.
+</p>
+<table>
+<tr>
+<th>BOM</th>
+<th>Encoding</th>
+</tr>
+<tr>
+<td>EF BB BF</td>
+<td>UTF-8</td>
+</tr>
+<tr>
+<td>FE FF</td>
+<td>UTF-16 (big-endian)</td>
+</tr>
+<tr>
+<td>FF FE</td>
+<td>UTF-16 (little-endian)</td>
+</tr>
+<tr>
+<td>00 00 FE FF</td>
+<td>UTF-32 (big-endian)</td>
+</tr>
+<tr>
+<td>FF FE 00 00</td>
+<td>UTF-32 (little-endian)</td>
+</tr>
+</table>
+<p>
+Byte order only matters for encodings using more than 8-bits (i.e. UTF-16, UTF-32, etc.). 
+It is irrelevant to UTF-8, but it is allowed to specify a BOM for UTF-8 for those who
+feel the need to be explicit.
+</p>
+
+<h1><a name="language" id="language">3.</a> Language Tags</h1>
+<p>
+The <code>xml:lang</code> attribute is provided to specify the language and an optional country for a particular element.
+The language is specified using the <abbr title="International Organization for Standardization">ISO</abbr> Language code [<a href="#iso639-2">ISO639-2</a>] which is optionally followed by a dash '-' (U+002D) and the ISO Country code [<a href="#iso3166ma">ISO3166</a>].
+English would, therefore, be expressed as:
+</p>
+<pre class="code">
+&lt;element xml:lang="en"&gt;This is English&lt;/element&gt;
+</pre>
+<p>
+To specify multiple languages within a single document, simply re-specify
+the <code>xml:lang</code> attribute for the portion that is in a different
+language.
+</p>
+<p>
+The ISO Language codes come in either two or three letter flavors, where the two-letter version is required in
+the case where there exist both a two and three letter version.  Besides the ISO Language Code, an <abbr title="Internet Assigned Numbers Authority">IANA</abbr> Language Code (prefixed by <code>i-</code>) and a user defined code (prefixed by <code>x-</code>) [<a href="#langtags">LANGTAGS</a>] are possible alternatives.
+The use of Unicode Language Tags is discouraged in XML, but are an alternative when dealing with plain text protocols.
+</p>
+<h2 class="example">Examples</h2>
+<table class="example">
+<tr>
+<th>Language Tag</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>en-US</td>
+<td>American English</td>
+</tr>
+<tr>
+<td>i-klingon</td>
+<td>IANA registered Klingon</td>
+</tr>
+<tr>
+<td>x-piglatin</td>
+<td>User defined Pig Latin</td>
+</tr>
+</table>
+<p>
+XPath is a language for addressing parts of an XML document, designed to be used by both XSLT and XPointer. XPath provides the ability to match the <code>xml:lang</code> attribute using the <code>lang()</code> function. This function 
+returns <code>true</code> or <code>false</code> matching the current <code>xml:lang</code> value. <code>lang()</code> is  case-insensitive and returns 
+true when matching for the ISO Language code even when the optional country code is also specified.
+When invoked with a supplied country code, it will only match when the language and country code exist.
+</p>
+<h1><a name="ncr" id="ncr">4.</a> Numeric Character References</h1>
+<p>
+Numeric Character Reference (NCR) is a term often used to describe a character in
+hexadecimal or decimal format in XML. The hexadecimal notation is of the form
+<code>&amp;#xHHHH;</code> where HHHH is the hexadecimal value of the given Unicode character. Since
+the unicode characters are usually expressed in hexadecimal this form is the
+preferred form since it is easier to refer to the Unicode value. The decimal format
+is of the form <code>&amp;#DDDD;</code> where DDDD is the decimal value of the given Unicode
+character.
+</p>
+<p>
+The value of an NCR is <strong>always</strong> the value of the Unicode code-point, 
+regardless of the encoding attribute of the XML file. 
+NCRs are only needed when a character is not included in the encoding currently in
+use. NCRs (and character entity references)  cannot be used in element and 
+attributes names, in CDATA sections, in processing instructions and in comments.
+</p>
+<h2 class="example">Examples</h2>
+<table>
+<tr>
+<th>Character</th>
+<th>Hexadecimal</th>
+<th>Decimal</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>&#x00A9;</td>
+<td>&amp;#x00A9;</td>
+<td>&amp;#0169;</td>
+<td>COPYRIGHT CIRCLE C (U+00A9)</td>
+</tr>
+<tr>
+<td>&#x20AC;</td>
+<td>&amp;#x20AC;</td>
+<td>&amp;#8364;</td>
+<td>EURO SIGN (U+20AC)</td>
+</tr>
+<tr>
+<td>&#x2019;</td>
+<td>&amp;#x2019;</td>
+<td>&amp;#8217;</td>
+<td>RIGHT SINGLE QUOTATION MARK (U+2019)</td>
+</tr>
+</table>
+<h1><a name="entity" id="entity">5.</a> Character Entity References</h1>
+<p>
+As in <abbr title="HyperText Markup Language">HTML</abbr>, it is possible to use and define Character Entity References,
+such as <code>&amp;euro;</code> to provide a more legible representation of the NCR. It is recommended, however, to use NCRs instead of Character Entities, since the Unicode hexadecimal value is more versatile and easier to process by XML processors.
+</p>
+<p>
+The entity references <code>&amp;amp;</code>, <code>&amp;lt;</code>, <code>&amp;apos;</code>, <code>&amp;quot;</code> and <code>&amp;gt;</code>
+used for escaping and differentiating between XML markup and escaping strings 
+containing both single and double quotes must be provided by XML processors. 
+For clarity, it might be good idea to explicitly declare them regardless.
+Since they would be defined as the same constant as set by the XML processor,
+there is no real harm in doing so, assuming your XML tools support it.
+</p>
+<p>
+Character Entities are defined as follows:
+</p>
+<pre class="code">
+&lt;!ENTITY euro "&amp;#x20AC;"&gt;
+</pre>
+<p>
+The character entity definition  can be included in the <abbr title="Document Type Definition">DTD</abbr>, or inline with the <code>DOCTYPE</code> defined by the XML Document.
+</p>
+<pre class="code">
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" [
+  &lt;!ENTITY  amp "&amp;#x0026;"&gt;
+  &lt;!ENTITY   lt "&amp;#x003C;"&gt;
+  &lt;!ENTITY   gt "&amp;#x003E;"&gt;
+  &lt;!ENTITY quot "&amp;#x0022;"&gt;
+  &lt;!ENTITY apos "&amp;#x0027;"&gt;
+]&gt;
+</pre>
+<p>
+As of this writing, a few browsers such as Omniweb v4.1 and Mozilla 1.0 do not
+seem to handle this correctly. For interoperability reasons, it is better to define the entities in your DTD. This is more widely supported then inline entity references.
+</p>
+<h1><a name="transcoding" id="transcoding"></a>6. Characterset transcoding</h1>
+<p>
+One of the age old issues with internationalization is the abundance of
+character sets. Since most of the content is not in Unicode and not all
+software supports it yet. There is a good chance that conversion between
+charactersets, transcoding, will still be a common requirement when
+localizing XML files. Although, XML processors internally are required to
+use either UTF-8 or UTF-16, most existing programs expect data in other
+character sets such as ASCII, the japanese Shift_JIS or ISO-8859-1 (Latin1).
+</p>
+<p>
+Most XML processors also support additional character sets to allow for
+easy transcoding of XML. Depending on the parser it might inherit these
+capabilities from the language it was written in such as Java or compile
+against C/C++ libraries as GNU libiconv and IBM ICU to be able to handle
+foreign character sets.
+</p>
+<h2 class="example">XML Transcoding using XSLT</h2>
+<p>
+The easiest way to do the transcoding is to use an <abbr title="eXtensible Stylesheet/Transformation Language">XSL/T</abbr> processor with
+a similar stylesheet as the one provided below. It converts the XML to the Chinese Big5 character set. 
+</p>
+<pre class="code">
+  &lt;?xml version="1.0" encoding="iso-8859-1"?&gt;
+  &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"&gt;
+    &lt;xsl:output encoding="Big5"/&gt;
+    &lt;xsl:template match="node()|@*"&gt;
+      &lt;xsl:copy&gt;
+        &lt;xsl:apply-templates select="node()|@*"/&gt;
+      &lt;xsl:copy&gt;
+    &lt;xsl:template&gt;
+  &lt;xsl:stylesheet&gt;
+</pre>
+<p>
+</p>
+<h2 class="example">Java String Locale Converter</h2>
+<p>
+The below code provided by Sun Microsystems [<a href="#javai18n">JAVAI18N</a>]
+provides us a way to convert from Java's UTF-16 character encoding format 
+to the unix friendly UTF-8.
+</p>
+<pre class="code">
+&lt;<a href="http://java.sun.com/docs/books/tutorial/i18n/text/example-1dot1/StringConverter.java">http://java.sun.com/docs/books/tutorial/i18n/text/example-1dot1/StringConverter.java</a>&gt;
+/*
+ * Copyright (c) 1995-1998 Sun Microsystems, Inc. All Rights Reserved.
+ *
+ * Permission to use, copy, modify, and distribute this software
+ * and its documentation for NON-COMMERCIAL purposes and without
+ * fee is hereby granted provided that this copyright notice
+ * appears in all copies. Please refer to the file "copyright.html"
+ * for further important copyright and licensing information.
+ *
+ * SUN MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF
+ * THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ * PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SUN SHALL NOT BE LIABLE FOR
+ * ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ * DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+ */
+
+import java.io.*;
+import java.util.*;
+
+public class StringConverter {
+
+   public static void printBytes(byte[] array, String name) {
+      for (int k = 0; k &lt; array.length; k++) {
+         System.out.println(name + "[" + k + "] = " + "0x" +
+            UnicodeFormatter.byteToHex(array[k]));
+      }
+   }
+
+   public static void main(String[] args) {
+
+      System.out.println(System.getProperty("file.encoding"));
+      String original = new String("A" + "\u00ea" + "\u00f1"
+                                 + "\u00fc" + "C");
+   
+      System.out.println("original = " + original);
+      System.out.println();
+   
+      try {
+          byte[] utf8Bytes = original.getBytes("UTF8");
+          byte[] defaultBytes = original.getBytes();
+ 
+          String roundTrip = new String(utf8Bytes, "UTF8");
+          System.out.println("roundTrip = " + roundTrip);
+ 
+          System.out.println();
+          printBytes(utf8Bytes, "utf8Bytes");
+          System.out.println();
+          printBytes(defaultBytes, "defaultBytes");
+      } catch (UnsupportedEncodingException e) {
+          e.printStackTrace();
+      }
+      
+   } // main
+
+}
+
+</pre>
+<p>
+Stream based character set conversion is done by providing an encoding 
+argument to either the <code>InputStreamReader</code> and <code>OutputStreamWriter</code> classes.
+</p>
+<h2 class="example">Perl Locale Converter</h2>
+<p>
+Perl has had Unicode support since version 5.6. Although, it recommended to
+use perl 5.8.0 or later, since this release perl has achieved a much more
+intuitive support for unicode in comparision to earlier revisions [<a href="perli18n">PERLI18N</a>].
+</p>
+<p>
+Perl uses the Encode module to provide support convert perl strings to different
+encodings.
+</p>
+<pre class="code">
+#!/usr/local/bin/perl -wT
+
+use 5.8.0;
+use strict;
+use Encode 'from_to';
+	
+our $data = "This is a single quote: \x{2019}";
+from_to($data, 'utf-8', 'iso-8859-1'); # transcode UTF-8 to Latin1
+</pre>
+<p>
+To transcode a file to a different encoding simply open the file with
+the appropriate <code>:encoding(...)</code> pragma.
+</p>
+<pre class="code">
+open(my $nihongo, '&lt;:encoding(iso2022-jp)', 'text.jis');
+open(my $unicode, '&gt;:utf8',                 'text.utf8');
+while (&lt;$nihongo&gt;) { print $unicode }  
+</pre>
+<p>
+The Java and Perl examples are not XML specific, but can be used to
+transcode data before inserting them into XML or your <abbr title="Document Object Model">DOM</abbr> tree. Most java classes and perl modules to
+manipulate content will work with UTF-8, but because of the recent changes
+in perl, there is always a chance that a particular piece of code 
+does not fully support the new perl 5.8.0 yet. 
+</p>
+<h1>7. Text Presentation</h1>
+<p>
+With a universal character encoding, it is now possible to theoretically
+convert any text into any language. It is often forgotten, however, that
+not only are characters important, but so are punctuation, text direction
+, formatting and accents. Just as character composition, these elements 
+vary wildly.  In Japanese for example, there is no such as bold or 
+italics, these formatting elements are applied differently. Instead tag
+the elements with their purpose and reasoning behind applying the particular
+text formatting.
+</p>
+<p>
+Similarily, it becomes more important to take more care in using the
+appropriate element tags in document types, such as HTML and DocBook.
+When creating a list, use the list elements, rather then <code>&lt;br /&gt;</code>
+elements. Avoid putting formatting elements in your text as much as
+possible and provide the formatting using style-sheets instead.
+</p>
+<p>
+Other areas to take extra care with are date, timestamps, and
+numbers in general. Functions in XSL such as format-number() can
+be used to put a period (U+002E) between thousands for most 
+european languages, where in the United States, people seperate 
+thousands with commas (U+002C).
+</p>
+<h1><a name="references" id="references"></a>8. References and Further Reading</h1>
+<div class="references">
+<dl class="references">
+<dt class="reference"><a name="i18ngurus"></a>[<a href="http://www.i18ngurus.com/">I18NGURUS</a>]</dt>
+<dd class="reference">
+Thiery Sourbier, Website: &lt;<a href="http://www.i18ngurus.com/">http://www.i18ngurus.com/</a>&gt;.
+</dd>
+<dt class="reference"><a name="oraxml"></a>[<a href="http://www.xml.com/">ORAXML</a>]</dt>
+<dd class="reference">O'Reilly and Associates, Website: &lt;<a href="http://www.xml.com/">http://www.xml.com/</a>&gt;.
+</dd>
+<dt class="reference"><a name="charmod"></a>[<a href="http://www.w3.org/TR/charmod/">CHARMOD</a>]</dt>
+<dd class="reference">Martin Dürst, François Yergeau, Richard Ishida, Misha Wolf, Asmus Freytag,
+<a href="http://www.w3.org/TR/charmod/">Character Model for the World Wide Web</a>, W3C Working Draft, April 2002,
+&lt;<a href="http://www.w3.org/TR/charmod/">http://www.w3.org/TR/charmod/</a>&gt;.
+</dd>
+<dt class="reference"><a name="unicode-xml"></a>[<a href="http://www.w3.org/TR/unicode-xml/">UNICODE-XML</a>]</dt>
+<dd class="reference">Martin Dürst, Asmus Freytag, <a href="http://www.w3.org/TR/unicode-xml/">Unicode in XML and other Markup Languages</a>,
+W3C, Unicode, Februrary 2002, &lt;<a href="http://www.w3.org/TR/unicode-xml/">http://www.w3.org/TR/unicode-xml/</a>&gt;.
+</dd>
+<dt class="reference"><a name="ruby"></a>[<a href="http://www.w3.org/TR/ruby/">RUBY</a>]</dt>
+<dd class="reference">Marcin Sawicki, Michel Suignard, <span lang="ja" xml:lang="ja">石川 雅康</span> (ISHIKAWA Masayasu), Martin Dürst, Tex Texin,
+<a href="http://www.w3.org/TR/ruby/">Ruby Annotation</a>, W3C Recommendation, May 2001,
+&lt;<a href="http://www.w3.org/TR/ruby/">http://www.w3.org/TR/ruby/</a>&gt;.
+</dd>
+<dt class="reference"><a name="rfc3066"></a>[<a href="http://www.ietf.org/rfc/rfc3066.txt">RFC3066</a>]</dt>
+<dd class="reference">H. Alvestrand, <a href="http://www.ietf.org/rfc/rfc3066.txt">Tags for the Identification of Languages</a>, IETF,
+January 2001, &lt;<a href="http://www.ietf.org/rfc/rfc3066.txt">http://www.ietf.org/rfc/rfc3066.txt</a>&gt;.
+</dd>
+<dt class="reference"><a name="utf-bom"></a>[<a href="http://www.unicode.org/unicode/faq/utf_bom.html">UTF-BOM</a>]</dt>
+<dd class="reference"><a href="http://www.unicode.org/unicode/faq/utf_bom.html">Unicode Frequently Asked Questions: UTF and BOM</a>
+&lt;<a href="http://www.unicode.org/unicode/faq/utf_bom.html">http://www.unicode.org/unicode/faq/utf_bom.html</a>&gt;.
+</dd>
+<dt class="reference"><a name="euro-xml"></a>[<a href="http://www.xml.com/pub/a/2002/09/18/euroxml.html">EURO-XML</a>]</dt>
+<dd class="reference">Rick Jelliffe, <a href="http://www.xml.com/pub/a/2002/09/18/euroxml.html">Euro-XML</a>, XML.com, September 2002,
+&lt;<a href="http://www.xml.com/pub/a/2002/09/18/euroxml.html">http://www.xml.com/pub/a/2002/09/18/euroxml.html</a>&gt;.
+</dd>
+<dt class="reference"><a name="primer"></a>[<a href="http://www.menteith.com/unicode/primer/">PRIMER</a>]</dt>
+<dd class="reference">Tony Graham, <a href="http://www.menteith.com/unicode/primer/">Unicode: A Primer</a>, M&amp;T Books,
+ISBN 0-7645-4625-2; 1st Edition, April 2000
+ &lt;<a href="http://www.menteith.com/unicode/primer/">http://www.menteith.com/unicode/primer/</a>&gt;.
+</dd>
+<dt class="reference"><a name="xmli18n"></a>[<a href="http://www.opentag.com/xmli18n">XMLI18N</a>]</dt>
+<dd class="reference">Yves Savourel, <a href="http://www.opentag.com/xmli18n">XML Internationalization and Localization</a>, Sams Publishing, ISBN 0-672-32096-7; 1st Edition, June 2001 &lt;<a href="http://www.opentag.com/xmli18n">http://www.opentag.com/xmli18n</a>&gt;
+</dd>
+<dt class="reference"><a name="xmli18nfaq"></a>[<a href="http://www.opentag.com/xmli18nfaq.htm">XMLI18NFAQ</a>]</dt>
+<dd class="reference">Yves Savourel, <a href="http://www.opentag.com/xmli18nfaq.htm">XML Internationalization and Localization FAQ</a>,
+&lt;<a href="http://www.opentag.com/xmli18nfaq.htm">http://www.opentag.com/xmli18nfaq.htm</a>&gt;.
+</dd>
+<dt class="reference"><a name="iso10646-1993"></a>[<a href="http://www.iso.org/">ISO10636-1993</a>]</dt>
+<dd class="reference">ISO/IEC 10646
+ISO (International Organization for Standardization). ISO/IEC 10646-1993 (E). Information technology -- Universal Multiple-Octet Coded Character Set (UCS) -- Part 1: Architecture and Basic Multilingual Plane. [Geneva]: International Organization for Standardization, 1993 (plus amendments AM 1 through AM 7) &lt;<a href="http://www.iso.org/">http://www.iso.org/</a>&gt;.
+</dd>
+<dt class="reference"><a name="iso10646-2000"></a>[<a href="http://www.iso.org/">ISO10636-2000</a>]</dt>
+<dd class="reference">ISO/IEC 10646-2000
+ISO (International Organization for Standardization). ISO/IEC 10646-1:2000. Information technology -- Universal Multiple-Octet Coded Character Set (UCS) -- Part 1: Architecture and Basic Multilingual Plane. [Geneva]: International Organization for Standardization, 2000 &lt;<a href="http://www.iso.ch/">http://www.iso.org/</a>&gt;.
+</dd>
+<dt class="reference"><a name="unicode3"></a>[<a href="http://www.unicode.org/unicode/uni2book/u2.html">UNICODE3</a>]</dt>
+<dd class="reference">The Unicode Consortium, <a href="http://www.unicode.org/unicode/uni2book/u2.html">The Unicode Standard, Version 3.0</a>, Addison-Wesley, ISBN 0-201-61633-5; 1st Edition, February 2000 &lt;<a href="http://www.unicode.org/unicode/uni2book/u2.html">http://www.unicode.org/unicode/uni2book/u2.html</a>&gt;.
+</dd>
+<dt class="reference"><a name="oasis"></a>[<a href="http://www.oasis-open.org/cover/unicode-xml.html">OASIS</a>]</dt>
+<dd class="reference">Robin Cover, <a href="http://www.oasis-open.org/cover/unicode-xml.html">XML and Unicode, Technology Report</a>, September 2002 &lt;<a href="http://www.oasis-open.org/cover/unicode-xml.html">http://www.oasis-open.org/cover/unicode-xml.html</a>&gt;.
+</dd>
+<dt class="reference"><a name="xmlcharsets"></a>[<a href="http://www.w3.org/TR/REC-xml#charsets">XMLCHARSETS</a>]</dt>
+<dd class="reference">
+&lt;<a href="http://www.w3.org/TR/REC-xml#charsets">http://www.w3.org/TR/REC-xml#charsets</a>&gt;.
+</dd>
+<dt class="reference"><a name="charsets"></a>[<a href="http://www.iana.org/assignments/character-sets">CHARSETS</a>]</dt>
+<dd class="reference">IANA (Internet Assigned Numbers Authority). 
+<a href="http://www.iana.org/assignments/character-sets">Official Names for Character Sets</a>, ed. Keld Simonsen et al. &lt;<a href="http://www.iana.org/assignments/character-sets">http://www.iana.org/assignments/character-sets</a>&gt;.
+</dd>
+<dt class="reference"><a name="langtags"></a>[<a href="http://www.iana.org/assignments/language-tags">LANGTAGS</a>]</dt>
+<dd class="reference">IANA (Internet Assigned Number Authority). <a href="http:
+//www.iana.org/assignments/language-tags">Official Names for Language Tags</a>. &lt;<a href="http://www.iana.org/assignments/language-tags">http://www.iana.org/assignments/language-tags</a>&gt;.
+</dd>
+<dt class="reference"><a name="rfc2279"></a>[<a href="http://www.ietf.org/rfc/rfc2279.txt">RFC2279</a>]</dt>
+<dd class="reference">Yergeau, F., <a href="http://www.ietf.org/rfc/rfc2279.txt">UTF-8, a transformation format of ISO 10646</a>, RFC 2279, 1998
+&lt;<a href="http://www.ietf.org/rfc/rfc2279.txt">http://www.ietf.org/rfc/rfc2279.txt</a>&gt;.
+</dd>
+<dt class="reference"><a name="rfc2781"></a>[<a href="http://www.ietf.org/rfc/rfc2781.txt">RFC2781</a>]</dt>
+<dd class="reference">Hoffman, P. and F. Yergeau, <a href="http://www.ietf.org/rfc/rfc2781.txt">UTF-16, an encoding of ISO 10646</a>, RFC 2781, 2000.
+&lt;<a href="http://www.ietf.org/rfc/rfc2781.txt">http://www.ietf.org/rfc/rfc2781.txt</a>&gt;.
+</dd>
+<dt class="reference"><a name="perli18n"></a>[<a href="http://rf.net/~james/perli18n.html">PERLI18N</a>]</dt>
+<dd>
+James Briggs, <a href="http://rf.net/~james/perli18n.html">Perl, Unicode and i18N FAQ</a>, February 2002, &lt;<a href="http://rf.net/~james/perli18n.html">http://rf.net/~james/perli18n.html</a>&gt;.
+</dd>
+<dt class="reference"><a name="javai18n"></a>[<a href="http://java.sun.com/docs/books/tutorial/i18n/">JAVAI18N</a>]</dt>
+<dd>
+Dale Green, <a href="http://java.sun.com/docs/books/tutorial/i18n/">The Java Tutorial: Internationalization</a>, 2002 &lt;<a href="http://java.sun.com/docs/books/tutorial/i18n/">http://java.sun.com/docs/books/tutorial/i18n/</a>&gt;.
+</dd>
+<dt class="reference"><a name="iso639-2"></a>[<a href="http://lcweb.loc.gov/standards/iso639-2/langhome.html">ISO639-2</a>]</dt>
+<dd>
+ISO/IEC 639-2 ISO (International Organization for Standardization). ISO/IEC 639-2:1998 Codes for the Representation of Names of Languages -- Part 2: Alpha-3 Code. [Geneva]: International Organization for Standardization, 1998  &lt;<a href="http://lcweb.loc.gov/standards/iso639-2/langhome.html">http://lcweb.loc.gov/standards/iso639-2/langhome.html</a>&gt;.
+</dd>
+<dt class="reference"><a name="iso3166"></a>[<a href="http://www.iso.org/iso/en/prods-services/iso3166ma/">ISO3166</a>]</dt>
+<dd>
+ISO/IEC 3166 ISO (International Organization for Standardization). ISO 3166-2:1998 Codes for the representation of names of countries and their subdivisions -- Part 2: Country subdivision code. [Geneva]: International Organization for Standardization, 1998  &lt;<a href="http://www.iso.org/iso/en/prods-services/iso3166ma/">http://www.iso.org/iso/en/prods-services/iso3166ma/</a>&gt;.
+</dd>
+</dl>
+</div>
+<dl>
+<dd class="copyright">$Date: 2002/10/11 05:34:07 $</dd>
+<dd class="copyright">Copyright &#x00A9; 2002 Alexander van Zoest. All Rights Reserved.</dd>
+</dl>
+</body>
+</html>

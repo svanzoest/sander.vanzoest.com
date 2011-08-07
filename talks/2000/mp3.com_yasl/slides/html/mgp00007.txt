@@ -1,0 +1,19 @@
+
+Overview
+
+URI manipulation :
+
+
+To provide the ability to use a single template for similar XML files
+
+The URI to the web server can be used to determine what content should
+be displayed. 
+
+If __DEFAULT__ is passed to <yasl:xml> we use the URI of the request to
+determine what XML file to use.
+
+This can be set per <directory> and can be overridden by an actual request
+for a template
+
+since not every request would want the exact same style for the entire site.
+

@@ -1,0 +1,14 @@
+
+History
+
+
+Evolution of the web :
+
+Static text pages (with an image)
+
+Static pages with content
+
+Dynamic pages with embedded style (HTML tags)
+
+Dynamic pages with a database backend	
+

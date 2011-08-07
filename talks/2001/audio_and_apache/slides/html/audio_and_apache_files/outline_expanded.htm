@@ -1,0 +1,602 @@
+<html>
+
+<head>
+<meta name=ProgId content=PowerPoint.Slide>
+<meta name=Generator content="Microsoft Macintosh PowerPoint 9">
+<link id=Main-File rel=Main-File href="../audio_and_apache.htm">
+<link title="Presentation File" type="application/powerpoint" rel=alternate
+href="audio_and_apache.ppt">
+<script>
+if ( ! top.PPTPRESENTATION ) {
+	window.location.replace( "endshow.htm" );
+}
+</script>
+<meta name=Robots content=NoIndex>
+<style>
+<!--a {text-decoration: none;}-->
+</style>
+</head>
+
+<body bgcolor=white text=black link=black vlink=black alink=black
+onload=" parent.base.highlite();" onresize="self.location.reload();">
+
+<table  width=100%>
+ <tr>
+  <td width=1 ><script> if ( parent.base.isnav ) { document.write('<ilayer id= LAYERID1 VISIBILITY=hidden >&gt;</ilayer>'); } </script></td>
+  <td width=100%  id="p1" ><font face=Arial size=2><b><a
+  href="javascript:parent.base.Slide('1')" id=AREF>Audio and Apache</a></b></font></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <td width=5 nowrap></td>
+  <td width="100%"></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Sander van Zoest</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Covalent Technologies, Inc.</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>sander@covalent.net</font></td>
+ </tr>
+</table>
+
+<br>
+
+<table  width=100%>
+ <tr>
+  <td width=1 ><script> if ( parent.base.isnav ) { document.write('<ilayer id= LAYERID2 VISIBILITY=hidden >&gt;</ilayer>'); } </script></td>
+  <td width=100%  id="p2" ><font face=Arial size=2><b><a
+  href="javascript:parent.base.Slide('2')" id=AREF>Agenda</a></b></font></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <td width=5 nowrap></td>
+  <td width="100%"></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Why serve audio on the net?</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>What makes delivering audio so
+  different?</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Different ways of delivering audio on
+  the net</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Configuring MIME types</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Common audio formats</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Linking to audio via the Apache httpd</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Configuring Apache to serve large audio
+  files</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Icecast/Shoutcast</font></td>
+ </tr>
+</table>
+
+<br>
+
+<table  width=100%>
+ <tr>
+  <td width=1 ><script> if ( parent.base.isnav ) { document.write('<ilayer id= LAYERID3 VISIBILITY=hidden >&gt;</ilayer>'); } </script></td>
+  <td width=100%  id="p3" ><font face=Arial size=2><b><a
+  href="javascript:parent.base.Slide('3')" id=AREF>Why Serve Audio on the Net?</a></b></font></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <td width=5 nowrap></td>
+  <td width="100%"></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Bring life on the net</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Provide specific interest programming
+  to anyone, anywhere</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Alternatives to regular radio and audio
+  broadcasts</font></td>
+ </tr>
+</table>
+
+<br>
+
+<table  width=100%>
+ <tr>
+  <td width=1 ><script> if ( parent.base.isnav ) { document.write('<ilayer id= LAYERID4 VISIBILITY=hidden >&gt;</ilayer>'); } </script></td>
+  <td width=100%  id="p4" ><font face=Arial size=2><b><a
+  href="javascript:parent.base.Slide('4')" id=AREF>What Makes Delivering Audio
+  so Different?</a></b></font></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <td width=5 nowrap></td>
+  <td width="100%"></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Timing is important</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Larger file sizes</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Bandwidth limitations</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Continuous streams</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Partial content</font></td>
+ </tr>
+</table>
+
+<br>
+
+<table  width=100%>
+ <tr>
+  <td width=1 ><script> if ( parent.base.isnav ) { document.write('<ilayer id= LAYERID5 VISIBILITY=hidden >&gt;</ilayer>'); } </script></td>
+  <td width=100%  id="p5" ><font face=Arial size=2><b><a
+  href="javascript:parent.base.Slide('5')" id=AREF>Different Ways of Delivering
+  Audio on the Net</a></b></font></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <td width=5 nowrap></td>
+  <td width="100%"></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Embedding audio in your web page</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Downloading via HTTP (FTP, etc.)</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>On-demand streaming via HTTP</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>On-demand streaming via RTSP/RTP</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Live broadcast streaming via RTSP/RTP</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>On-demand or live broadcast via MMS</font></td>
+ </tr>
+</table>
+
+<br>
+
+<table  width=100%>
+ <tr>
+  <td width=1 ><script> if ( parent.base.isnav ) { document.write('<ilayer id= LAYERID6 VISIBILITY=hidden >&gt;</ilayer>'); } </script></td>
+  <td width=100%  id="p6" ><font face=Arial size=2><b><a
+  href="javascript:parent.base.Slide('6')" id=AREF>Configuring MIME Types</a></b></font></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <td width=5 nowrap></td>
+  <td width="100%"></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Variety of codecs</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Variety of meta formats</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Variety of MIME types</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>TypesConfig /etc/mime.types</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>AddType audio/x-mpegurl .m3u</font></td>
+ </tr>
+</table>
+
+<br>
+
+<table  width=100%>
+ <tr>
+  <td width=1 ><script> if ( parent.base.isnav ) { document.write('<ilayer id= LAYERID7 VISIBILITY=hidden >&gt;</ilayer>'); } </script></td>
+  <td width=100%  id="p7" ><font face=Arial size=2><b><a
+  href="javascript:parent.base.Slide('7')" id=AREF>Common Audio Formats</a></b></font></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <td width=5 nowrap></td>
+  <td width=20 nowrap></td>
+  <td width="100%"></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=2><font face=Arial size=2>Real Audio</font></td>
+ </tr>
+ <tr>
+  <td colspan=2></td>
+  <td colspan=1><font face=Arial size=2>audio/x-pn-realaudio .ra</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=2><font face=Arial size=2>MPEG 1.0 Layer 3 Audio (MP3)</font></td>
+ </tr>
+ <tr>
+  <td colspan=2></td>
+  <td colspan=1><font face=Arial size=2>audio/mpeg .mp3</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=2><font face=Arial size=2>Windows Media Audio (MSAUDIO)</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=2><font face=Arial size=2>WAV</font></td>
+ </tr>
+ <tr>
+  <td colspan=2></td>
+  <td colspan=1><font face=Arial size=2>audio/x-wav .wav</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=2><font face=Arial size=2>Vorbis</font></td>
+ </tr>
+ <tr>
+  <td colspan=2></td>
+  <td colspan=1><font face=Arial size=2>application/x-ogg .ogg</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=2><font face=Arial size=2>MIDI</font></td>
+ </tr>
+ <tr>
+  <td colspan=2></td>
+  <td colspan=1><font face=Arial size=2>audio/x-midi .mid</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=2><font face=Arial size=2>Shockwave Flash</font></td>
+ </tr>
+ <tr>
+  <td colspan=2></td>
+  <td colspan=1><font face=Arial size=2>.swf</font></td>
+ </tr>
+</table>
+
+<br>
+
+<table  width=100%>
+ <tr>
+  <td width=1 ><script> if ( parent.base.isnav ) { document.write('<ilayer id= LAYERID8 VISIBILITY=hidden >&gt;</ilayer>'); } </script></td>
+  <td width=100%  id="p8" ><font face=Arial size=2><b><a
+  href="javascript:parent.base.Slide('8')" id=AREF>Linking to Audio</a></b></font></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <td width=5 nowrap></td>
+  <td width="100%"></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Via the Apache httpd</font></td>
+ </tr>
+</table>
+
+<br>
+
+<table  width=100%>
+ <tr>
+  <td width=1 ><script> if ( parent.base.isnav ) { document.write('<ilayer id= LAYERID9 VISIBILITY=hidden >&gt;</ilayer>'); } </script></td>
+  <td width=100%  id="p9" ><font face=Arial size=2><b><a
+  href="javascript:parent.base.Slide('9')" id=AREF>RAM</a></b></font></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <td width=5 nowrap></td>
+  <td width="100%"></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>URI separated by &lt;CR&gt;&lt;LF&gt;</font></td>
+ </tr>
+</table>
+
+<br>
+
+<table  width=100%>
+ <tr>
+  <td width=1 ><script> if ( parent.base.isnav ) { document.write('<ilayer id= LAYERID10 VISIBILITY=hidden >&gt;</ilayer>'); } </script></td>
+  <td width=100%  id="p10" ><font face=Arial size=2><b><a
+  href="javascript:parent.base.Slide('10')" id=AREF>M3U</a></b></font></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <td width=5 nowrap></td>
+  <td width="100%"></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>URI separated by &lt;CR&gt;&lt;LF&gt;</font></td>
+ </tr>
+</table>
+
+<br>
+
+<table  width=100%>
+ <tr>
+  <td width=1 ><script> if ( parent.base.isnav ) { document.write('<ilayer id= LAYERID11 VISIBILITY=hidden >&gt;</ilayer>'); } </script></td>
+  <td width=100%  id="p11" ><font face=Arial size=2><b><a
+  href="javascript:parent.base.Slide('11')" id=AREF>PLS</a></b></font></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <td width=5 nowrap></td>
+  <td width="100%"></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>URI separated by &lt;CR&gt;&lt;LF&gt;</font></td>
+ </tr>
+</table>
+
+<br>
+
+<table  width=100%>
+ <tr>
+  <td width=1 ><script> if ( parent.base.isnav ) { document.write('<ilayer id= LAYERID12 VISIBILITY=hidden >&gt;</ilayer>'); } </script></td>
+  <td width=100%  id="p12" ><font face=Arial size=2><b><a
+  href="javascript:parent.base.Slide('12')" id=AREF>SDP (RFC 2327)</a></b></font></td>
+ </tr>
+</table>
+
+<table  width=100%>
+ <tr>
+  <td width=1 ><script> if ( parent.base.isnav ) { document.write('<ilayer id= LAYERID13 VISIBILITY=hidden >&gt;</ilayer>'); } </script></td>
+  <td width=100%  id="p13" ><font face=Arial size=2><b><a
+  href="javascript:parent.base.Slide('13')" id=AREF>ASX</a></b></font></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <td width=5 nowrap></td>
+  <td width="100%"></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>Early XML based</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>&lt;a
+  href=&#8220;mms://audio.server.com/&#8221;&gt;</font></td>
+ </tr>
+</table>
+
+<br>
+
+<table  width=100%>
+ <tr>
+  <td width=1 ><script> if ( parent.base.isnav ) { document.write('<ilayer id= LAYERID14 VISIBILITY=hidden >&gt;</ilayer>'); } </script></td>
+  <td width=100%  id="p14" ><font face=Arial size=2><b><a
+  href="javascript:parent.base.Slide('14')" id=AREF>SMIL</a></b></font></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <td width=5 nowrap></td>
+  <td width="100%"></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>XML based</font></td>
+ </tr>
+</table>
+
+<br>
+
+<table  width=100%>
+ <tr>
+  <td width=1 ><script> if ( parent.base.isnav ) { document.write('<ilayer id= LAYERID15 VISIBILITY=hidden >&gt;</ilayer>'); } </script></td>
+  <td width=100%  id="p15" ><font face=Arial size=2><b><a
+  href="javascript:parent.base.Slide('15')" id=AREF>MHEG</a></b></font></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <td width=5 nowrap></td>
+  <td width="100%"></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>ISO standard used for settop boxes</font></td>
+ </tr>
+</table>
+
+<br>
+
+<table  width=100%>
+ <tr>
+  <td width=1 ><script> if ( parent.base.isnav ) { document.write('<ilayer id= LAYERID16 VISIBILITY=hidden >&gt;</ilayer>'); } </script></td>
+  <td width=100%  id="p16" ><font face=Arial size=2><b><a
+  href="javascript:parent.base.Slide('16')" id=AREF>Configuring Apache to Serve
+  Large Audio Files</a></b></font></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <td width=5 nowrap></td>
+  <td width="100%"></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>MaxClients</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>TimeOut</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=1><font face=Arial size=2>TCP Listen Queues</font></td>
+ </tr>
+</table>
+
+<br>
+
+<table  width=100%>
+ <tr>
+  <td width=1 ><script> if ( parent.base.isnav ) { document.write('<ilayer id= LAYERID17 VISIBILITY=hidden >&gt;</ilayer>'); } </script></td>
+  <td width=100%  id="p17" ><font face=Arial size=2><b><a
+  href="javascript:parent.base.Slide('17')" id=AREF>Shoutcast Protocol</a></b></font></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <td width=5 nowrap></td>
+  <td width=20 nowrap></td>
+  <td width="100%"></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=2><font face=Arial size=2>HTTP based</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=2><font face=Arial size=2>Special headers</font></td>
+ </tr>
+ <tr>
+  <td colspan=2></td>
+  <td colspan=1><font face=Arial size=2>ICY 200 OK</font></td>
+ </tr>
+ <tr>
+  <td colspan=2></td>
+  <td colspan=1><font face=Arial size=2>icy-* headers</font></td>
+ </tr>
+</table>
+
+<br>
+
+<table  width=100%>
+ <tr>
+  <td width=1 ><script> if ( parent.base.isnav ) { document.write('<ilayer id= LAYERID18 VISIBILITY=hidden >&gt;</ilayer>'); } </script></td>
+  <td width=100%  id="p18" ><font face=Arial size=2><b><a
+  href="javascript:parent.base.Slide('18')" id=AREF>Icecast Protocol</a></b></font></td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <td width=5 nowrap></td>
+  <td width=20 nowrap></td>
+  <td width="100%"></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=2><font face=Arial size=2>HTTP based</font></td>
+ </tr>
+ <tr>
+  <td colspan=1></td>
+  <td colspan=2><font face=Arial size=2>Special headers</font></td>
+ </tr>
+ <tr>
+  <td colspan=2></td>
+  <td colspan=1><font face=Arial size=2>x-audiocast-udpport client header</font></td>
+ </tr>
+ <tr>
+  <td colspan=2></td>
+  <td colspan=1><font face=Arial size=2>x-audiocast-* headers</font></td>
+ </tr>
+</table>
+
+<br>
+
+<table  width=100%>
+ <tr>
+  <td width=1 ><script> if ( parent.base.isnav ) { document.write('<ilayer id= LAYERID19 VISIBILITY=hidden >&gt;</ilayer>'); } </script></td>
+  <td width=100%  id="p19" ><font face=Arial size=2><b><a
+  href="javascript:parent.base.Slide('19')" id=AREF>http://www.vanZoest.com/sander/apachecon/2001/</a></b></font></td>
+ </tr>
+</table>
+
+<table  width=100%>
+ <tr>
+  <td width=1 ><script> if ( parent.base.isnav ) { document.write('<ilayer id= LAYERID20 VISIBILITY=hidden >&gt;</ilayer>'); } </script></td>
+  <td width=100%  id="p20" ><font face=Arial size=2><b><a
+  href="javascript:parent.base.Slide('20')" id=AREF>Questions</a></b></font></td>
+ </tr>
+</table>
+
+</body>
+
+</html>

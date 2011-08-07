@@ -1,0 +1,19 @@
+
+Introduction
+
+Large Web Project :
+
+Design Group
+Content Group
+Internationalization Group
+Developer Group
+Network and Sys Admin Group
+
+
+Problem
+Undecisiveness, constantly changing spec, continueous adjustment of stylistic elements.
+
+Solution
+Seperate the development of each of these compontents and merge them towards the end of the development cycle.
+
+

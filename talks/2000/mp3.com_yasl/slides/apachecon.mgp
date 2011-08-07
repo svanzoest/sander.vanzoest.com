@@ -1,0 +1,223 @@
+#! /opt/cpg/bin/do-mgp
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%deffont "standard" xfont "helvetica-medium-r", tfont "arial.ttf"
+%deffont "thick" xfont "helvetica-bold-r", tfont "arialbd.ttf"
+%deffont "typewriter" xfont "courier-medium-r", tfont "courbd.ttf"
+%deffont "type2writer" xfont "arial narrow-bold-r"
+%%
+%% Default settings per each line numbers.
+%%
+%default 1 leftfill, size 2, fore "gold", back "black", font "thick"
+%default 1 bimage "images/bg-black-brilliant.jpg" 1024x768
+%default 2 size 7, vgap 10, prefix " "
+%default 3 size 2, bar "midnightblue", vgap 30
+%default 4 size 5, fore "lemon chiffon", vgap 30, prefix " ", font "standard"
+%%
+%% Default settings that are applied to TAB-indented lines.
+%%
+%tab 1 size 3, vgap 40, prefix "  ", icon arc "tomato" 40
+%tab 2 size 3, vgap 20, prefix "      ", icon box "spring green" 40
+%tab 3 size 3, vgap 20, prefix "            ", icon delta3 "white" 40 
+%%
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%page
+%nodefault
+%size 7, font "thick", fore "gold", bimage "images/bg-black-brilliant.jpg" 1024x768
+%center, size 4
+
+
+%center, size 4
+
+
+
+%size 6, font "thick", fore "gold", bimage "images/bg-black-brilliant.jpg" 1024x768
+
+High Performance Dynamic Pages with Templates, XML and mod_perl
+
+%right
+%size 4
+by Sander van Zoest
+MP3.com, Inc.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%page
+
+Introduction
+
+Large Web Project :
+
+	Design Group
+	Content Group
+	Internationalization Group
+	Developer Group
+	Network and Sys Admin Group
+
+
+%size 3, fore "gold"
+Problem
+%size 3, fore "white"
+Undecisiveness, constantly changing spec, continueous adjustment of stylistic elements.
+
+%size 3, fore "gold"
+Solution
+%size 3, fore "white"
+Seperate the development of each of these compontents and merge them towards the end of the development cycle.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%page
+
+History
+
+
+Evolution of the web :
+
+	Static text pages (with an image)
+
+	Static pages with content
+
+	Dynamic pages with embedded style (HTML tags)
+
+	Dynamic pages with a database backend	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%page
+
+Today and the future
+
+
+Individual Development
+
+	XML content
+
+	Layout and Style for each client platform/device.
+
+	Language Translation and Internationalization
+
+	Code to develop personalized view of the content
+
+	Building of machines and network layout.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%page
+
+Overview
+
+Tools :
+
+	Apache Web Server
+
+	Expat-lite from James Clark provided with Apache since 1.3.9
+
+	Our own style language module named mod_yasl
+
+	mod_perl for dynamic XML content
+
+	MP3Com::XMLWriter perl module to generate XML
+
+	XMLapi::XMLWriter XS perl module to provide XML to mod_yasl 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%page
+
+Overview
+
+Process :
+
+%cont, center
+%image "images/design.gif"
+%cont, left
+
+%size 3
+        GET /example.html HTTP/1.1
+        Host: localhost
+
+%size 3
+Using yasl directives in the <directory> or <location> blocks we determine the yasl template to use for this XML content.
+
+Inside the yasl template <yasl:xml "filename.xml"/> states which XML file to use.
+
+mod_yasl parses the template and replaces yasl:value directives with content from the XML file.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%page
+
+Overview
+
+URI manipulation :
+
+%size 3
+
+To provide the ability to use a single template for similar XML files
+
+The URI to the web server can be used to determine what content should
+be displayed. 
+
+If __DEFAULT__ is passed to <yasl:xml> we use the URI of the request to
+determine what XML file to use.
+
+This can be set per <directory> and can be overridden by an actual request
+for a template
+
+since not every request would want the exact same style for the entire site.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%page
+
+Overview
+
+Dynamic XML content :
+
+%size 3
+
+In cases where you would need unique content for each visitor you can 
+create the XML on the fly using mod_perl
+
+Instead of using an XMLWriter that writes to a static file, the XML is
+provided dynamicly by mod_perl via the XS XMLWriter module that calls
+yasl routines to store the XML elements.
+
+The template gets chosen on the fly by using an apache internal_redirect
+onto the template file.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%page
+
+Gotchas
+
+%size 3
+
+Things to watch out for :
+
+	Keeping the XML non-specific for its use.
+
+	XML content containing quotation marks.
+
+	URI vs HTML encoding
+
+	Parsing performance overhead. use a cache and potentially dbm files.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%page
+
+Credits
+
+%size 3
+
+Project Manager:
+	John Derose
+
+Developers:
+	David Story
+	Matt DiMeo
+	Thomas Tarka
+	Sander van Zoest
+
+Thanks:
+	Open Source community, Apache Software Foundation, Perl, W3C and
+        everyone else that contributed in one way or another to this project.
