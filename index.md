@@ -1,6 +1,6 @@
 ---
 layout: frontpage
-title: A super epic, HTML5 Boilerplate & "320 and up" enhanced blog
+title: Sander van Zoest: Behind the Scenes
 ---
-# Welcome to the blog of Florian Holzner
-Behold, epic tales of awesomeness await thee who enters my realm!
+# Welcome to the blog of Sander van Zoest
+This work in progress and a migration of my current wordpress site.
