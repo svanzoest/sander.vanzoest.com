@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <!-- 
 320 and Up boilerplate extension
 Author: Andy Clarke
@@ -15,6 +14,16 @@ URL: http://stuffandnonsense.co.uk/projects/320andup
 
 <head>
 <meta charset="utf-8">
+{% assign is_post = false %}
+{% assign is_main = false %}
+
+{% if page.teaser != null %}
+  {% assign is_post = true %}
+{% endif %}
+
+{% if page.title == "Le Bobsch Blogsch" %}
+  {% assign is_main = true %}
+{% endif %}
 
 <title>{{ page.title }}</title>
 <meta name="description" content="">
