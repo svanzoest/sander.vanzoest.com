@@ -4,22 +4,22 @@ layout: nil
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
  
- <title>your page's title</title>
- <link href="http://your.pages.url/atom.xml" rel="self" />
- <link href="http://your.pages.url/" />
+ <title>Sander van Zoest: Behind the Scenes</title>
+ <link href="http://sander.vanzoest.com/atom.xml" rel="self" />
+ <link href="http://sander.vanzoest.com/" />
  <updated>{{ site.time | date_to_xmlschema }}</updated>
- <id>http://your.pages.url<id>
+ <id>http://sander.vanzoest.com<id>
  <author>
-   <name>site.owner-name</name>
-   <email>site.owner-email</email>
+   <name>Sander van Zoest</name>
+   <email>sander+blog@vanzoest.com</email>
  </author>
 
  {% for post in site.posts %}
  <entry>
    <title>{{ post.title }}</title>
-   <link href="http://your.pages.url{{ post.url }}" />
+   <link href="http://sander.vanzoest.com{{ post.url }}" />
    <updated>{{ post.date | date_to_xmlschema }}</updated>
-   <id>http://lebobs.ch/{{ post.id }}</id>
+   <id>http://sander.vanzoest.com/{{ post.id }}</id>
    <content type="html">{{ post.content | xml_escape }}</content>
  </entry>
  {% endfor %}
