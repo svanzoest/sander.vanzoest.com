@@ -1,0 +1,14 @@
+
+Gotchas
+
+
+Things to watch out for :
+
+Keeping the XML non-specific for its use.
+
+XML content containing quotation marks.
+
+URI vs HTML encoding
+
+Parsing performance overhead. use a cache and potentially dbm files.
+

@@ -1,0 +1,1791 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="keywords" content="XML Internationalization and Localization, Internationalisation, Localisation, Localization tool, CAT tool, i18n, l10n, Content type, XSL, XLIFF, OpenTag, TMX, Translation memory, Enabling, Rendering, Bidirectional, Multilingual, Language, Locale, XHTML, Globalization, Globalisation">
+<title>XML Internationalization and Localization FAQ</title>
+<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body topmargin="0" leftmargin="0">
+
+<div class="shift">
+<table border="0" cellpadding="5" cellspacing="0" width="100%">
+  <tr>
+    <td class="corner" width="170" valign="middle" align="left"><a href="http://www.opentag.com/"><img border="0" src="images/logo.gif" width="128" height="72"></a></td>
+    <td class="title" valign="middle" align="left">XML Internationalization and
+     Localization FAQ</td>
+  </tr>
+  <tr>
+    <td bgcolor="#F4F0D7" valign="top" height="400">
+      <div class="menu">
+        <table width="170" cellspacing="1">
+          <tr>
+            <td><em>Home</em></td>
+          </tr>
+          <tr>
+            <td><a href="index.htm"><img border="0" src="images/btn_menu1.gif" align="middle" width="18" height="17">
+              Welcome</a></td>
+          </tr>
+          <tr>
+            <td><a href="mailto:contact@opentag.com"><img border="0" src="images/btn_menu1.gif" align="middle" width="18" height="17">
+              Contact</a></td>
+          </tr>
+          <tr>
+            <td><em>Resources</em></td>
+          </tr>
+          <tr>
+            <td><a href="downloads.htm"><img border="0" src="images/btn_menu1.gif" align="middle" width="18" height="17">
+              Downloads</a></td>
+          </tr>
+          <tr>
+            <td><a href="xmli18nfaq.htm" class="current"><img border="0" src="images/btn_menu1cur.gif" align="middle" width="18" height="17">
+              XML i18n FAQ</a></td>
+          </tr>
+          <tr>
+            <td><a href="xmli18n/index.htm"><img border="0" src="images/btn_menu2.gif" align="middle" width="18" height="17">
+              XML i18n Book</a></td>
+          </tr>
+          <tr>
+            <td><a href="tools.htm"><img border="0" src="images/btn_menu1.gif" align="middle" width="18" height="17">
+              Tools Links</a></td>
+          </tr>
+          <tr>
+            <td><a href="http://www.i18ngurus.com"><img border="0" src="images/btn_menu1.gif" align="middle" width="18" height="17">
+              i18ngurus.com</a></td>
+          </tr>
+          <tr>
+            <td><em>Technologies</em></td>
+          <tr>
+            <td><a href="filtering.htm"><img border="0" src="images/btn_menu2.gif" align="middle" width="18" height="17">
+              Text Filtering</a></td>
+          </tr>
+          <tr>
+            <td><a href="terminology.htm"><img border="0" src="images/btn_menu2.gif" align="middle" width="18" height="17">
+              Terminology</a></td>
+          </tr>
+          <tr>
+            <td><a href="tm.htm"><img border="0" src="images/btn_menu2.gif" align="middle" width="18" height="17">
+              Translation Memory</a></td>
+          </tr>
+          <tr>
+            <td><a href="mt.htm"><img border="0" src="images/btn_menu2.gif" align="middle" width="18" height="17">
+              Machine Translation</a></td>
+          </tr>
+          <tr>
+            <td><a href="miscellaneous.htm"><img border="0" src="images/btn_menu2.gif" align="middle" width="18" height="17">
+              Miscellaneous</a></td>
+          </tr>
+          <tr>
+            <td><a href="framework.htm"><img border="0" src="images/btn_menu1.gif" align="middle" width="18" height="17">
+              Okapi Framework</a></td>
+          </tr>
+        </table>
+      </div>
+    </td>
+    <td valign="top" align="left">You will find here answers to some of the most
+      frequently asked questions about XML internationalization and localization
+      (including XSL, CSS, and other XML-related technologies). If you find any
+      mistakes in this page or have suggestions for additional useful
+      information, please send an email to <a href="mailto:xmli18n@opentag.com">xmli18n@opentag.com</a>.
+      For questions on XML in general, please see the excellent <a target="_blank" href="http://www.ucc.ie/xml/">
+    XML FAQ maintained by Peter Flynn</a>. You can also look at the <a href="http://xml.coverpages.org" target="_blank">Robin
+      Cover's Pages</a>, one of the best places to look for information about
+      XML.
+      <p>Last update of this page: Sep-12-02, 11:40am MDT<p>The indicators [changed] and [new] in the table of contents designate
+      the topics modified or added since the previous update (Aug-13-02, 05:45am 
+    MDT).</p>
+      <p><a href="#char"><b>Character Representation:</b></a>
+      <ul>
+        <li><a href="#char_allowed">What character can I use in an XML document?</a></li>
+        <li><a href="#char_ncr">What is an NCR?</a> </li>
+        <li><a href="#char_ncrvalue">Does 146 in <code>&amp;#146;</code>
+          corresponds to Unicode or the document's encoding?</a></li>
+        <li><a href="#char_useofcharentities">Can I use character entity
+          references like <code>&amp;aacute;</code> in an XML document?</a></li>
+        <li><a href="#char_defcharentities">How do I define a character entity?</a></li>
+        <li><a href="#char_nonasciitag">Can element and attribute names use
+          non-ASCII characters?</a></li>
+        <li><a href="#char_incss">How do I represent extended characters in a
+          CSS file?</a></li>
+        <li><a href="#char_uri">How do I represent extended characters in URIs (URNs/URLs)?</a></li>
+      </ul>
+      <p><a href="#enc"><b>Encoding:</b></a></p>
+      <ul>
+        <li><a href="#enc_default">What is the default encoding of an XML
+          document?</a></li>
+        <li><a href="#enc_whichsupported">Which encodings XML parsers support?</a></li>
+        <li><a href="#enc_howspecifyfordoc">How do I specify the encoding of a
+          document?</a></li>
+        <li><a href="#enc_howspecifyforcss">How do I specify the encoding of a
+          CSS file?</a></li>
+        <li><a href="#enc_utf816">What are UTF-8 and UTF-16?</a></li>
+        <li><a href="#enc_bom">What is the BOM (Byte-Order-Mark)?</a></li>
+        <li><a href="#enc_conv">How do I convert an XML document from one
+          encoding to another?</a></li>
+      </ul>
+      <p><a href="#lang"><b>Language Identification:</b></a></p>
+      <ul>
+        <li><a href="#lang_xmllang">What is the <code>xml:lang </code>attribute?</a></li>
+        <li><a href="#lang_needdecl">Do I need to declare the <code>xml:lang</code>
+          attribute?</a></li>
+        <li><a href="#lang_xmllangvalues">What are the values for the <code>xml:lang</code>
+          attribute?</a> </li>
+        <li><a href="#lang_xhtml">In XHTML should I use <code>lang</code> or <code>xml:lang</code>?</a>
+        </li>
+        <li><a href="#lang_multilangdoc">What about multilingual documents?</a></li>
+        <li><a href="#lang_unicodetags">Can I use Unicode Language Tags in XML?</a></li>
+        <li><a href="#lang_xpathlang">How do I use the <code>lang()</code>
+          function in XPath?</a></li>
+        <li><a href="#lang_csslang">How do I use the <code>lang()</code>
+          selector in CSS?</a></li>
+      </ul>
+      <p><a href="#pres"><b>Presentation and Rendering:</b></a></p>
+      <ul>
+        <li><a href="#pres_ruby">How do I render ruby text?</a></li>
+        <li><a href="#pres_bidi">How do I render bi-directional&nbsp; text?</a></li>
+        <li><a href="#pres_vertical">How do I render vertical text?</a></li>
+        <li><a href="#pres_combinedtext">How do I render combined text?</a></li>
+        <li><a href="#pres_cssquotes">How do I automate quotation marks?</a></li>
+        <li><a href="#pres_xsl_formatnumber">How do I use the function <code>format-number()</code>
+          in XSL?</a></li>
+        <li><a href="#pres_xmlrawnumber">How do I represent a raw decimal number
+          in XML?</a></li>
+        <li><a href="#pres_xslnumber">How do I use the <code>&lt;xsl:number/&gt;</code>
+          element in XSL?</a></li>
+        <li><a href="#pres_xslsort">How do I use the <code>&lt;xsl:sort/&gt;</code>
+          element in XML?</a></li>
+        <li><a href="#pres_separation">How do I separate rendering from tagging?</a></li>
+        <li><a href="#pres_br">Why should I use caution with <code>&lt;br/&gt;</code>
+         and equivalent elements?</a> </li>
+        <li><a href="#pres_texttransform">Why should I use caution with <code>text-transform</code>
+          in CSS and XSL?</a> </li>
+        <li><a href="#pres_absposition">Why should I use caution with absolute positioning in CSS and XSL?</a> </li>
+      </ul>
+      <p><a href="#loc"><b>Localization:</b></a></p>
+      <ul>
+        <li><a href="#loc_trans">How do I translate XML documents?</a></li>
+        <li><a href="#loc_dtdguide">What are the guidelines to create XML
+          document types that will be easier to localize?</a></li>
+        <li><a href="#loc_docguide">What are the guidelines to author XML
+          documents that will be easier to localize?</a></li>
+        <li><a href="#loc_toolreq">What are the features a translation tool for
+          XML should have?</a></li>
+        <li><a href="#loc_complex">How can I specify that elements with complex
+          rules are translatable?</a></li>
+        <li><a href="#loc_cdata">How CDATA sections fare during translation?</a>
+        </li>
+        <li><a href="#loc_incss">Is there any translatable text in a CSS
+          style-sheet?</a></li>
+        <li><a href="#loc_directives">Is there a standard set of localization
+          directives?</a></li>
+        <li><a href="#loc_bad">Can I see some examples of XML documents causing
+          localization problems?</a> </li>
+      </ul>
+      <hr>
+      <p>You can also find information related to XML internationalization and
+      localization on the following resources.</p>
+      <p>Online:</p>
+      <ul>
+        <li><a href="http://www.w3.org/TR/REC-xml">Extensible Markup Language
+          (XML) 1.0 Second Edition</a> (W3C Recommendation).</li>
+        <li><a href="http://www.w3.org/TR/xml11">Extensible Markup Language
+          (XML) 1.1</a> (W3C Working Draft).</li>
+        <li><a href="http://www.w3.org/TR/charmod/">Character Model for the
+         World Wide Web 1.0</a> (W3C Working Draft).</li>
+        <li><a href="http://www.w3.org/TR/japanese-xml/">XML Japanese Profile</a>
+          (W3C Recommendation).</li>
+        <li><a href="http://www.unicode.org/unicode/reports/tr15/">Unicode
+          Normalization Forms</a> (Unicode Standard Annex #15).</li>
+        <li><a href="http://www.unicode.org/unicode/reports/tr20/">Unicode in
+          XML and other Markup Languages</a> (Unicode Technical Report #20).</li>
+        <li><a href="http://www.w3.org/TR/ruby/">Ruby Annotation</a> (W3C
+          Recommendation).</li>
+        <li><a href="http://groups.yahoo.com/group/lisa-its/files/ITS-Requirements/ITS-Requirements.html">ITS
+          Requirements</a>  (ITS group Working Draft).
+        </li>
+        <li><a href="http://www.w3.org/International/charlint/">Charlint, a
+          Character Normalization Tool</a>, by Martin Dürst.</li>
+        <li><a href="http://www.xerox-emea.com/globaldesign/dtds.htm">Localisation
+          Considerations in DTD Design</a>, by Richard Ishida.</li>
+        <li><a href="http://www.translate.com/shared/savourel.html">XML
+          Technologies and the Localization Process</a>, by Yves Savourel.</li>
+        <li><a href="http://www.oasis-open.org/cover/unicode-xml.html">Articles
+          on Unicode and XML</a>, by Robin Cover.</li>
+        <li><a href="http://www.unicode.org">The Unicode Web site</a>.</li>
+        <li><a href="http://www.w3c.org/International/">The W3C
+          Internationalization pages</a>.</li>
+        <li><a href="http://www.i18ngurus.com/docs/984979397.html">The XML links
+          in i18ngurus.com</a>.
+        </li>
+      </ul>
+     <p>Books:</p>
+      <ul>
+        <li>
+        <a href="http://www.amazon.com/exec/obidos/ASIN/0201616335/opentagcom-20">The
+          Unicode Standard 3.0</a><br>
+          Addison-Wesley, ISBN: 0-201-61633-5, The Unicode Consortium, Feb-2001.</li>
+        <li>
+        <a href="http://www.amazon.com/exec/obidos/ASIN/0764546252/opentagcom-20">Unicode:
+          A Primer</a><br>
+          Hungry Minds Inc., ISBN: 0-764-54625-2, Tony Graham, Apr-2000.</li>
+        <li><a href="xmli18n/index.htm">XML Internationalization and
+          Localization<br>
+          </a>Sams, ISBN:0-672-32096-7, Yves Savourel, Jul-2001.</li>
+      </ul>
+      <hr>
+      <p class="topic"><a name="char"></a>Character Representation</p>
+      <hr>
+      <h5><a name="char_allowed"></a>What characters can I use in an XML
+      document?</h5>
+      <p>The XML specifications define the list of the characters allowed.</p>
+      <p>Most Unicode characters are allowed in an XML document. They are:
+      U+0009, U+000A, U+000D, [U+0020-U+D7FF], [U+E000-U+FFFD], and
+      [U+10000-U+10FFFF].</p>
+      <p>in XML, use normalized characters as described in the document <a target="_blank" href="http://www.w3.org/TR/charmod/">Character
+      Model for the World Wide Web</a> (Working Draft).</p>
+      <p>Note that the use of <i>compatibility characters</i> is not
+      recommended. For more detailed information on the non-suitability of some
+      Unicode characters in XML, see the <a target="_blank" href="http://www.unicode.org/unicode/reports/tr20/">Unicode
+      Technical report #20</a>.</p>
+      <p>There are some limitations in XML 1.0 that prevent the use of all
+      characters used in certain languages to be used in XML names (element or
+      attribute names for example). Some work is currently in progress to,
+      possibly, try to solve these issues: see the <a target="_blank" href="http://www.w3.org/TR/xml-blueberry-req">XML
+      Blueberry Requirements</a> working draft and the article <a target="_blank" href="http://www.xml.com/pub/a/2001/06/27/blueberry.html">&quot;Blueberry
+      Jam&quot;, by Leigh Dodds</a>. Those limitations are addressed in the <a href="http://www.w3.org/TR/xml11" target="_blank">XML
+      1.1 Working Draft</a>.</p>
+      <hr>
+      <h5><a name="char_ncr"></a>What is an NCR?</h5>
+      <p>NCR stands for Numeric Character Reference. It is the term often used
+      to designate a character written in hexadecimal or decimal format in XML.
+      The hexadecimal form is the preferred form (easier to refer to the Unicode
+      value).</p>
+     <ul>
+      <li>Hexadecimal notation: <code>&amp;#xHHH;</code> where <code>HHH</code>
+      is the hexadecimal value of the given Unicode character. For example <code>&amp;#xE9;</code>
+      or <code>&amp;#xe9;</code> for the character é (e-acute).</li>
+      <li>Decimal notation: <code>&amp;#DDD;</code> where <code>DDD</code> is the
+      decimal value of the given Unicode character. For example <code>&amp;#233;</code>
+      for the character é (e-acute).</li>
+     </ul>
+      <p>NCRs (and character entity references) <b> cannot be used</b> in element and attributes
+      names, in CDATA sections, in processing instructions and in comments.</p>
+      <p><b><a name="char_jaconvissue"></a></b><u>Conversion Issue</u><b> -</b>
+      You need NCRs only when a character is not included in the encoding you
+      are using. However, there are some cases where using NCRs even if the
+      encoding supports the character: That is the case for example with a few
+      Japanese characters that present conversion problems when going from one
+      encoding to another or when going from one encoding to the Unicode value.
+      The problem and the characters are documented in the <a target="_blank" href="http://www.w3.org/TR/japanese-xml/#AEN34532800">XML
+      Japanese Profile</a>.</p>
+      <hr>
+      <h5><a name="char_ncrvalue"></a>Does 146 in <code>&amp;#146;</code>
+      corresponds to Unicode or the document's encoding?</h5>
+      <p>The value of an <a href="#char_ncr">NCR</a> is always the value of the
+      Unicode code-point, not the encoding of the file. So 146 in <code>&amp;#146;</code>
+      corresponds to the Unicode decimal code-point 146: the control character <span style="font-variant: small-caps">PRIVATE
+      USE TWO</span> (U+0092), not the character <span style="font-variant: small-caps">RIGHT
+      SINGLE QUOTATION MARK</span> (U+2019).</p>
+      <p>For example, if your document needs to display a character ’ (<span style="font-variant: small-caps">RIGHT
+      SINGLE QUOTATION MARK</span>, U+2019), you should use <code>&amp;#x2019;</code>
+      (or <code>&amp;#8217;</code>), not <code>&amp;#x92;</code> (or <code>&amp;#146;</code>),
+      even if the file is encoded in windows-1252 where 146 is the <span style="font-variant: small-caps">RIGHT
+      SINGLE QUOTATION MARK</span>.</p>
+      <p>Note that with some browsers, especially on Windows, when displaying
+      XHTML, the notation <code>&amp;#146;</code> will actually display
+      correctly the character ’. This is not a normal behavior.</p>
+      <hr>
+      <h5><a name="char_useofcharentities"></a>Can I use character entity
+      references like <code>&amp;aacute;</code> in an XML document?</h5>
+      <p>Yes, but only if you <a href="#char_defcharentities">define them</a>. There are however five character
+      entities that can be referenced without any declaration. They are:</p>
+      <table border="1" cellpadding="3" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111">
+        <tr>
+          <td width="50"><b>Entity</b></td>
+          <td width="130"><b>Entity Reference</b></td>
+          <td width="130"><b>Description</b></td>
+          <td width="75"><b>Value</b></td>
+        </tr>
+        <tr>
+          <td>amp</td>
+          <td><code>&amp;amp;</code></td>
+          <td>ampersand (&amp;)</td>
+          <td>U+0026</td>
+        </tr>
+        <tr>
+          <td>lt</td>
+          <td><code>&amp;lt;</code></td>
+          <td>less-than (&lt;)</td>
+          <td>U+003C</td>
+        </tr>
+        <tr>
+          <td>apos</td>
+          <td><code>&amp;apos;</code></td>
+          <td>apostrophe (')</td>
+          <td>U+0027</td>
+        </tr>
+        <tr>
+          <td>quot</td>
+          <td><code>&amp;quot;</code></td>
+          <td>double quote (&quot;)</td>
+          <td>U+0022</td>
+        </tr>
+        <tr>
+          <td>gt</td>
+          <td><code>&amp;gt;</code></td>
+          <td>greater-than (&gt;)</td>
+          <td>U+003E</td>
+        </tr>
+      </table>
+      <p>The forgiving implementations of most HTML parsers that allows the use
+      of character entity references such as <code>&amp;aacute;</code> without
+      declaration should not be permitted with XML.</p>
+      <p><a href="#enc_utf816">UTF-8</a> and <a href="#enc_utf816">UTF-16</a>
+      supports all valid characters, there is really no reason (except for
+      escaping special characters, and in some <a href="#char_jaconvissue">special
+      cases to avoid conversion problems</a>), to use <a href="#char_ncr">NCRs</a>
+      or character entity references. If you want to use some form of
+      &quot;escaped&quot; notation of the characters, you probably want to use <a href="#char_ncr">NCR</a>
+      rather than character entity references.</p>
+      <hr>
+      <h5><a name="char_defcharentities"></a>How do I define a character entity?</h5>
+      <p>A character entity (or any entity for that matter) is defined outside 
+      the body of your document, often in a separate file so it can be reused 
+      with several documents.</p>
+      <p>The declaration statement is:</p>
+      <pre>&lt;!ENTITY <i>entity_name</i> &quot;<i>NCR</i>&quot;&gt;</pre>
+    <p>For example a character entity for the Euro currency symbol could be 
+    declared as:</p>
+    <pre>&lt;!ENTITY euro &quot;&amp;x20AC;&quot;&gt;</pre>
+    <p>And it would be used in a document as follow:</p>
+    <pre>&lt;p&gt;the character <b>&amp;euro;</b> is the symbol for the Euro.&lt;/p&gt;</pre>
+    <p>Entity declaration statements should be in the DTD or in a module 
+    included in the DTD. To include an entity declaration set in a DTD use for 
+    example:</p>
+    <pre>&lt;!ENTITY % HTMLlat1 PUBLIC &quot;-//W3C//ENTITIES Latin 1 for XHTML//EN&quot;
+   &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml-lat1.ent&quot;&gt;
+%HTMLlat1;</pre>
+    <p>You can find the entity declaration for the many characters with the 
+    XHTML Entity Sets:<br>
+    -
+    <a target="_blank" href="http://www.w3.org/TR/2001/WD-xhtml1-20011004/DTD/xhtml-lat1.ent">
+    http://www.w3.org/TR/2001/WD-xhtml1-20011004/DTD/xhtml-lat1.ent</a>,<br>
+    -
+    <a target="_blank" href="http://www.w3.org/TR/2001/WD-xhtml1-20011004/DTD/xhtml-special.ent">
+    http://www.w3.org/TR/2001/WD-xhtml1-20011004/DTD/xhtml-special.ent</a>,<br>
+    -
+    <a target="_blank" href="http://www.w3.org/TR/2001/WD-xhtml1-20011004/DTD/xhtml-symbol.ent">
+    http://www.w3.org/TR/2001/WD-xhtml1-20011004/DTD/xhtml-symbol.ent</a>.</p>
+    <p><b>Note</b>: Always keep in mind that, from a localization viewpoint, <b>
+    using <a href="#char_ncr">numeric character references (NCRs)</a> is better</b> 
+    than using character entities references.</p>
+    <hr>
+      <h5><a name="char_nonasciitag"></a>Can element and attribute names use
+      non-ASCII characters?</h5>
+      <p>Yes. Any Unicode characters valid for XML name can be used. For
+      example, here is a document of a Russian document type with Japanese
+      content.</p>
+     <pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+&lt;&#1057;&#1086;&#1073;&#1080;&#1088;&#1072;&#1085;&#1080;&#1077; &#1074;&#1077;&#1088;&#1089;&#1080;&#1103;=&quot;1.2-3&quot;&gt;
+ &lt;&#1054;&#1073;&#1098;&#1077;&#1082;&#1090; id=&quot;12&quot;&gt;
+  &lt;&#1053;&#1086;&#1084;&#1077;&#1088;&#1054;&#1073;&#1098;&#1077;&#1082;&#1090;&#1072;&gt;45-3454-123&lt;/&#1053;&#1086;&#1084;&#1077;&#1088;&#1054;&#1073;&#1098;&#1077;&#1082;&#1090;&#1072;&gt;
+  &lt;&#1042;&#1053;&#1072;&#1083;&#1080;&#1095;&#1080;&#1080;&gt;123&lt;/&#1042;&#1053;&#1072;&#1083;&#1080;&#1095;&#1080;&#1080;&gt;
+  &lt;&#1054;&#1087;&#1080;&#1089;&#1072;&#1085;&#1080;&#1077; xml:lang=&quot;ja&quot;&gt;&#31532;&#20108;&#30330;&#38651;&#27231;&lt;/&#1054;&#1087;&#1080;&#1089;&#1072;&#1085;&#1080;&#1077;&gt;
+ &lt;/&#1054;&#1073;&#1098;&#1077;&#1082;&#1090;&gt;
+ &lt;&#1054;&#1073;&#1098;&#1077;&#1082;&#1090; id=&quot;64&quot;&gt;
+  &lt;&#1053;&#1086;&#1084;&#1077;&#1088;&#1054;&#1073;&#1098;&#1077;&#1082;&#1090;&#1072;&gt;45-7894-456&lt;/&#1053;&#1086;&#1084;&#1077;&#1088;&#1054;&#1073;&#1098;&#1077;&#1082;&#1090;&#1072;&gt;
+  &lt;&#1042;&#1053;&#1072;&#1083;&#1080;&#1095;&#1080;&#1080;&gt;123&lt;/&#1042;&#1053;&#1072;&#1083;&#1080;&#1095;&#1080;&#1080;&gt;
+  &lt;&#1054;&#1087;&#1080;&#1089;&#1072;&#1085;&#1080;&#1077; xml:lang=&quot;ja&quot;&gt;&#25163;&#21205;&#12454;&#12457;&#12540;&#12479;&#12540;&#12539;&#12509;&#12531;&#12503;&lt;/&#1054;&#1087;&#1080;&#1089;&#1072;&#1085;&#1080;&#1077;&gt;
+ &lt;/&#1054;&#1073;&#1098;&#1077;&#1082;&#1090;&gt;
+&lt;/&#1057;&#1086;&#1073;&#1080;&#1088;&#1072;&#1085;&#1080;&#1077;&gt;</pre>
+      <p>As XML names cannot use <a href="#char_ncr">NCRs</a>, the encoding of a
+      document must support all characters used in the element and attribute
+      names it contains.</p>
+      <p>Note that in XML 1.0 the definition of XML names does not allow certain
+      languages to make use of all their characters. This problem is being
+      discussed in the XML Blueberry Requirements working draft. On that topic
+      see also the article <a target="_blank" href="http://www.xml.com/pub/a/2001/06/27/blueberry.html">&quot;Blueberry
+      Jam&quot;, by Leigh Dodds</a>.</p>
+      <p>Warning: Note that many translation tools may not be able to deal very
+      well with non-ASCII element and attribute names.</p>
+      <hr>
+      <h5><a name="char_incss"></a>How do I represent extended characters in a
+      CSS file?</h5>
+      <p>A CSS file can be in any encoding, so most of the time, <a href="#enc_howspecifyforcss">specifying
+      the right encoding</a> will allow you to use any extended character
+      directly in the CSS code. However, at time you may not be able to
+      represent a given character in its raw form, you can then use the
+      hexadecimal notation <code>\HHH</code> where <code>HHH</code> is the
+      Unicode value of a given character.</p>
+      <p>To avoid confusion with the hexadecimal value and the following text
+      (i.e. Is <code>R\26D</code> <code>R</code>+<code>\26</code>+<code>D</code>
+      or <code>R</code>+<code>\26D</code>?) you may want to use a trailing space
+      after the value. Any first space after the hexadecimal notation is
+      ignored, therefore would &quot;<code>R\26 D</code>&quot; display correctly
+      &quot;R&amp;D&quot;.</p>
+      <p>Example of CSS code with extended character in hexadecimal notation:</p>
+      <pre>@import &quot;main.css&quot;
+/* Translatable data */
+arguments:before {
+ content: &quot;Param\E8tres\0A:\0A&quot;;
+ font-weight: bold
+}</pre>
+      <hr>
+      <h5><a name="char_uri"></a>How do I represent extended characters in URIs
+      (URNs/URLs)?</h5>
+      <p>URIs (Universal Resource Identifiers) can contain non-ASCII characters.
+      The way considered the best to encode such URIs is the following:</p>
+      <ul>
+        <li>Normalize the characters if needed.</li>
+        <li>Encode the string in UTF-8.</li>
+        <li>Replace each byte of the UTF-8 string that is greater than 127 (and
+          any other byte that is considered unsafe as described in <a href="http://www.ietf.org/rfc/rfc2396.txt" target="_blank">RFC
+          2396</a>) by its escaped form <code>%HH</code> where <code>HH</code>
+          is the hexadecimal value of the given byte.</li>
+      </ul>
+      <p>The following examples show both the raw and coded versions of URIs:</p>
+      <pre>urn:TéléCom-Schémas:Facture:v2
+urn:T%C3%A9l%C3%A9Com-Sch%C3%A9mas:Facture:v2
+
+http://www.&#1056;&#1072;&#1073;&#1086;&#1090;&#1072;.bg
+http://www.%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0.bg</pre>
+      <p>More information on internationalized URIs and some code samples of
+      conversion routines are available on the W3C Internationalization page
+      discussing <a href="http://www.w3.org/International/O-URL-and-ident.html" target="_blank">URIs
+      and other identifiers</a>.</p>
+      <hr>
+      <p class="topic"><a name="enc"></a>Encoding</p>
+      <hr>
+      <h5><a name="enc_default"></a>What is the default encoding of an XML
+      document?</h5>
+      <p>If no encoding declaration is present in the XML document (and no
+      external encoding declaration mechanism such as the HTTP header is
+      available), the assumed encoding of an XML document depends on the
+      presence of the Byte-Order-Mark (BOM).</p>
+      <p>The BOM is a Unicode special marker placed at the top of the file that
+      indicate its encoding. The BOM is optional for UTF-8.</p>
+      <div align="left">
+        <table border="1" cellpadding="3" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111">
+          <tr>
+            <td width="150"><b>First bytes</b></td>
+            <td width="170"><b>Encoding assumed</b></td>
+          </tr>
+          <tr>
+            <td>EF BB BF</td>
+            <td>UTF-8</td>
+          </tr>
+          <tr>
+            <td>FE FF</td>
+            <td>UTF-16 (big-endian)</td>
+          </tr>
+          <tr>
+            <td>FF FE</td>
+            <td>UTF-16 (little-endian)</td>
+          </tr>
+          <tr>
+            <td>00 00 FE FF</td>
+            <td>UTF-32 (big-endian)</td>
+          </tr>
+          <tr>
+            <td>FF FE 00 00</td>
+            <td>UTF-32 (little-endian)</td>
+          </tr>
+          <tr>
+            <td>None of the above</td>
+            <td>UTF-8</td>
+          </tr>
+        </table>
+      </div>
+      <p>Note that the encoding of an XML document is <b>never iso-8859-1 by
+      default</b>.</p>
+      <p>One of the most common mistake when editing an XML document is to add
+      some extended characters and forget to <a href="#enc_howspecifyfordoc">set
+      the encoding declaration</a> at the top of the document.</p>
+      <hr>
+      <h5><a name="enc_whichsupported"></a>Which encodings XML parsers support?</h5>
+      <p>All XML processors must support at least <a href="#enc_utf816">UTF-8</a>
+      and <a href="#enc_utf816">UTF-16</a>.</p>
+      <p>The support of other encodings, is encouraged but not required.
+      However, many parsers implement supports for all ISO 8859 encodings, as
+      well as for the most used Japanese, Chinese, and Korean ones.</p>
+      <hr>
+      <h5><a name="enc_howspecifyfordoc"></a>How do I specify the encoding of a
+      document?</h5>
+      <p>Use the XML declaration or this. For example, to specify iso-8859-1
+      (Latin-1) encoding:</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot; ?&gt;</pre>
+      <p>The values for the encoding declarations are&nbsp;the <i>charset</i>
+      name defined by the IANA (Internet Assigned Numbers Authority). There are
+      the same values as for the http-equiv charset meta-tag in HTML.</p>
+      <p>See <a target="_blank" href="http://www.iana.org/assignments/character-sets">http://www.iana.org/assignments/character-sets</a>
+      for the complete list of the IANA charset names.</p>
+      <p>If the file is provided through HTTP, you can also specify the encoding
+      of a document by using the HTTP <code>charset</code> parameter in the <code>Content-Type</code>
+      field. However, from a localization viewpoint, it's always better to keep
+      the encoding declaration within the document itself: as the file will be
+      moved around and processed in non-HTTP environments.</p>
+      <hr>
+      <h5><a name="enc_howspecifyforcss"></a>How do I specify the encoding of a
+      CSS file?</h5>
+      <p>The encoding of a CSS file is determined according the following rules:</p>
+      <ol>
+        <li>If the file uses HTTP: By the HTTP <code>charset</code> parameter in
+          the <code>Content-Type</code> field.</li>
+        <li>By the value for the <code>@charset</code> command at the top of the
+          CSS file.</li>
+        <li>By the declaration mechanism of the referencing document, if one
+          exists. For example in XHTML: the <code>charset</code> attribute of
+          the <code>&lt;link&gt;</code> element.</li>
+      </ol>
+      <p>For example, to specify iso-8859-1 (Latin-1) encoding:</p>
+      <pre>@charset &quot;iso-8859-1&quot;</pre>
+      <p>The values for the <code>@charset</code> command are&nbsp;the <i>charset</i>
+      name defined by the IANA (Internet Assigned Numbers Authority). There are
+      the same values as for the XML encoding declaration.</p>
+      <p>See <a target="_blank" href="http://www.iana.org/assignments/character-sets">http://www.iana.org/assignments/character-sets</a>
+      for the complete list of the IANA charset names.</p>
+      <hr>
+      <h5><a name="enc_utf816"></a>What are UTF-8 and UTF-16?</h5>
+      <p>UTF-8 and UTF-16 are two encoding schemes of Unicode. UTF stands for
+      Unicode Transformation Format. There are various types of UTFs. They are
+      simply different way map the Unicode code-points to a digital
+      representation.</p>
+      <p>If a document does not have any encoding declaration and no <a href="#enc_bom">BOM</a>,
+      it is assumed its encoding is UTF-8.</p>
+      <p>For more detailed information on UTF see the <a target="_blank" href="http://www.unicode.org/unicode/faq/utf_bom.html">UTF
+      FAQ</a> at the Unicode Web site.</p>
+      <hr>
+      <h5><a name="enc_bom"></a>What is the BOM (Byte-Order-Mark)?</h5>
+      <p>The Byte-Order-Mark (or BOM), is a special marker added at the very
+      beginning of an Unicode file encoded in <a href="#enc_utf816">UTF-8</a>, <a href="#enc_utf816">UTF-16</a>
+      or UTF-32. It is used to indicate whether the file uses the big-endian or
+      little-endian byte order. The BOM is mandatory for UTF-16 and UTF-32, but
+      it is optional for UTF-8.</p>
+      <p>Note that the BOM has the same value as the Unicode character U+FEFF:
+      the <span style="font-variant: small-caps">ZERO WIDTH NON-BREAK SPACE</span>.</p>
+      <p>Big-endian byte order (a.k.a. network byte order) is used by processors
+      such as Motorola or RISC (most significant byte is stored first).
+      Little-endian byte order (most significant byte is stored last) is used by
+      processors such as Intel or Vax. Both mechanism have advantages and
+      drawbacks.</p>
+      <div align="left">
+        <table border="1" cellpadding="3" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111">
+          <tr>
+            <td width="150"><b>BOM</b></td>
+            <td width="170"><b>Encoding</b></td>
+          </tr>
+          <tr>
+            <td>EF BB BF</td>
+            <td>UTF-8</td>
+          </tr>
+          <tr>
+            <td>FE FF</td>
+            <td>UTF-16 (big-endian)</td>
+          </tr>
+          <tr>
+            <td>FF FE</td>
+            <td>UTF-16 (little-endian)</td>
+          </tr>
+          <tr>
+            <td>00 00 FE FF</td>
+            <td>UTF-32 (big-endian)</td>
+          </tr>
+          <tr>
+            <td>FF FE 00 00</td>
+            <td>UTF-32 (little-endian)</td>
+          </tr>
+        </table>
+      </div>
+      <p>Byte order is important only for encodings using units greater than
+      8-bits (i.e. UTF-16, UCS-2, UTF-32, etc.). It has no bearing in UTF-8, but
+      some tools (such as Notepad in Windows 2000) still placed a BOM at the top
+      of the UTF-8 files anyways: this is allowed.</p>
+      <p>The terms <i>big-endian</i> and <i>little-endian</i> come from an
+      article from Danny Cohen written in 1980 where he compares the technical
+      disagreement over how to represent bytes in a 16-bit word to the fierce
+      and rather pointless difference the Lilliputians of <a target="_blank" href="http://www.jaffebros.com/lee/gulliver/">Swift's
+      <i>Gulliver's Travels</i> </a>have over how to break hard-boiled eggs. The
+      Little-Endian partisans follow an imperial edict that orders the eggs
+      should be opened at their smaller end, while the more conservative
+      Big-Endian supporters want to keep cracking their eggs at the bigger end.
+      Both factions claim to interpret correctly the precept of the great
+      prophet Lustrog who wrote that &quot;All true believers shall break their
+      eggs at the convenient End&quot;.</p>
+      <p>For more detailed information on the BOM or UTF encodings see the <a target="_blank" href="http://www.unicode.org/unicode/faq/utf_bom.html">UTF
+      FAQ</a> at the Unicode Web site.</p>
+      <hr>
+      <h5><a name="enc_conv"></a>How do I convert an XML document from one
+      encoding to another?</h5>
+      <p>Some XML editors might allow you to specify the encoding of the
+      document when saving it. Otherwise you can use one of the encoding
+      conversion tools (a.k.a. transcoders) available. Unfortunately few of them
+      have support to deal with <a href="#char_ncr">NCRs</a> and character
+      entity references. <a href="rwstools.htm">Rainbow</a>, a Windows freeware
+      tool, offer a function to convert the encoding of XML documents.</p>
+      <p>You can also use an XSL template where you simply duplicate the whole
+      XML document as-it, but specify the desired output encoding in the <code>&lt;xsl:output/&gt;</code>
+      element. For example, the following XSL template will output the same XML
+      document as the input, but with its encoding changed to Shift_JIS:</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;xsl:stylesheet
+ xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;1.0&quot;&gt;
+ &lt;xsl:output encoding=&quot;Shift_JIS&quot;/&gt;
+ &lt;xsl:template match=&quot;node()|@*&quot;&gt;
+  &lt;xsl:copy&gt;
+   &lt;xsl:apply-templates select=&quot;node()|@*&quot;/&gt;
+  &lt;/xsl:copy&gt;
+ &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</pre>
+      <p>You can use this template for converting to any encoding supported by
+      the XSL processor you are using: simply replace the <code>encoding</code>
+      attribute in the <code>&lt;xsl:output/&gt;</code> element by the name of
+      the desired output encoding. You may also have to specify a <code>&lt;xsl:preserve-space/&gt;</code>
+      element if the content of some of the elements in the input document need
+      to be preserved. See the documentation for <a href="http://www.w3.org/TR/xslt#output" target="_blank">&lt;xsl:output/&gt;</a>
+      and <a href="http://www.w3.org/TR/xslt#strip" target="_blank">&lt;xsl:preserve-space/&gt;</a>
+      for more details on how to fine-tune the type of output.</p>
+      <p>Any character not supported by the output encoding will be output as <a href="#char_ncr">NCR</a>.
+      You just make sure the output encoding supports all characters used as
+      element and attribute names.</p>
+      <p>The template can be used with a command-line XSL processor. For
+      example, in Windows with MSXSL the syntax would be:</p>
+      <pre>C:/&gt;msxsl MyInput.xml ConvertEncoding.xsl &gt; MyOutput.xml</pre>
+      <p>Where <code>MyInput.xml</code> is the document to convert, <code>ConvertEncoding.xsl</code>
+      is the template shown above, and <code>MyOutput.xml</code> is the
+      resulting document.</p>
+      <hr>
+      <p class="topic"><a name="lang"></a>Language Identification</p>
+      <hr>
+      <h5><a name="lang_xmllang"></a>What is the <code>xml:lang</code>
+      attribute?</h5>
+      <p>The attribute <code>xml:lang</code> is a reserved attribute of XML to
+      specify the language of a given content. Its purpose is to allow all
+      different XML document types to use the same attribute for language
+      identification.</p>
+      <p>The <code>xml:lang</code> attribute applies to all attributes
+      (regardless their order) and content of the element where it appears and
+      all children of that element, except when overwritten. For example:</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+&lt;doc xml:lang=&quot;en&quot;&gt;
+ &lt;list title=&quot;Titre en français&quot; xml:lang=&quot;fr&quot;&gt;
+  &lt;p&gt;Texte en français.&lt;/p&gt;
+  &lt;p xml:lang=&quot;fr-ca&quot;&gt;Texte en québécquois.&lt;/p&gt;
+  &lt;p xml:lang=&quot;en&quot;&gt;Second text in English.&lt;/p&gt;
+ &lt;/list&gt;
+ &lt;p&gt;Text in English.&lt;/p&gt;
+&lt;/doc&gt;</pre>
+      <p>Always use the xml:lang attribute to specify the language of a content:
+      its use is assumed in many other XML-related technologies. For example, <a href="#lang_xpathlang">the
+      <code>lang()</code> function in XPath</a>.</p>
+      <hr>
+      <h5><a name="lang_needdecl"></a>Do I need to declare the <code>xml:lang</code>
+      attribute?</h5>
+      <p>Yes, if you have a DTD and validate your documents, you must declare <code>xml:lang</code>
+      like any other attribute. For example, in a DTD you would declare it such
+      as this:</p>
+      <pre>&lt;!ATTLIST para xml:lang NMTOKEN&gt;</pre>
+      <p>If you use simple well-formed documents, the <code>xml</code> namespace
+      in <code>xml:lang</code> is assumed and you do not need to declare it.</p>
+      <hr>
+      <h5><a name="lang_xmllangvalues"></a>What are the values for the <code>xml:lang</code>
+      attribute?</h5>
+      <p>The values of <code>xml:lang</code> are the <i>language tags</i> as
+      defined in <a target="_blank" href="http://www.ietf.org/rfc/rfc3066.txt">RFC
+      3066</a>. (The original XML specifications mention <a target="_blank" href="http://www.ietf.org/rfc/rfc1766.txt">RFC
+      1766</a>, but that RFC has been superceded by RFC 3066 in January 2001 and
+      the XML specifications has been corrected in the <a target="_blank" href="http://www.w3.org/XML/xml-V10-2e-errata#E11">erratum
+      #11</a>).</p>
+      <p>The most used value can be defined is as follow:</p>
+      <pre>&lt;ISOLangCode&gt;[-&lt;ISOCountryCode&gt;]</pre>
+      <p>Where:<br>
+      <code>&lt;ISOLangCode&gt;</code> is an ISO language 2-letter code (ISO
+      639-1) or 3-letter code (ISO 639-2T).<br>
+      <code>&lt;ISOCoutryCode&gt;</code> is an ISO country code (ISO 3166).<br>
+      and the dash '-' (U+002D) is the separator (not underscore '_' (U+005F)).</p>
+     <p>See <a href="http://lcweb.loc.gov/standards/iso639-2/langcodes.html" target="_blank">http://lcweb.loc.gov/standards/iso639-2/langcodes.html</a>
+      for the official list of the ISO language codes, and see <a href="http://www.iso.org/iso/en/prods-services/iso3166ma/index.html" target="_blank">http://www.iso.org/iso/en/prods-services/iso3166ma/index.html</a>
+      for the official list of the ISO country codes.</p>
+      <p>Usage of the ISO language codes:</p>
+      <ol>
+        <li>Use the 2-letters codes.</li>
+        <li>If a 2-letter code does not exist for a given language, use the
+          Terminology form of the 3-letter code (ISO 639-2t), not the
+          Bibliography form (ISO 639-2b).</li>
+      </ol>
+      <p>For example:</p>
+      <div align="left">
+        <table border="1" cellpadding="3" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111">
+          <tr>
+            <td width="80">ISO 639-1</td>
+            <td width="80">ISO 639-2T</td>
+            <td width="80">ISO 639-2B</td>
+            <td width="80"><b>xml:lang</b></td>
+            <td width="120">Language</td>
+          </tr>
+          <tr>
+            <td>la</td>
+            <td>lat</td>
+            <td>lat</td>
+            <td><b>la</b></td>
+            <td>Latin</td>
+          </tr>
+          <tr>
+            <td>de</td>
+            <td>deu</td>
+            <td>ger</td>
+            <td><b>de</b></td>
+            <td>German</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>mni</td>
+            <td>mni</td>
+            <td><b>mni</b></td>
+            <td>Manipuri</td>
+          </tr>
+        </table>
+      </div>
+      <p>Note that the values for <code>xml:lang</code> are <b>not</b>
+      case-sensitive, unlike the other XML attribute values. For example: <code>&quot;en-pg&quot;</code>
+      is the same as <code>&quot;EN-pg&quot;</code>, <code>&quot;en-PG&quot;</code>,
+      <code>&quot;EN-PG&quot;</code>, <code>&quot;En-Pg&quot;</code>, or any
+      other case combination.</p>
+      <p>You may also use IANA-defined or user-defined codes as documented in <a target="_blank" href="http://www.ietf.org/rfc/rfc3066.txt">RFC
+      3066</a>. However, this is not recommended at all, as the vast majority of
+      the tools will not recognize such codes. The list of the IANA registered
+      language codes is available at <a target="_blank" href="http://www.isi.edu/in-notes/iana/assignments/languages/">http://www.isi.edu/in-notes/iana/assignments/languages</a>.</p>
+      <p>Note that this current language identification system is not sufficient
+      for everyone. While it works fine in the majority of the &quot;main&quot;
+      languages used in business, many languages are not covered. there is also
+      no easy solution to specify languages associated with something else than
+      a country (for example: no standard for Latin-American Spanish). See The <a target="_blank" href="http://www.ethnologue.com/web.asp">Ethnologue
+      Web site</a> (from <a target="_blank" href="http://www.sil.org">SIL
+      International</a>) for a more complete list of the 6,000+ languages used
+      in the World.</p>
+      <hr>
+      <h5><a name="lang_xhtml"></a>In XHTML should I use <code>lang</code> or <code>xml:lang</code>?</h5>
+      <p>Ideally you should use both. The <code>lang</code> attribute will be
+      handy if the document gets viewed by a browser without XML support, while <code>xml:lang</code>
+      will be handy when the document gets processed by XML tools. The values of
+      both attributes obey the same rules.</p>
+      <p>If both attributes are present but are set to different language, <code>xml:lang</code>
+      prevails.</p>
+     <p>Do use the <code>lang</code> and <code>xml:lang</code> attributes: In
+     some case this is the only way for the browsers to know how to represent
+     the characters correctly. For example, many Han (Chinese, Japanese, Korean)
+     characters are the same but require different fonts or rendering rules,
+     having the language of the content identified in the root element (e.g. <code>&lt;html&gt;</code>)
+     can make a big difference in the display.</p>
+      <p>Example of XHTML document with language attributes:</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;
+          &quot;DTD/xhtml1-strict.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;
+ &lt;head&gt;&lt;title&gt;Minimal XHTML file&lt;/title&gt;&lt;/head&gt;
+ &lt;body&gt;
+  &lt;p lang=&quot;fr&quot; xml:lang=&quot;fr&quot;&gt;Du texte en français.&lt;/p&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</pre>
+      <hr>
+      <h5><a name="lang_multilangdoc"></a>What about multilingual documents?</h5>
+      <p>You can have different languages within the same document. If you have
+      such documents, make sure to use the <code>xml:lang</code> attribute to
+      identify the language of each part of the content.</p>
+      <p>However, from a localization viewpoint, such documents are not
+      currently easy to localize and their use is not recommended if you do not
+      have a clear and efficient process in place to handle their translation.</p>
+      <p>See an example of XML document in 15 languages: <a target="_blank" href="xmli18n/Chap_02/MultiLang.xml">With
+      a simple style sheet</a>, and <a target="_blank" href="MultiLangRaw.xml">without
+      a style sheet</a>. (You need a browser with XML and CSS support to display
+      both documents correctly).</p>
+      <hr>
+      <h5><a name="lang_unicodetags"></a>Can I use Unicode Language Tags in XML?</h5>
+      <p>No, the use of Unicode Language Tag characters in XML (or any other
+      markup language) is <u>strongly discouraged</u>. Use <code>xml:lang</code>
+      to specify the language of a content.</p>
+      <p>The Unicode Language Tags characters (Unicode values in the range
+      U+E0000-U+E007) are a set of characters reserved to identify languages in
+      the coding of plain text for specific protocols. For more information see
+      the <a target="_blank" href="http://www.unicode.org/unicode/reports/tr20/#Language">Unicode
+      Technical report #20</a>.</p>
+      <hr>
+      <h5><a name="lang_xpathlang"></a>How do I use the <code>lang()</code>
+      function in XPath?</h5>
+      <p>XPath offers a dedicated function to identify the language of a given
+      node: <code>lang()</code>. The function returns True if the node has a <code>xml:lang</code>
+      attribute set that matches the language code you specified.</p>
+      <p>The matching is based on sub-string comparison of the start of the
+      value. For example: <code>lang('en')</code> will match <code>xml:lang=&quot;en&quot;</code>,
+      <code>xml:lang=&quot;en-gb&quot;</code>, and <code>xml:lang=&quot;en-us&quot;</code>,
+      but will not match <code>xml:lang=&quot;x-en-pidgin&quot;</code>. The same
+      way <code>lang('en-pg')</code> will match <code>xml:lang=&quot;en-pg&quot;</code>,
+      but not <code>xml:lang=&quot;en&quot;</code>.</p>
+      <p>The matching is not case-sensitive. For example: <code>lang('En-US')</code>
+      will match all case combinations, such as <code>xml:lang=&quot;EN-us&quot;</code>,
+      <code>xml:lang=&quot;en-us&quot;</code>, <code>xml:lang=&quot;eN-uS&quot;</code>,
+      and so forth.</p>
+      <p>Example of usage: The following XML document contains <code>&lt;Text&gt;</code>
+      elements in different languages.</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot; ?&gt;
+&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;Languages.xsl&quot; ?&gt;
+&lt;MyData&gt;
+ &lt;Msg id=&quot;100&quot;&gt;
+  &lt;Text xml:lang=&quot;en&quot;&gt;Message 100 in English.&lt;/Text&gt;
+ &lt;/Msg&gt;
+ &lt;Msg id=&quot;200&quot;&gt;
+  &lt;Text xml:lang=&quot;en-us&quot;&gt;Message 200 in American English.&lt;/Text&gt;
+  &lt;Text xml:lang=&quot;fr-CA&quot;&gt;Message 200 en Québecquois.&lt;/Text&gt;
+ &lt;/Msg&gt;
+ &lt;Msg id=&quot;300&quot;&gt;
+  &lt;Text xml:lang=&quot;fr&quot;&gt;Message 300 en français.&lt;/Text&gt;
+ &lt;/Msg&gt;
+ &lt;Msg id=&quot;400&quot;&gt;
+  &lt;Text xml:lang=&quot;EN-GB&quot;&gt;Message 400 in British English.&lt;/Text&gt;
+ &lt;/Msg&gt;
+&lt;/MyData&gt;</pre>
+      <p>The following XSL template will output only the content of the <code>&lt;Text&gt;</code>
+      elements that match the value set for the <code>OutLang</code> parameter
+      (here: <code>'en'</code>).</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;xsl:stylesheet
+ xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;1.0&quot;&gt;
+ &lt;xsl:param name=&quot;OutLang&quot;&gt;en&lt;/xsl:param&gt;
+ &lt;xsl:template match=&quot;Text&quot;&gt;
+  &lt;xsl:if test=&quot;lang($OutLang)&quot;&gt;
+   &lt;p&gt;&lt;xsl:value-of select=&quot;.&quot;/&gt;
+   (&lt;xsl:value-of select=&quot;@xml:lang&quot;/&gt;)&lt;/p&gt;
+  &lt;/xsl:if&gt;
+ &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</pre>
+      <p><a href="xpathlang.xml" target="_blank">Display the document</a> (you
+      need a browser that support XML and XSL).</p>
+      <hr>
+      <h5><a name="lang_csslang"></a>How do I use the <code>lang()</code>
+      selector in CSS?</h5>
+      <p>CSS-2 offers a pseudo-class selector specific for language (<a href="http://www.w3.org/TR/REC-CSS2/selector.html#lang" target="_blank">see
+      the specifications</a>).</p>
+      <p>It uses the following syntax:</p>
+      <pre><code>&lt;Element&gt;:lang(&lt;LangCode&gt;)</code></pre>
+      <p>Where <code>&lt;Element&gt;</code> is the element selector, and <code>&lt;LangCode&gt;</code>
+      is the language code as defined by the <a href="http://www.ietf.org/rfc/rfc1766.txt" target="_blank">RFC
+      1766</a> (superceded by <a href="http://www.ietf.org/rfc/rfc3066.txt" target="_blank">RFC
+      3066</a> in January 2001).</p>
+      <p>For example:</p>
+      <pre>*:lang(zh)    { font-family: SimSun; }
+*:lang(zh-tw) { font-family: MingLiU; }
+emph:lang(en) { font-weight: bold; }
+emph:lang(iu) { text-decoration: underline; }</pre>
+      <p>The determination of what is the language of a given content depends on
+      the format with which the CSS style-sheet in used, for instance: <code>xml:lang</code>
+      in XML.</p>
+      <hr>
+      <p class="topic"><a name="pres"></a>Presentation and Rendering</p>
+      <hr>
+      <h5><a name="pres_ruby"></a>How do I render ruby text?</h5>
+      <p>Ruby text is the term used to designate a small annotation associated
+      with a base text. For instance, ruby text is used in East-Asian scripts to
+      provide the pronunciation of ideograph characters. The following example
+      show the Japanese word &quot;&#26085;&#26412;&#35486;&quot; written in
+      kanji and its pronunciation in hiragana:</p>
+      <p><img border="0" src="images/ruby1.gif" hspace="20" width="161" height="50"></p>
+      <p>The term <i>ruby</i> comes from the British name of the smaller font
+      point-size often used for the annotation. Depending on its purpose ruby
+      text is called differently. For instance, in Japanese, the phonetic
+      reading of kanji characters (usually in hiragana) will be called <i>furigana</i>.</p>
+      <p>Depending on the language ruby annotations are placed at different
+      position: above, below, even on the side of each character when the base
+      text is vertical.</p>
+      <p>The implementation of ruby text should follow certain rules to allow
+      for parameters such as where the text should be displayed in reference to
+      its related base text, provide a fallback display if the device used
+      cannot show ruby text properly, and so forth. The W3C provides a set of
+      elements for this: the <a target="_blank" href="http://www.w3.org/TR/ruby/">W3C
+      recommendation for ruby annotation</a>.</p>
+      <p>Example of ruby annotation in XHTML:</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;
+          &quot;DTD/xhtml1-strict.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;
+ &lt;head&gt;&lt;title&gt;Ruby Text Examples&lt;/title&gt;&lt;/head&gt;
+ &lt;body&gt;
+  &lt;p&gt;Simple ruby text:&lt;/p&gt;
+  &lt;p xml:lang=&quot;ja&quot; lang=&quot;ja&quot;&gt;
+   &lt;ruby&gt;
+    &lt;rb&gt;&#26085;&#26412;&#35486;&lt;/rb&gt;
+    &lt;rt&gt;&#12395;&#12411;&#12435;&#12372;&lt;/rt&gt;
+   &lt;/ruby&gt;
+  &lt;/p&gt;
+  &lt;p&gt;Ruby text with parenthesis text used if the ruby
+     function is not implemented:&lt;/p&gt;
+  &lt;p xml:lang=&quot;ja&quot; lang=&quot;ja&quot;&gt;
+   &lt;ruby&gt;
+    &lt;rb&gt;&#26085;&#26412;&#35486;&lt;/rb&gt;
+    &lt;rp&gt;[[&lt;/rp&gt;&lt;rt&gt;&#12395;&#12411;&#12435;&#12372;&lt;/rt&gt;&lt;rp&gt;]]&lt;/rp&gt;
+   &lt;/ruby&gt;
+  &lt;/p&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</pre>
+      <p><a target="_blank" href="ruby.htm">Display the document</a> (you need
+      to use a browser that supports XHTML).</p>
+      <hr>
+      <h5><a name="pres_bidi"></a>How do I render bi-directional&nbsp; text?</h5>
+      <p>Bi-directional text is used in scripts such as Arabic, Hebrew, Thaana,
+      etc. It is characterized by the fact that some parts of a text run are
+      oriented left-to-right, while others are oriented right-to-left, like, for
+      example, in the following Hebrew sentence:</p>
+      <p><img border="0" src="images/bidi1.gif" hspace="20" width="475" height="36"></p>
+      <p>Do not use Unicode bi-directional markers to specify directionality in
+      XML. The CSS properties <code>direction</code> and <code>unicode-bidi</code>
+      can be used to specify how bi-directional text should be rendered.</p>
+      <p>Example of bi-directional style in XHTML:</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;DTD/xhtml1-strict.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;
+ &lt;head&gt;&lt;title&gt;Bi-directional Text&lt;/title&gt;&lt;/head&gt;
+ &lt;body&gt;
+  &lt;p lang=&quot;he&quot; xml:lang=&quot;he&quot;
+     style=&quot;direction: rtl; unicode-bidi: embed&quot;&gt;&#1495;&#1489;&#1512;&#1514; Pepper Creek LLC,
+   &#1513;&#1504;&#1493;&#1505;&#1491;&#1492; &#1494;&#1492;-&#1506;&#1514;&#1492;, &#1502;&#1493;&#1504;&#1492; &#1497;&#1493;&#1514;&#1512; &#1502;-550 &#1506;&#1493;&#1489;&#1491;&#1497;&#1501;.&lt;/p&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</pre>
+      <p><a target="_blank" href="bidi.htm">Display the document</a> (you need
+      to use a browser that supports XHTML and CSS).</p>
+      <hr>
+      <h5><a name="pres_vertical"></a>How do I render vertical text?</h5>
+      <p>Vertical writing is used in different scripts, the most common examples
+      being the East-Asian ones such as Chinese and Japanese. In an XML document
+      where text using either horizontal or vertical display, it is necessary to
+      provide the mechanism to render the text correctly.</p>
+      <p>CSS offers properties to specify text directionality. For most vertical
+      text use the <code>writing-mode</code> statement with the &quot;<code>tb-rl</code>&quot;
+      value.</p>
+      <p>Example of an XHTML file using the writing-mode property of CSS:</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;
+          &quot;DTD/xhtml1-strict.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;
+ &lt;head&gt;&lt;title&gt;Examples with writing-mode&lt;/title&gt;&lt;/head&gt;
+ &lt;body&gt;
+  &lt;p style=&quot;writing-mode: rl-tb&quot;&gt;Example of horizontal text.&lt;/p&gt;
+  &lt;p style=&quot;writing-mode: tb-rl&quot;&gt;Example of vertical text.&lt;/p&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</pre>
+      <p><a target="_blank" href="vertical.htm">Display the document</a> (you
+      need to use a browser that supports XHTML and CSS).</p>
+      <hr>
+      <h5><a name="pres_combinedtext"></a>How do I render combined text?</h5>
+      <p>Combined text is a layout method found in Japanese, where characters
+      are grouped in blocks (<i>kumimoji</i>) or lines (w<i>arichu</i>), as
+      shown below:</p>
+      <p><img border="0" src="images/warichu1.gif" width="511" height="61"></p>
+      <p>This feature is supported in XSL-FO and CSS-3 through the <code>text-combine</code>
+      property, set to either <code>letters</code> for kumimoji, or <code>lines</code>
+      for warichu.</p>
+      <p>The corresponding CSS definitions for rendering these two styles would
+      be, for example:</p>
+      <pre>span.kumimoji { text-combine: letters; }
+span.warichu  { text-combine: lines; }</pre>
+      <hr>
+      <h5><a name="pres_cssquotes"></a>How do I automate quotation marks?</h5>
+      <p>CSS offers a <code>quotes</code> properties that allows you to specify
+      the characters to use for opening and closing quotes. You can use the <code>content</code>
+      properties with the <code>open-quote</code> and <code>close-quote</code>
+      values to associate the relevant symbols with an element. For example:</p>
+      <pre>p: { display: block }
+autoquote: { display: inline }
+autoquote:before { content: open-quote }
+autoquote:after { content: close-quote }
+
+*:lang(en) { quotes: &quot;\201C&quot; &quot;\201D&quot; }
+*:lang(fr) { quotes: &quot;\AB\A0&quot; &quot;\A0\BB&quot; }</pre>
+      <p>You can then use use the element in your text:</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;?xml-stylesheet type=&quot;text/css&quot; href=&quot;autoquotes.css&quot; ?&gt;
+&lt;doc xml:lang=&quot;fr&quot;&gt;
+ &lt;p id=&quot;100&quot;&gt;Ali Baba dit: 
+  &lt;autoquote&gt;Sésame ouvres-toi!&lt;/autoquote&gt;&lt;/p&gt;
+&lt;/doc&gt;</pre>
+      <p>Important warnings:</p>
+      <ul>
+        <li>Remember that the <code>content</code> property and the <code>lang()</code>
+          function are not implemented in all browsers: test the rendering
+          engines you are targeting before using automated quotes.</li>
+        <li>From a translation memory viewpoint, using a style property to
+          represent something usually part of the text run means your text may
+          not be re-usable at 100% with other formats where the quotes are still
+          represented as text.</li>
+      </ul>
+      <hr>
+      <h5><a name="pres_xsl_formatnumber"></a>How do I use the function <code>format-number()</code>
+      in XSL?</h5>
+      <p>The XSL function <code>format-number()</code> allows you to output a
+      value according a given formatting pattern. For instance: <code>format-number(1234.56,
+      &quot;#,###.##&quot;)</code> will generate &quot;1,234.56&quot;. The
+      pattern rules are the same as the pattern rules for <a href="http://java.sun.com/products/jdk/1.1/docs/api/java.text.DecimalFormat.html" target="_blank">the
+      <code>java.text.DecimalFormat</code> class in Java 1.1</a>.</p>
+      <p>A third optional parameter allows you to overwrite the default symbols
+      used in the patterns (i.e. decimal separator, grouping separator, etc.)
+      and use the ones defined in a given <code>&lt;xsl:decimal-format/&gt;</code>
+      element. This allows you to to create patterns for different locales.</p>
+      <p>For example, the following fragment of code creates an output in French
+      format, where the decimal separator is a comma and the grouping separator
+      is a non-breaking space.</p>
+      <pre>...
+&lt;xsl:decimal-format name=&quot;FrenchNumber&quot;
+ decimal-separator=&quot;,&quot; grouping-separator=&quot;&amp;#xa0;&quot; /&gt;
+...
+&lt;xsl:value-of select=&quot;format-number(Price, &quot;#&amp;#xa0;###,##&quot;, 'FrenchNumber')&quot;/&gt;
+...</pre>
+      <hr>
+      <h5><a name="pres_xmlrawnumber"></a>How do I represent a raw decimal
+      number in XML?</h5>
+      <p>You should represent a raw number (that can be used as a value by XSL)
+      in the same notation as if the number was in a Java or C++ source code:
+      for instance, the value <code>1,234.56</code> should be represented <code>1234.56</code>,
+      regardless the language of the data set and regardless the current locale
+      of your system.</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;data xml:lang=&quot;fr&quot;&gt;
+ &lt;item id=&quot;1&quot;&gt;
+  &lt;description&gt;Une valeur&lt;/description&gt;
+  &lt;value&gt;1234.56&lt;/value&gt; &lt;!-- CORRECT notation --&gt;
+ &lt;item&gt;
+ &lt;item id=&quot;2&quot;&gt;
+  &lt;description&gt;Une valeur&lt;/description&gt;
+  &lt;value&gt;1 234,56&lt;/value&gt; &lt;!-- INCORRECT notation
+                               This will generate a NaN in XSL --&gt;
+ &lt;item&gt;
+&lt;/data&gt;</pre>
+      <p>Use the <a href="#pres_xsl_formatnumber"><code>format-number()</code>
+      function</a> to format the raw value according locale-specific parameters
+      (for instance to display <code>1&nbsp;234,56</code> in French).</p>
+      <hr>
+      <h5><a name="pres_xslnumber"></a>How do I use the <code>&lt;xsl:number/&gt;</code>
+      element in XSL?</h5>
+      <p>The <code>&lt;xsl:number/&gt;</code> element of XSL allows you to
+      output a formatted integer. This element is mostly used to created
+      numbered lists and has several internationalization-related aspects.</p>
+      <p>The attribute <code>grouping-separator</code> and <code>grouping-size</code>
+      allow to specify what character to use to separate groupings (for example:
+      a comma for English, a space for French, etc.) and how many digits should
+      be in each grouping (for example: 3 for English, 4 for Japanese, etc.).</p>
+      <p>The <code>format</code> attribute can be used to specify what type of
+      numbering to use. The <code>letter-value</code> attribute set either to <code>traditional</code>
+      or <code>alphabetic</code> allows you to disambiguates how the numbering
+      should be done since for some script the two different methods starts with
+      the same character. In English the alphabetic method usually starts with
+      'A' or 'a' while the traditional (i.e. Roman) starts with 'I' or 'i'.</p>
+      <p>Example of values possible:</p>
+      <div align="left">
+        <table border="1" cellpadding="3" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111">
+          <tr>
+            <td width="150"><b>Type of Numbering</b></td>
+            <td width="95"><b>format</b></td>
+            <td width="95"><b>letter-value</b></td>
+            <td width="50"><b>lang</b></td>
+          </tr>
+          <tr>
+            <td>Thai</td>
+            <td>&amp;#x0E51;</td>
+            <td>-</td>
+            <td>th</td>
+          </tr>
+          <tr>
+            <td>Classic Greek</td>
+            <td>&amp;#x05D0;</td>
+            <td>traditional</td>
+            <td>el</td>
+          </tr>
+          <tr>
+            <td>Old Slavic</td>
+            <td>&amp;#x0430;</td>
+            <td>traditional</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>Katakana</td>
+            <td>&amp;#x30A2;</td>
+            <td>-</td>
+            <td>ja</td>
+          </tr>
+          <tr>
+            <td>Katakana 'Iroha'</td>
+            <td>&amp;#x30A4;</td>
+            <td>-</td>
+            <td>ja</td>
+          </tr>
+          <tr>
+            <td>Traditional Hebrew</td>
+            <td>&amp;#x05D0;</td>
+            <td>traditional</td>
+            <td>he</td>
+          </tr>
+          <tr>
+            <td>Traditional Georgian</td>
+            <td>&amp;#x10D0;</td>
+            <td>traditional</td>
+            <td>ka</td>
+          </tr>
+          <tr>
+            <td>Classic Roman</td>
+            <td>I</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+        </table>
+      </div>
+      <p>The attribute <code>lang</code> allows you to specify the language for
+      the given numbering. Its values are the same as the <code><a href="#lang_xmllangvalues">xml:lang</a></code>
+      attribute. Note that the specifications leave discretion to XSL
+      implementer on which language to support, so there is no guarantee that
+      any given language is supported by all XSL processors.</p>
+      <p>For a given XML document as shown below:</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;xslnumber.xsl&quot; ?&gt;
+&lt;MyList&gt;
+ &lt;Item&gt;The item&lt;/Item&gt;
+ &lt;Item&gt;The item&lt;/Item&gt;
+ ...1231 more items...
+ &lt;Item&gt;The item&lt;/Item&gt;
+&lt;/MyList&gt;</pre>
+      <p>We can apply <a href="xslnumber.xsl" target="_blank">this template</a>
+      to get <a href="xslnumber.xml" target="_blank">this output</a>. (you need
+      a browser that supports XML and XSL to view this correctly). Note also
+      that depending on the browser (or the version of the browser, or the
+      settings of your system) you may not get support or only partial support
+      for some of the types of output.</p>
+      <hr>
+      <h5><a name="pres_xslsort"></a>How do I use the <code>&lt;xsl:sort/&gt;</code>
+      element in XML?</h5>
+      <p>The element <code>&lt;xsl:sort/&gt;</code> allows you to specify how
+      the result of an <code>&lt;xsl:apply-templates&gt;</code> or <code>&lt;xsl:for-each&gt;</code>
+      element is sorted. You can use several <code>&lt;xsl:sort/&gt;</code>
+      elements to perform a sort on multiple keys.</p>
+      <p>The attribute <code>lang</code> specifies the language rules to use for
+      a given <code>&lt;xsl:sort/&gt;</code> element. The values for <code>lang</code>
+      are the same as for <code><a href="#lang_xmllangvalues">xml:lang</a></code>.</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;data&gt;
+ &lt;entry id=&quot;100&quot;&gt;
+  &lt;family-name&gt;Øre&lt;/family-name&gt;
+  &lt;given-name&gt;Jani&lt;/given-name&gt;
+ &lt;/entry&gt;
+ &lt;entry id=&quot;200&quot;&gt;
+  &lt;family-name&gt;Zorro&lt;/family-name&gt;
+  &lt;given-name&gt;Tommie&lt;/given-name&gt;
+ &lt;/entry&gt;
+ &lt;entry id=&quot;300&quot;&gt;
+  &lt;family-name&gt;Zorro&lt;/family-name&gt;
+  &lt;given-name&gt;Emilio&lt;/given-name&gt;
+ &lt;/entry&gt;
+&lt;/data&gt;</pre>
+      <p>The following XSL template will sort in ascending order (default if no <code>order</code>
+      attribute is specified) the output: by family names, then given names,
+      respecting the Norwegian sort order, (&quot;Øre&quot; should come after
+      &quot;Zorro&quot;):</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;xsl:stylesheet
+ xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;1.0&quot;&gt;
+ &lt;xsl:template match=&quot;data&quot;&gt;
+  &lt;xsl:apply-templates select=&quot;entry&quot;&gt;
+   &lt;xsl:sort lang=&quot;no&quot; select=&quot;family-name&quot;/&gt;
+   &lt;xsl:sort lang=&quot;no&quot; select=&quot;given-name&quot;/&gt;
+  &lt;/xsl:apply-templates&gt;
+ &lt;/xsl:template&gt;
+ &lt;xsl:template match=&quot;entry&quot;&gt;
+  &lt;p&gt;&lt;xsl:value-of select=&quot;family-name&quot;/&gt;,
+  &lt;xsl:value-of select=&quot;given-name&quot;/&gt;&lt;/p&gt;
+ &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</pre>
+      <p><a target="_blank" href="xslsort.xml">Display the document</a> (you
+      need to use a browser that supports XML and XSL).</p>
+      <hr>
+      <h5><a name="pres_separation"></a>How do I separate rendering from
+      tagging?</h5>
+      <p>Text formatting such as bold, italic, underline, etc. may need to
+      different depending on the language of the text. This is especially true
+      for non-Latin based scripts. Separating the tagging of an XML file from
+      its rendering is important to allow an authoring more
+      internationalization-minded.</p>
+      <p>When defining an XML vocabulary, keep this in mind. For example, the
+      following excerpt shows an XML document that uses <code>&lt;bold&gt;</code>
+      to delimit important text:</p>
+      <pre>&lt;para id=&quot;100&quot;&gt;Some &lt;bold&gt;important&lt;/bold&gt; text&lt;/para&gt;</pre>
+      <p>Instead, think about the <i>function</i> coded by <code>&lt;bold&gt;</code>
+      rather than how the output will be rendered. Use a name that conveys that
+      function:</p>
+      <pre>&lt;para id=&quot;100&quot;&gt;Some &lt;important&gt;important&lt;/important&gt; text&lt;/para&gt;</pre>
+      <p>The rendering aspect should be treated separately, in the style-sheet
+      for example, where the element will be assigned different properties
+      depending on the language of the text, using, for example, <a href="#lang_csslang">the
+      <code>lang()</code> selector</a> of CSS-2:</p>
+      <pre>important:lang(en) { font-weight: bold; }
+important:lang(fr) { font-style: italic; }</pre>
+      <p>While having a Western/Latin-centric vision of the output when
+      designing a XML document type does not prevent you to get the correct
+      display ultimately (in general), it will make you less aware of
+      localization issues. Always remember that the source language is
+      &quot;just another language&quot;.</p>
+     <hr>
+    <h5><a name="pres_br"></a>Why should I use caution with <code>&lt;br/&gt;</code>
+    and equivalent elements?</h5>
+     <p>Formatting elements, such as <code>&lt;br/&gt;</code> in XHTML, are to
+     use with caution because they often break the rule of separating the
+     content from the rendering/presentation. Using a lot of <code>&lt;br/&gt;</code>
+     to make a list for example does not make sense: you should use a list and
+     list items elements.</p>
+     <p>The bad use of formatting elements does affect the localizability of
+     your files: it may force the translation tools to deal with large
+     paragraphs and hamper the translator to work easily. It may also cause
+     problem with tools that have some limitation on &quot;paragraph&quot; size,
+     and affect adversely segmentation.</p>
+     <p>For example, the following code is to avoid:</p>
+     <pre>&lt;p&gt;
+Text of line 1&lt;br/&gt;
+Text of line 2&lt;br/&gt;
+Text of line 3&lt;/br/&gt;
+&lt;/p&gt;</pre>
+     <p>Instead, use something like this:</p>
+     <pre>&lt;ul&gt;
+ &lt;li&gt;Text of line 1&lt;/li&gt;
+ &lt;li&gt;Text of line 2&lt;/li&gt;
+ &lt;li&gt;Text of line 3&lt;/li&gt;
+&lt;/ul&gt;</pre>
+     <p>Always control the appearance of your text through the style-sheet, not
+     by marking up the document with formatting elements.</p>
+      <hr>
+      <h5><a name="pres_texttransform"></a>Why should I use caution with <code>text-transform</code>
+      in CSS and XSL?</h5>
+      <p>CSS and XSL offer a property called <code>text-transform</code> that
+      allows to specify the conversion of a given text into capitalized,
+      uppercased, or lowercased text.</p>
+      <p>For example, the following statement will turn the content of any <code>&lt;Section&gt;</code>
+      element into capitalized text:</p>
+      <pre>Section { text-transform: capitalize }</pre>
+      <p>The current specification allow the user agents that process the
+      document to &quot;consider the value of <code>text-transform</code> to be <code>none</code>
+      for characters that are not from the Latin-1 repertoire and for elements
+      in languages for which the transformation is different from that specified
+      by the case-conversion tables of ISO 10646&quot;.</p>
+      <p>In practice, this means you cannot rely on <code>text-transform</code>
+      to make correct conversion for non-Latin-1 characters or even many
+      languages that use Latin-1 characters but for which the casing or
+      capitalization rules are complex.</p>
+      <p>If you choose to use this CSS property, use it with caution and keep in
+      mind the possible changes needed in many localized version of your
+      document. The property is actually deprecated in XSL.</p>
+      <p>Note that the working draft for CSS3 is much more strict on the
+      implementation of text-transform. So it may become useful at some point,
+      but this will depend a lot on the implementation. For now: avoid to use.</p>
+      <hr>
+    <h5><a name="pres_absposition"></a>Why should I use caution with absolute positioning in CSS and XSL?</h5>
+    <p>CSS and XSL allow you to specify an element of text to be placed at a 
+    specific location of the output. While absolute position may be useful in 
+    some cases, it is often a source of problem for localization. A sentence 
+    displayed with absolute position might need to be &quot;wrapped&quot; manually, 
+    breaking segments without regard for correct segmentation, as shown below:</p>
+    <pre>&lt;div style=&quot;position:absolute;top:100;left:50;font-size:11px&quot;&gt;
+ Performance, Adaptability, and Scalability&lt;/div&gt;
+&lt;div style=&quot;position:absolute;top:117;left:50;font-size:11px;&quot;&gt;
+ finally meet in one package.&lt;/div&gt;</pre>
+    <p>Because the word order in the target languages will be different the 
+    source and the translated segments may not correspond anymore. In addition 
+    text expansion brings also its set of problem: the whole text needs to be 
+    reformatted.</p>
+    <p>Using absolute positioning for a block of text is similar to adding 
+    hard-returns in a plain text file: no translation tool can work with it.</p>
+      <hr>
+      <p class="topic"><a name="loc"></a>Localization</p>
+      <hr>
+      <h5><a name="loc_trans"></a>How do I translate XML documents?</h5>
+      <p>There are various general translation tools that support XML. For
+      example (by alphabetical order):</p>
+      <ul>
+        <li><a target="_blank" href="http://www.alchemysoftware.ie">Catalyst</a>
+          (Alchemy Software)</li>
+        <li><a target="_blank" href="http://www.atril.com">Déjà Vu</a> (Atril)</li>
+        <li><a target="_blank" href="http://sdlx.sdlintl.com">SDLX</a> (SDL
+          International)</li>
+        <li><a target="_blank" href="http://www.trados.com">TagEditor</a>
+          (TRADOS)</li>
+        <li><a target="_blank" href="http://www.star-transit.com/">Transit</a>
+          (STAR)</li>
+      </ul>
+      <p>There are several globalization suites that also support XML. For
+      example (by alphabetical order):</p>
+      <ul>
+        <li><a href="http://www.conveysoftware.com" target="_blank">Content
+         Director</a>&nbsp; (Convey Software)</li>
+        <li><a target="_blank" href="http://www.globalsight.com">System 3</a>
+          (GlobalSight)</li>
+        <li><a target="_blank" href="http://www.idiominc.com">WorldServer</a>
+          (Idiom)</li>
+      </ul>
+      <p>Note that not all tools and suites provide perfect handling of XML.
+      Some have various problems that, depending on how your XML documents are
+      set and which XML features they use, may make the localization process
+      difficult.</p>
+      <p>You can also use filters to prepare the XML documents into color-coded
+      RTF files that can be easily translated with or without translation tools.
+      <a href="rwstools.htm">Rainbow</a> (RWS Group), offers such filter. Once
+      in RTF you can translate XML documents with other tools such as <a target="_blank" href="http://www.champollion.net">WordFast</a>.</p>
+      <p>In all cases, to correctly translate XML documents the <u>localizers
+      need to know the following</u>:</p>
+      <ul>
+        <li>Which elements and attributes are translatable/non-translatable.</li>
+        <li>Which elements have pre-formatted content (content where
+          white-spaces matter).</li>
+        <li>Which elements are inline (they should not break a sentence), which
+          are structural.</li>
+        <li>Whether any element has a content that needs to be treated with
+          different rules (e.g. scripts).</li>
+      </ul>
+      <p>Note that not all these information are explicit in a DTD or a schema.</p>
+      <p>These information are need to create the &quot;parameter file&quot;
+      (its name varies with each tool) that will allow the tool to process the
+      documents correctly for translation. How to create this parameter file
+      depends on each tool.</p>
+      <hr>
+      <h5><a name="loc_dtdguide"></a>What are the guidelines to create XML
+      document types that will be easier to localize?</h5>
+      <p>The <a target="_blank" href="http://groups.yahoo.com/group/lisa-its">ITS
+      group</a> will produce such guidelines. Meanwhile you can start with the
+      following:</p>
+      <ul>
+        <li>Avoid to use attributes for translatable data.</li>
+        <li>Provide a way to specify the language of your elements, and use <code>xml:lang</code>
+          for this.</li>
+        <li>Provide specific elements to delimit content that is coming from an
+          external source (e.g. error messages or prompts from a resource file).</li>
+        <li>Provide a mechanism of IDs for translatable elements.</li>
+        <li>When naming your elements think about what is there purpose, not how
+          you imagine the rendering of their content. For example: if an element
+          is used to emphasis a text run call it <code>&lt;emph&gt;</code> not <code>&lt;bold&gt;</code>.</li>
+      </ul>
+      <p>Read also the excellent paper on <a target="_blank" href="http://www.xerox-emea.com/globaldesign/dtds.htm">Localisation
+      Considerations in DTD Design</a> by Richard Ishida.</p>
+      <hr>
+      <h5><a name="loc_docguide"></a>What are the guidelines to author XML
+      documents that will be easier to localize?</h5>
+      <p>The <a target="_blank" href="http://groups.yahoo.com/group/lisa-its">ITS
+      group</a> will produce such guidelines. Meanwhile you can start with the
+      following:</p>
+      <ul>
+        <li>Always keep encoding in mind. Use the encoding declaration.</li>
+        <li>Use entity references wisely. Re-use of the same text in different
+          place does not work the same way for all languages. Using entity
+          references may also cause some problem when leveraging from
+          translation memories (e.g. the leveraged segment contains an entity
+          reference not declared in the new document).</li>
+        <li>Never use infinite naming schemes. (e.g. <code>&lt;str001&gt;</code>,
+          <code>&lt;str002&gt;</code>, ...).</li>
+      </ul>
+      <hr>
+      <h5><a name="loc_toolreq"></a>What are the features a translation tool for
+      XML should have?</h5>
+      <p>Some of the XML-specific features a translation tool that support XML
+      documents should have are the following:</p>
+      <ul>
+        <li>Support for all XML constructs (CDATA, namespace, NCRs, etc.). Avoid
+          to write your own parser: using a standard public domain parser is the
+          best way to ensure the tools will parse XML documents correctly.</li>
+        <li>Support <a href="locdirectives.htm">localization directives</a> in
+          the XML document to translate.</li>
+        <li>Support the <code><a href="#lang_xmllang">xml:lang</a></code>
+          attribute. If an element uses <code>xml:lang</code> to specify a
+          language that is not the source language, do not offer to translate
+          its content. When outputting the translated file, make sure all values
+          of relevant <code>xml:lang</code> attributes are changed to the target
+          language code. Make this support optional to allow for flexibility.</li>
+        <li>Make sure the mechanism to specify what elements/attributes are
+          translatable allows to specify nodes rather than just
+          elements/attributes, so the tool can address <a href="#loc_complex">complex
+          cases</a>. A set of rules based on XPath expressions would be a good
+          way to do this.</li>
+        <li>If possible, use a standard file format to store the description of
+          what elements/attributes are translatable (<a href="xmlprop.htm">XML
+          localization properties</a>), so that definition file can be shared
+          with other tools.</li>
+        <li>Make sure the tool can deal with contents where white-spaces are
+          significant (e.g. <code>&lt;pre&gt;</code> in XHTML), or not
+          significant (e.g. <code>&lt;p&gt;</code> is XHTML). Make also sure the
+          <code>xml:space</code> attribute is supported.</li>
+        <li>If possible, preserve the <a href="#loc_cdata">CDATA sections</a>
+          used in the original document.</li>
+        <li>Always preserve entity references.</li>
+        <li>Allows the tool to use specific 'sub-parsers' to process the content
+          of any given element or the value of any given attribute. This will
+          allow, for example, to support easily the content of a <code>&lt;script&gt;</code>
+          element in XHTML, but also data in other formats such as SQL queries,
+          embedded binary data in base64, <a href="#loc_incss">CSS styles</a>,
+          or any other types of content the tool may support.</li>
+        <li>If possible, implement the tool in a way it can optionally process
+          the XML documents that have a DTD declared but not available.</li>
+        <li>Make sure to have integrated support for <a href="xliff.htm">XLIFF</a>,
+          the XML Localisation Interchange File Format.</li>
+      </ul>
+      <hr>
+      <h5><a name="loc_complex"></a>How can I specify that elements with complex
+      rules are translatable?</h5>
+      <p>Currently very few translation tools allow you to specify complex rules
+      to define what elements are translatable (or not). For example, in the
+      following document only the content of the second <code>&lt;item&gt;</code>
+      element is translatable, but most of the tools will not allow you to
+      specify the properties of <code>&lt;item&gt;</code> according the value of
+      one (or more) of its attributes:</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;repository&gt;
+ &lt;item type=&quot;type&quot;&gt;Type definition&lt;/item&gt;
+ &lt;item type=&quot;text&quot;&gt;Text to translate&lt;/item&gt;
+&lt;/repository&gt;</pre>
+      <p>One way to solve this issue is to pre-process the document to add a
+      temporary element the translation tools will be able to use directly. For
+      instance, a document such as the following, where the added element <code>&lt;tbt&gt;</code>
+      indicates the content to translate.</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;repository&gt;
+ &lt;item type=&quot;type&quot;&gt;Type definition&lt;/item&gt;
+ &lt;item type=&quot;text&quot;&gt;&lt;tbt&gt;Text to translate&lt;/tbt&gt;&lt;/item&gt;
+&lt;/repository&gt;</pre>
+      <p>The translation tools can use the added elements to recognize easily
+      the content to localize. Such temporary elements are simply removed after
+      the localization. The pre-processing can be done using a simple XSL
+      template. For example, the following one transforms our first listing into
+      the second:</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;xsl:stylesheet
+ xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;1.0&quot;&gt;
+ &lt;xsl:template match=&quot;node()|@*&quot;&gt;
+  &lt;xsl:copy&gt;
+   &lt;xsl:apply-templates select=&quot;node()|@*&quot;/&gt;
+  &lt;/xsl:copy&gt;
+ &lt;/xsl:template&gt;
+ &lt;xsl:template match=&quot;<b>//item[@type='text']</b>&quot;&gt;
+  &lt;xsl:copy&gt;
+   &lt;xsl:apply-templates select=&quot;@*&quot;/&gt;
+   &lt;tbt&gt;&lt;xsl:apply-templates/&gt;&lt;/tbt&gt;
+  &lt;/xsl:copy&gt;
+ &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</pre>
+      <p>More complex templates can be used, by simply adapting the XPath
+      expression to match a specific set of nodes in the original document. See
+      for instance, <a href="#loc_example4">this other example</a>.</p>
+      <hr>
+      <h5><a name="loc_cdata"></a>How CDATA sections fare during translation?</h5>
+      <p>Some translation tools will not support CDATA sections very well. But a
+      good tool should handle it correctly. However, it might be difficult for
+      the tool to retain the CDATA notation, especially if such section occurs
+      within a content (rather than for the whole content). For example:</p>
+      <pre>&lt;p&gt;The codes &lt;![CDATA[&lt;tag1&gt; and &lt;tag2&gt; ]]&gt;indicate new items.&lt;/p&gt;</pre>
+      <p>once translated, will most likely end up as:</p>
+      <pre>&lt;p&gt;Les codes &amp;lt;tag1&gt; and &amp;lt;tag2&gt; indiquent des nouveaux articles.&lt;/p&gt;</pre>
+      <p>instead of:</p>
+      <pre>&lt;p&gt;Les codes &lt;![CDATA[&lt;tag1&gt; and &lt;tag2&gt; ]]&gt;indiquent des nouveaux articles.&lt;/p&gt;</pre>
+     <p>This is perfectly correct from the XML syntax viewpoint. CDATA sections
+      are just a way to escape a block of text. It is a good idea to stay away
+     from CDATA from a localization viewpoint anyway: NCRs cannot be used in
+     CDATA sections and this may leads to some problem if you need to convert
+     the encoding of a document.</p>
+      <hr>
+      <h5><a name="loc_incss"></a>Is there any translatable text in a CSS
+      style-sheet?</h5>
+      <p>Finding translatable text in CSS is usually rare, but definitely
+      possible: As shown below, the value for the <code>content</code> property
+      of the <code>:before</code> and <code>:after</code> pseudo-elements is
+      often translatable:</p>
+      <pre>warning-para:before { content: &quot;Warning! &quot;; border: 2; color: red; }
+summary-body:after { content: &quot;End of Summary&quot;; }</pre>
+      <p>The choice of characters for <a href="#pres_cssquotes">the <code>quote</code>
+      property</a> may also need to be changed to correspond to the appropriate
+      locale preferences.</p>
+      <p>Any <i>generated content</i> need to be looked at carefully. This
+      includes numbered list generation, markers, and so forth. See more details
+      on CSS generated content in <a href="http://www.w3.org/TR/REC-CSS2/generate.html" target="_blank">the
+      CSS specifications</a>.</p>
+      <p>And obviously, any style defined in a CSS style-sheet may need to be
+      modified for a given language.</p>
+      <hr>
+      <h5><a name="loc_directives"></a>Is there a standard set of localization
+      directives?</h5>
+      <p>Not currently. But some effort to define such vocabulary are taking
+      place in the <a target="_blank" href="http://groups.yahoo.com/group/lisa-its">ITS
+      group</a>.</p>
+      <p>A standard vocabulary for localization directives would basically
+      define a set of elements and attributes you could use in any XML
+      documents, to specify localization-related information, similarly (but not
+      exactly) to the same way <code>xml:lang</code> can be used in specify the
+      language of an element in any XML document.</p>
+      <p>Localization directives would for example include attributes specifying
+      a maximum number of characters allowed in a content, whether an element is
+      translatable or not, elements to delimit terms, non-translatable text
+      within translatable content, and so forth.</p>
+      <p>Such vocabulary could be used as a namespace in any XML document, as in
+      the following examples:</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;DTD/xhtml1-strict.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot;
+      <b>xmlns:loc=&quot;urn:the-localization-directives-standard&quot;</b>&gt;
+ &lt;head&gt;&lt;title&gt;Title&lt;/title&gt;&lt;/head&gt;
+ &lt;body&gt;
+  &lt;h1 id=&quot;100&quot;&gt;Introduction to 
+   <b>&lt;loc:span term=&quot;yes&quot;&gt;</b>Document Management<b>&lt;/loc:span&gt;</b>&lt;/h1&gt;
+  &lt;p id=&quot;101&quot;&gt;Our company, <b>&lt;loc:span localize=&quot;no&quot;&gt;</b>Infinite Wisdom Inc.<b>&lt;/loc:span&gt;</b>,
+   provides quality courses on how to manage your documentation.&lt;/p&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</pre>
+      <p>Related information: the <a target="_blank" href="http://groups.yahoo.com/group/lisa-its/files/ITS-Requirements/ITS-Requirements.html">ITS
+      Requirements</a> (Working Draft).</p>
+      <hr>
+      <h5><a name="loc_bad"></a>Can I see some examples of XML documents causing
+      localization problems?</h5>
+      <p>Here are a few examples:</p>
+      <h6>Example 1</h6>
+      <p>The following document, while well-formed, is not easy to localize
+      because there is, most of the time, no easy way to indicate to the
+      translation tools that only elements starting with &quot;<code>msg</code>&quot;
+      are translatable. In addition using IDs in element names will most likely
+      cause many other problems.</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;error-messages xml:lang=&quot;en&quot;&gt;
+ &lt;msg001&gt;Cannot open file {0}.&lt;/msg001&gt;
+ &lt;note001&gt;Tip: {0} is the name of a file.&lt;/note001&gt;
+ &lt;msg002&gt;Invalid parameter.&lt;/msg002&gt;
+ &lt;msg999&gt;Connection not available. Please try later.&lt;/msg999&gt;
+&lt;/error-messages&gt;</pre>
+      <p>Instead use an attribute to identify the changing ID:</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;error-messages xml:lang=&quot;en&quot;&gt;
+ &lt;msg myId=&quot;1&quot;&gt;
+  &lt;text&gt;Cannot open file {0}.&lt;/text&gt;
+  &lt;note&gt;Tip: {0} is the name of a file.&lt;/note&gt;
+ &lt;/msg&gt;
+ &lt;msg myId=&quot;2&quot;&gt;
+  &lt;text&gt;Invalid parameter.&lt;/text&gt;
+ &lt;/msg&gt;
+ &lt;msg myId=&quot;999&quot;&gt;
+  &lt;text&gt;Connection not available. Please try later.&lt;/text&gt;
+ &lt;/msg&gt;
+&lt;/error-messages&gt;</pre>
+      <h6><br>
+      Example 2</h6>
+      <p>The following multilingual document is difficult to localize because,
+      most if not all the current translation tools available cannot make a
+      distinction of the elements to translate based on what value <code>xml:lang</code>
+      has. In addition, to have a quick turn-around it would be better to
+      translate French and Japanese at the same time, which means some extra
+      work to put back together the translations afterward.</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;messages xml:lang=&quot;en&quot;&gt;
+ &lt;prompt id=&quot;100&quot;&gt;
+  &lt;data xml:lang=&quot;en&quot;&gt;Press Enter to start.&lt;/data&gt;
+  &lt;data xml:lang=&quot;fr&quot;&gt;Press Enter to start.&lt;/data&gt;
+  &lt;data xml:lang=&quot;ja&quot;&gt;Press Enter to start.&lt;/data&gt;
+ &lt;/prompt&gt;
+ &lt;prompt id=&quot;101&quot;&gt;
+  &lt;data xml:lang=&quot;en&quot;&gt;Press Cancel to stop.&lt;/data&gt;
+  &lt;data xml:lang=&quot;fr&quot;&gt;Press Cancel to stop.&lt;/data&gt;
+  &lt;data xml:lang=&quot;ja&quot;&gt;Press Cancel to stop.&lt;/data&gt;
+ &lt;/prompt&gt;
+&lt;/messages&gt;</pre>
+      <p>Instead, use one document per language, at least for the material you
+      send to the localizer. If needed, after translation, you can group all
+      entries in a single file, but treat that step as a
+      &quot;compilation-like&quot; step to be done after localization.</p>
+      <h6><br>
+      Example 3</h6>
+      <p>The following document has one small problem: the content of <code>&lt;srcid&gt;</code>
+      is a unique ID that would be perfect to use for safe leveraging. But
+      element contents are a little bit more difficult to inherit than
+      attributes.</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;resources&gt;
+ &lt;res&gt;
+  &lt;srcid&gt;Module123.description::top&lt;/srcid&gt;
+  &lt;text&gt;Moves to the top of the list.&lt;/text&gt;
+ &lt;/res&gt;
+ &lt;res&gt;
+  &lt;srcid&gt;Module123.description::bottom&lt;/srcid&gt;
+  &lt;text&gt;Moves to the end of the list.&lt;/text&gt;
+ &lt;/res&gt;
+&lt;/resources&gt;</pre>
+      <p>Many tools would work better if the unique ID was stored in an
+      attribute of either <code>&lt;res&gt;</code> or <code>&lt;text&gt;</code>.
+      For example:
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;resources&gt;
+ &lt;res srcid=&quot;Module123.description::top&quot;&gt;
+  &lt;text&gt;Moves to the top of the list.&lt;/text&gt;
+ &lt;/res&gt;
+ &lt;res srcid=Module123.description::bottom&quot;&gt;
+  &lt;text&gt;Moves to the end of the list.&lt;/text&gt;
+ &lt;/res&gt;
+&lt;/resources&gt;</pre>
+      <h6><br>
+      <a name="loc_example4"></a>Example 4</h6>
+      <p>The following document offers a challenge when it comes to specify what
+      it translatable or not. The only way to distinguish the translatable item <code>&lt;data
+      type=&quot;text&quot;&gt;Cancel&lt;/data&gt;</code> for the
+      non-translatable item <code>&lt;data type=&quot;text&quot;&gt;images/cancel.gif&lt;/data&gt;</code>
+      is the value of the type attribute for their respective <code>&lt;component&gt;</code>
+      parent elements. As of today most translation tools do not have a
+      mechanism to specify translatable parts that can address this. Most tools
+      can only specify translatability at the element and attribute level,
+      without conditions.
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;dialogue xml:lang=&quot;en-gb&quot;&gt;
+ &lt;rsrc id=&quot;123&quot;&gt;
+  &lt;component id=&quot;456&quot; type=&quot;image&quot;&gt;
+   &lt;data type=&quot;text&quot;&gt;images/cancel.gif&lt;/data&gt;
+   &lt;data type=&quot;coordinates&quot;&gt;12,20,50,14&lt;/data&gt;
+  &lt;/component&gt;
+  &lt;component id=&quot;789&quot; type=&quot;caption&quot;&gt;
+   &lt;data type=&quot;text&quot;&gt;<b>Cancel</b>&lt;/data&gt;
+   &lt;data type=&quot;coordinates&quot;&gt;12,34,50,14&lt;/data&gt;
+  &lt;/component&gt;
+ &lt;/rsrc&gt;
+&lt;/dialogue&gt;</pre>
+      <p>The best way for tools to address this type of conditional translation
+      would be to support XPath expressions. For instance, in out example the
+      translatable nodes can be expressed as:</p>
+      <pre>//component[@type='caption']/data[@type='text']</pre>
+      <p>If you want to avoid such conditional situations, an alternate way to
+      architecture this XML format would be to have distinct elements for the
+      data types of a <code>&lt;component&gt;</code>. As shown below:
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;dialogue xml:lang=&quot;en-gb&quot;&gt;
+ &lt;rsrc id=&quot;123&quot;&gt;
+  &lt;component id=&quot;456&quot; type=&quot;image&quot;&gt;
+   &lt;url&gt;images/cancel.gif&lt;/url&gt;
+   &lt;coordinates&gt;12,20,50,14&lt;/coordinates&gt;
+  &lt;/component&gt;
+  &lt;component id=&quot;789&quot; type=&quot;caption&quot;&gt;
+   &lt;text&gt;<b>Cancel</b>&lt;/text&gt;
+   &lt;coordinates&gt;12,34,50,14&lt;/coordinates&gt;
+  &lt;/component&gt;
+ &lt;/rsrc&gt;
+&lt;/dialogue&gt;</pre>
+      <p>If the format cannot be changed, the solution to translate this file is
+      to have an XSL template that before translation adds extra elements
+      delimiting the content to translate, such as shown below with the <code>&lt;tbt&gt;</code>
+      (to-be-translated) element. These elements can be removed afterward.
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;dialogue xml:lang=&quot;en-gb&quot;&gt;
+ &lt;rsrc id=&quot;123&quot;&gt;
+  &lt;component type=&quot;image&quot;&gt;
+   &lt;data type=&quot;text&quot;&gt;images/cancel.gif&lt;/data&gt;
+   &lt;data type=&quot;coordinates&quot;&gt;12,20,50,14&lt;/data&gt;
+  &lt;/component&gt;
+  &lt;component id=&quot;123&quot; type=&quot;caption&quot;&gt;
+   &lt;data type=&quot;text&quot;&gt;&lt;tbt&gt;<b>Cancel</b>&lt;/tbt&gt;&lt;/data&gt;
+   &lt;data type=&quot;coordinates&quot;&gt;12,34,50,14&lt;/data&gt;
+  &lt;/component&gt;
+ &lt;/rsrc&gt;
+&lt;/dialogue&gt;</pre>
+      <p>The XSL template to get this <code>&lt;tbt&gt;</code> addition is the
+      following:</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;xsl:stylesheet
+ xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;1.0&quot;&gt;
+ &lt;xsl:template match=&quot;node()|@*&quot;&gt;
+  &lt;xsl:copy&gt;
+   &lt;xsl:apply-templates select=&quot;node()|@*&quot;/&gt;
+  &lt;/xsl:copy&gt;
+ &lt;/xsl:template&gt;
+ &lt;xsl:template match=&quot;//component[@type='caption']/data[@type='text']&quot;&gt;
+  &lt;xsl:copy&gt;
+   &lt;xsl:apply-templates select=&quot;@*&quot;/&gt;
+   &lt;tbt&gt;&lt;xsl:apply-templates/&gt;&lt;/tbt&gt;
+  &lt;/xsl:copy&gt;
+ &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</pre>
+      <h6><br>
+      Example 5</h6>
+      <p>The following document has several translatable items (marked in bold),
+      but there is no easy way to identify them, even using an XPath expression:
+      the <code>&lt;string&gt;</code> elements represent both keys and values,
+      and in addition not all values are translatable.</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;resources&gt;
+ &lt;section id=&quot;Homepage&quot;&gt;
+  &lt;arguments&gt;
+   &lt;string&gt;standard_page&lt;/string&gt;
+   &lt;string&gt;childlist&lt;/string&gt;
+  &lt;/arguments&gt;
+  &lt;variables&gt;
+   &lt;string&gt;POLICY&lt;/string&gt;
+   &lt;string&gt;<b>Corporate Policy</b>&lt;/string&gt;
+  &lt;/variables&gt;
+  &lt;keyvalue_pairs&gt;
+   &lt;string&gt;bar_Title&lt;/string&gt;
+   &lt;string&gt;<b>ABC Corporation - Policy Repository</b>&lt;/string&gt;
+   &lt;string&gt;bgColor&lt;/string&gt;
+   &lt;string&gt;NavajoWhite&lt;/string&gt;
+   &lt;string&gt;title&lt;/string&gt;
+   &lt;string&gt;<b>List of Available Policies</b>&lt;/string&gt;
+  &lt;/keyvalue_pairs&gt;
+ &lt;/section&gt;
+&lt;/resources&gt;</pre>
+      <p>A better way to store those data would be to have only one element for
+      each key/value pair, and a distinction between translatable values and
+      non-translatable ones, as shown below:</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;resources&gt;
+ &lt;section id=&quot;Homepage&quot;&gt;
+  &lt;arguments&gt;
+   &lt;string key=&quot;standard_page&quot;&gt;childlist&lt;/string&gt;
+  &lt;/arguments&gt;
+  &lt;variables&gt;
+   &lt;textstring key=&quot;POLICY&quot;&gt;<b>Corporate Policy</b>&lt;/textstring&gt;
+  &lt;/variables&gt;
+  &lt;keyvalue_pairs&gt;
+   &lt;textstring key=&quot;bar_Title&quot;&gt;<b>ABC Corporation - Policy Repository</b>&lt;/textstring&gt;
+   &lt;string key=&quot;bgColor&quot;&gt;NavajoWhite&lt;/string&gt;
+   &lt;textstring key=&quot;title&quot;&gt;<b>List of Available Policies</b>&lt;/textstring&gt;
+  &lt;/keyvalue_pairs&gt;
+ &lt;/section&gt;
+&lt;/resources&gt;</pre>
+      <h6><br>
+      Example 6</h6>
+      <p>In the following document the text to translate is to be processed with
+      some proprietary tool before being displayed and the XML document is only
+      a storage medium. The problem for localization here is that non-standard
+      markup exists in the document. The <code>[var Destination]</code>, <code>[bold]</code>
+      and <code>[/bold]</code> inline codes cannot be protected easily.</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;KBase&gt;
+ &lt;Section id=&quot;a123&quot;&gt;
+  &lt;Title&gt;ProSentinel prevented access to port <b>[var Destination]</b>&lt;/Title&gt;
+  &lt;Para id=&quot;a123-1&quot;&gt;The ProSentinel firewall stopped network traffic from 
+reaching your computer. No security breach has occurred. <b>[bold]</b>Your data 
+are safe<b>[/bold]</b>.&lt;/Para&gt;
+ &lt;/Section&gt;
+&lt;/KBase&gt;</pre>
+      <p>It would be much better to use XML-type inline codes (if necessary
+      using a different namespace than the container format), and to use an XSL
+      template to transform the content to the proprietary codes. The original
+      XML document would then be much easier to localize and look something like
+      this:</p>
+      <pre>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;KBase&gt;
+ &lt;Section id=&quot;a123&quot;&gt;
+  &lt;Title&gt;ProSentinel prevented access to port <b>&lt;var name=&quot;Destination&quot;/&gt;</b>&lt;/Title&gt;
+  &lt;Para id=&quot;a123-1&quot;&gt;The ProSentinel firewall stopped network traffic from 
+reaching your computer. No security breach has occurred. <b>&lt;emphasis&gt;</b>Your data 
+are safe<b>&lt;emphasis&gt;</b>.&lt;/Para&gt;
+ &lt;/Section&gt;
+&lt;/KBase&gt;</pre>
+      <p>&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#F4F0D7" valign="top">&nbsp;</td>
+    <td valign="top" align="left">
+      <p><a href="xmli18nfaq.htm" target="_top"><img border="0" src="images/backtotop.gif" width="79" height="21"></a></td>
+  </tr>
+</table>
+</div>
+
+</body>
+
+</html>

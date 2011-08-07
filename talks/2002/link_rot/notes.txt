@@ -1,0 +1,13 @@
+
+PHP
+- expose_php in php.ini
+-  ForceType /foo
+-  DefaultType application/x-httpd-php
+ = problem. GUI/Web Designer Editors
+- search engine ignore query strings.
+- switching to a different search engine
+ =  ReWriteRule (.*)\.html ($1).php CR
+- http://www.w3.org/Provider/Style/URI
+
+
+

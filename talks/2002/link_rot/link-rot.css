@@ -1,0 +1,46 @@
+/*
+ * $Id: link-rot.css,v 1.1 2002/10/09 19:11:28 sander Exp $
+ */
+
+/* Preformatted examples */
+pre.example {
+	white-space: pre;
+	font-family: monospace;
+	color: #000000;
+	font-weight: bold;
+	margin-right: 0;
+	margin-left: 0;
+}
+
+ul.toc { list-style: none }
+/* Table of contents styles */
+div.toc, div.subtoc {
+	border: none;
+	margin-right: 5%;
+	padding-top: 1px;
+	padding-bottom: 3px;
+}
+
+.center {  text-align: center}
+
+code, .code {
+	color: black;
+	font-family: monospace;
+	font-weight: bold;
+}
+
+.good {
+	border: solid green;
+	border-width: 2px;
+	color: green;
+	font-weight: bold;
+	margin-right: 5%;
+	margin-left: 0;
+}
+.bad  {
+	border: solid red;
+	border-width: 2px;
+	margin-left: 0;
+	margin-right: 5%;
+	color: rgb(192, 101, 101);
+}

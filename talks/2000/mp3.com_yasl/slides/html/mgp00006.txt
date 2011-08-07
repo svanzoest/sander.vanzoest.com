@@ -1,0 +1,14 @@
+
+Overview
+
+Process :
+
+        GET /example.html HTTP/1.1
+        Host: localhost
+
+Using yasl directives in the <directory> or <location> blocks we determine the yasl template to use for this XML content.
+
+Inside the yasl template <yasl:xml "filename.xml"/> states which XML file to use.
+
+mod_yasl parses the template and replaces yasl:value directives with content from the XML file.
+

@@ -1,0 +1,352 @@
+ACM Digital Library
+| > home </dl.cfm?coll=portal&dl=ACM&CFID=4998347&CFTOKEN=89478814> | > about </about.cfm> | > feedback <mailto:portal-feedback@hq.acm.org> | > logout
+</dl.cfm?coll=portal&dl=ACM&clear=yes&CFID=4998347&CFTOKEN=89478814>    |
+| Alexander Vanzoest  > Bookshelf
+</shelf.cfm?part=shelf&coll=portal&dl=ACM&CFID=4998347&CFTOKEN=89478814>
+   |
+
+ 
+
+| |
+|
+  Citation 
+
+|  
+| |
+
+ACM Computing Surveys (CSUR)
+<toc.cfm?id=J204&type=periodical&coll=portal&dl=ACM&CFID=4998347&CFTOKEN=89478814>
+>archive
+<toc.cfm?id=J204&type=periodical&coll=portal&dl=ACM&CFID=4998347&CFTOKEN=89478814>
+Volume 32 ,  Issue 3  (September 2000)
+<toc.cfm?id=367701&type=issue&coll=portal&dl=ACM&CFID=4998347&CFTOKEN=89478814>
+>toc
+<toc.cfm?id=367701&type=issue&coll=portal&dl=ACM&CFID=4998347&CFTOKEN=89478814>
+
+Electronic document addressing: dealing with change
+
+*Author *
+  Helen Ashman
+<results.cfm?query=%22P108829%22%20%3CIN%3E%20author&querydisp=%22Helen%20%20Ashman%22%20%3CIN%3E%20author&coll=portal&dl=ACM&CFID=4998347&CFTOKEN=89478814>
+ Univ. of Nottingham, Nottingham, UK
+
+*Publisher*
+ ACM Press   New York, NY, USA
+
+  Pages: 201 - 212  Periodical-Issue-Article
+  Year of Publication: 2000
+  ISSN:0360-0300
+
+DOI <http://www.doi.org/>http://doi.acm.org/10.1145/367701.367702 (Use
+this link to Bookmark this page)
+
+ 
+
+> full text <#FullText>   > appendices and supplements <#supp>   > abstract <#abstract>   > references <#references>   > citings <#citings>   > index terms <#IndexTerms>   > review <#review>   > peer to peer <#peers>  
+
+ 
+----------------
+> Discuss <#> > Similar
+<results.cfm?query=%3CLIKE%3E%20%28%22%7Bposex%3DVdkVgwKey%3Ameta%5Finfo%2F367702%7D%22%29&querydisp=Similar%20to%3A%20Electronic%20document%20addressing&coll=portal&dl=ACM&CFID=4998347&CFTOKEN=89478814>
+> Review this Article
+<http://www.reviews.com/reviewer/quickreview/frameset_toplevel.cfm?bib_id=367702>
+  Save to BinderSave to Binder <#>
+       
+> BibTex Format <#>
+
+------------------------------------------------------------------------
+
+<#CIT>FULL TEXT:   Access RulesAccess Rules <#>   (access denied!)
+
+  Click here to gain access to the Full Text!
+
+<#>	pdf pdf 92 KB
+
+<#CIT>APPENDICES and SUPPLEMENTS  
+this is display gz
+<http://delivery.acm.org/10.1145/370000/367702/supp/646.gz?key1=367702&key2=0014124301&coll=portal&dl=ACM&CFID=4998347&CFTOKEN=89478814>
+gz    10 KB  
+<?CFID=4998347&CFTOKEN=89478814>
+this is the very good description
+
+
+
+<#CIT>ABSTRACT
+
+The management of electronic document collections is fundamentally
+different from the management of paper documents. The ephemeral nature
+of some electronic documents means that the document address (i.e.,
+reference details of the document) can become incorrect some time after
+coming into use, resulting in references, such as index entries and
+hypertext links, failing to correctly address the document they
+describe. A classic case of invalidated references is on the World Wide
+Web—links that point to a named resource fail when the domain name, file
+name, or any other aspect of the addressed resource is changed,
+resulting in the well-known Error 404. Additionally, there are other
+errors which arise from changes to document collections.This paper
+surveys the strategies used both in World Wide Web software and other
+hypertext systems for managing the integrity of references and hence the
+integrity of links. Some strategies are preventative, not permitting
+errors to occur; others are corrective, discovering references errors
+and sometimes attempting to correct them; while the last strategy is
+adaptive, because references are calculated on a just-in-time basis,
+according the current state of the document collection.
+
+
+<#CIT>REFERENCES
+
+Note: OCR errors may be found in this Reference List extracted from the
+full text article. ACM has opted to expose the complete List rather than
+only correct and linked references.
+
+1   ACM. 2000. ACM Digital Library, http://www.acm. org/dl/.
+
+2   ARNOLD-MOORE, T. AND SACKS-DAVIS, R. 1994. Databases of Legislation:
+The Problems of Consolidation, Technical Report CITRI/TR-94- 9, Royal
+Melbourne Institute of Technology.
+
+3   ASHMAN, H. 1997. Theory and Practice of Large- Scale Hypermedia
+Management Systems, Ph.D. thesis, Royal Melbourne Institute of Technology.
+
+4   Helen Ashman , Hugh Davis , Jim Whitehead , Steve Caughey, Missing
+the 404: link integrity on the World Wide Web, Computer Networks and
+ISDN Systems, v.30 n.1-7, p.761-762, April 1, 1998
+<citation.cfm?id=298075&dl=ACM&coll=portal&CFID=4998347&CFTOKEN=89478814>
+
+5   ASHMAN, H., GARRIDO, A., AND OINAS-KUKKONEN, H. 1997. Hand-made and
+computed links, precomputed and dynamic links. In Proceedings of
+Hypermedia-Information Retrieval- Multimedia '97 (HIM '97) Conference,
+191-208.
+
+6   BERNERS-LEE, T. 1996. Universal resource identifiers in WWW: a
+unifying syntax for the expression of names and addresses of objects on
+the network as used in the World Wide Web, World Wide Web Journal 1, 2
+3-19.
+
+7   BERNERS-LEE, T., FIELDING, R., AND FRYSTYK, H. 1996. Hypertext
+transfer protocol HTTP/1.0, World Wide Web Journal 1, 2 59-94.
+
+8   BROWNE, S., DONGARRA, J., GREEN, S., MOORE, K., PEPIN, T., ROWAN,
+T., AND WADE, R. 1995. Location-Independent Naming for Virtual
+Distributed Software Repositories,
+http://www.netlib.org/utk/-papers/lifn/main. html.
+
+9   CAJUN. 2000. The CAJUN Project. Electronic Publishing Research
+Group. http://cajun.cs.nott. ac.uk.
+
+10   Leslie Carr , Gary Hill , David de Roure , Wendy Hall , Hugh Davis,
+Open information services, Computer Networks and ISDN Systems, v.28
+n.7-11, p.1027-1036, May 1996
+<citation.cfm?id=232727&dl=ACM&coll=portal&CFID=4998347&CFTOKEN=89478814>
+
+11   CHANKHUNTHOD, A., DANZIG, P., NEERDAELS, C., SCHWARTZ, M., AND
+WORRELL, K. 1995. A Hierarchical Internet Object Cache,
+http://excalibur.usc.edu/cache-html/cache.html.
+
+12   CNRI. Corporation for National Research Initiatives. 1998. The
+Handle System, http://www. handle.net/.
+
+13   CONNOLLY, D. 1996. Names and addresses; URIs, URLs, URNs, URCs.
+http://www.w3.org/pub/ www/Addressing/.
+
+14   Michael L. Creech, Author-oriented link management, Computer
+Networks and ISDN Systems, v.28 n.7-11, p.1015-1025, May 1996
+<citation.cfm?id=232726&dl=ACM&coll=portal&CFID=4998347&CFTOKEN=89478814>
+
+15   Hugh Davis, To embed or not to embed…, Communications of the ACM,
+v.38 n.8, p.108-109, Aug. 1995
+<citation.cfm?id=208367&dl=ACM&coll=portal&CFID=4998347&CFTOKEN=89478814>
+
+16   Hugh C. Davis, Referential integrity of links in open hypermedia
+systems, Proceedings of the ninth ACM conference on Hypertext and
+hypermedia : links, objects, time and space—structure in hypermedia
+systems: links, objects, time and space—structure in hypermedia systems,
+p.207-216, June 20-24, 1998, Pittsburgh, Pennsylvania, United States
+<citation.cfm?id=276650&dl=ACM&coll=portal&CFID=4998347&CFTOKEN=89478814>
+
+17   Hugh Davis , Wendy Hall , Ian Heath , Gary Hill , Rob Wilkins,
+Towards an integrated information environment with open hypermedia
+systems, Proceedings of the ACM conference on Hypertext, p.181-190,
+November 30-December 04, 1992, Milan, Italy
+<citation.cfm?id=168522&dl=ACM&coll=portal&CFID=4998347&CFTOKEN=89478814>
+
+18   IANELLA, R., SUE, H., AND LEONG, D. 1996. BURNS: basic urn service
+resolution for the internet. In Proceedings of the Asia-Pacific World
+Wide Web Conference, Beijing and Hong Kong,
+http://www.dstc.edu.au/Research/Research/ Resource
+Discovery/publications/apweb96/ index.html.
+
+19   David Ingham , Steve Caughey , Mark Little, Fixing the
+“broken-link” problem: the W3Objects approach, Computer Networks and
+ISDN Systems, v.28 n.7-11, p.1255-1268, May 1996
+<citation.cfm?id=232748&dl=ACM&coll=portal&CFID=4998347&CFTOKEN=89478814>
+
+20   IDF98. International DOI Foundation. 1998. About the DOI,
+http://www.doi.org/about the doi. html.
+
+21   Jane's. 2000. Jane's Information Group, All the World's Aircraft,
+CD-ROM.
+
+22   KANTOR, B. AND LAPSLEY, P. 1986. Network News Transfer Protocol-A
+Proposed Standard for the Stream-Based Transmission of News. Internet
+RFC 977, http://www.w3.org/ Protocols/rfc977/rfc977.txt.
+
+23   S. M. Kaplan , Y. S. Maarek, Incremental maintenance of semantic
+links in dynamically changing hypertext systems, Interacting with
+Computers, v.2 n.3, p.337-366, Dec. 1990
+<citation.cfm?id=95155&dl=ACM&coll=portal&CFID=4998347&CFTOKEN=89478814>
+
+24   KAPPE, F. 1995. A scalable architecture for maintaining referential
+integrity in distributed information systems, Journal of Universal
+Computer Science 1, 2 http://www. iicm.edu/jucs 1 2/a scalable
+architecture for.
+
+25   Ari Luotonen , Kevin Altis, World-Wide Web proxies, Computer
+Networks and ISDN Systems, v.27 n.2, p.147-154, Nov. 1994
+<citation.cfm?id=195678&dl=ACM&coll=portal&CFID=4998347&CFTOKEN=89478814>
+
+26   Cesare Maioli , Stefano Sola , Fabio Vitali, Wide-area distribution
+issues in Hypertext systems, Proceedings of the 11th annual
+international conference on Systems documentation, p.185-197, October
+05-08, 1993, Waterloo, Ontario, Canada
+<citation.cfm?id=166081&dl=ACM&coll=portal&CFID=4998347&CFTOKEN=89478814>
+
+27   Theodor H. Nelson, Managing immense storage, BYTE, v.13 n.1,
+p.225-238, January 1988
+<citation.cfm?id=44951&dl=ACM&coll=portal&CFID=4998347&CFTOKEN=89478814>
+
+28   OCLC, 1996. Online Computer Library Center, Inc. PURL,
+http://purl.oclc.org/.
+
+29   OJP. 1999. Open Journal Project. http://journals. ecs.soton.ac.uk.
+
+30   James E. Pitkow, Summary of WWW characterizations, Computer
+Networks and ISDN Systems, v.30 n.1-7, p.551-558, April 1, 1998
+<citation.cfm?id=297955&dl=ACM&coll=portal&CFID=4998347&CFTOKEN=89478814>
+
+31   James E. Pitkow , R. Kipp Jones, Supporting the Web: a distributed
+hyperlink database system, Computer Networks and ISDN Systems, v.28
+n.7-11, p.981-991, May 1996
+<citation.cfm?id=232723&dl=ACM&coll=portal&CFID=4998347&CFTOKEN=89478814>
+
+32   TANAKA, K., NISHIKAWA, N., HIRAYIMA, S., AND NANBA, K. 1991. Query
+pairs as hypertext links. In Proceedings of the 7th International
+Conference on Data Engineering, IEEE Computer Science Press, 456-463.
+
+33   THISTLEWAITE, P. 1995. Managing large hypermedia information bases:
+a case study involving the Australian parliament. Proceedings of the
+Ausweb '95 Conference, 223-228,
+http://ausweb.scu.edu.au/sponsored/ausweb/
+ausweb95/papers/management/thistlewaite/.
+
+34   Paul Thistlewaite, Automatic construction and management of large
+open webs, Information Processing and Management: an International
+Journal, v.33 n.2, p.161-173, March 1997
+<citation.cfm?id=256274&dl=ACM&coll=portal&CFID=4998347&CFTOKEN=89478814>
+
+35   Walter F. Tichy, RCS—a system for version control,
+Software—Practice & Experience, v.15 n.7, p.637-654, July 1985
+<citation.cfm?id=4202&dl=ACM&coll=portal&CFID=4998347&CFTOKEN=89478814>
+
+36   VANZYL, A., CESNIK, B., HEATH, I., AND DAVIS, H. 1994. Open
+hypertext systems: An examination of requirements, and analysis of
+implementation strategies, comparing microcosm, hyperTED, and the world
+wide web, http://www.inf-wiss.unikonstanz.de/Res/openhypermedia.html.
+
+37   VERBYLA, J. AND ASHMAN, H. 1994. A userconfigurable
+hypermedia-based interface via the functional model of the link,
+Hypermedia 6, 3, 193-208.
+
+
+<#CIT>CITINGS
+
+Robert Cailliau , Helen Ashman, Hypertext in the Web — a history, ACM
+Computing Surveys (CSUR), v.31 n.4es, Dec. 1999
+<citation.cfm?id=346036&dl=ACM&coll=portal&CFID=4998347&CFTOKEN=89478814>
+
+
+<#CIT>INDEX TERMS
+
+Primary Classification:
+  *H.* Information Systems
+<results.cfm?query=H%2E%2A%20%3CIN%3E%20CCS&coll=portal&dl=ACM&CFID=4998347&CFTOKEN=89478814>
+  *H.5* INFORMATION INTERFACES AND PRESENTATION (I.7)
+<results.cfm?query=%3CWORD%3E%20%22H%2E5%22%20%3CIN%3E%20CCS&coll=portal&dl=ACM&CFID=4998347&CFTOKEN=89478814>
+
+
+General Terms:
+Management
+<results.cfm?query=%22Management%22%20%3CIN%3E%20genterm&coll=portal&dl=ACM&CFID=4998347&CFTOKEN=89478814>,
+Reliability
+<results.cfm?query=%22Reliability%22%20%3CIN%3E%20genterm&coll=portal&dl=ACM&CFID=4998347&CFTOKEN=89478814>
+
+
+
+Keywords:
+404
+<results.cfm?query=%22404%22%20%3CIN%3E%20keyword&coll=portal&dl=ACM&CFID=4998347&CFTOKEN=89478814>,
+link
+<results.cfm?query=%22link%22%20%3CIN%3E%20keyword&coll=portal&dl=ACM&CFID=4998347&CFTOKEN=89478814>,
+link integrity
+<results.cfm?query=%22link%20integrity%22%20%3CIN%3E%20keyword&coll=portal&dl=ACM&CFID=4998347&CFTOKEN=89478814>
+
+
+
+<#CIT>REVIEW
+
+"Claudiu Popescu"
+<results.cfm?query=%22Claudiu%20Popescu%22%20%3CIN%3E%20reviewer&coll=portal&dl=ACM&CFID=4998347&CFTOKEN=89478814>
+
+
+This article analyzes the problem of the integrity of electronic
+documents, in particular, of Web sites. The main problem is that
+hyperlinks are frequently changed, producing the well-known Error 404.
+Based on the stunning fact that the average life of a WWW document is
+only 50 days, the article shows that solutions must be found. Link
+integrity is identified as the main problem. Eleven solutions for link
+integrity are then discussed. Each solution has its scope and degree of
+customer satisfaction. Each solution is presented either by examples of
+systems which implements it or references to papers were it is discussed
+in depth. The author has tested each solution, mentioning the advantages
+and drawbacks. I consider very interesting the topic of this paper,
+about a very critical aspect of today's computer usage. The paper gives
+a broad and interesting description of problems and solutions. It has
+also many good references.   Online Computing Reviews Service <#>
+
+
+<#CIT>Peer to Peer - Readers of this Article have also read:
+
+    * Editorial pointers
+      <citation.cfm?id=383695&dl=ACM&coll=portal&CFID=4998347&CFTOKEN=89478814>
+
+      *Communications of the ACM*   44, 9
+      Diane Crawford
+
+    * News track
+      <citation.cfm?id=383696&dl=ACM&coll=portal&CFID=4998347&CFTOKEN=89478814>
+
+      *Communications of the ACM*   44, 9
+      Robert Fox
+
+    * Forum
+      <citation.cfm?id=383697&dl=ACM&coll=portal&CFID=4998347&CFTOKEN=89478814>
+
+      *Communications of the ACM*   44, 9
+      Diane Crawford
+
+    * Information retrieval on the web
+      <citation.cfm?id=358934&dl=ACM&coll=portal&CFID=4998347&CFTOKEN=89478814>
+
+      *ACM Computing Surveys (CSUR)*   32, 2
+      Mei Kobayashi ,  Koichi Takeda
+
+    * External memory algorithms and data structures: dealing with
+      *massive data*
+      <citation.cfm?id=384193&dl=ACM&coll=portal&CFID=4998347&CFTOKEN=89478814>
+
+      *ACM Computing Surveys (CSUR)*   33, 2
+      Jeffrey Scott Vitter
+
+------------------------------------------------------------------------
+The ACM Portal is published by the Association for Computing Machinery.
+Copyright � 2002 ACM, Inc.

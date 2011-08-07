@@ -1,0 +1,16 @@
+
+Today and the future
+
+
+Individual Development
+
+XML content
+
+Layout and Style for each client platform/device.
+
+Language Translation and Internationalization
+
+Code to develop personalized view of the content
+
+Building of machines and network layout.
+
