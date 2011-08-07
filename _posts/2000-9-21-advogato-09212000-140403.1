@@ -1,0 +1,25 @@
+--- 
+layout: post
+title: Apache Mailing List Archives
+date: 2000-09-21 14:04:03 +00:00
+mt_id: 17
+---
+As some of you might have noticed, one of my fun projects, <a HREF="http://archive.covalent.net/">Apache Mailing List archives</a>, went live a week or so ago. I rewrote the mailing list software in OO perl from scratch using many
+of the great modules available on <a HREF="http://www.cpan.org/">CPAN</a>. Instead of the usual creation of HTML, this rewrite creates XML documents that then can be converted to just about any format using technologies such as XSL-T, XSL-FOP etc. It has MIME attachments support and to a limited extend handles different charsets and
+message/rfc822 forwarded messages.
+
+I looked at using <a HREF="http://www.mhonarc.org/">MHonarc</a> and have it spit out XML instead, but it was totally written in Perl 4 style, which was something I wasn't too thrilled about. So, I decided to write this from scratch. It probably has about
+70% or so of MHonarc's functionality, but over time I hope to surpass it.
+
+As some (most?) of you might have noticed the site hasn't been very stable, which is mainly because of JVM memory issues. I currently am using <a href="http://xml.apache.org/cocoon/">Cocoon</a> which is written in Java. It is one one of the longest publishing frameworks around that use XML and XSL-T, so I was hoping for some stability. I have been playing with the settings, but
+haven't gotten it to fully work (yet).
+
+I am also playing with other tools such as <a HREF="http://www.axkit.org/">AxKit</a> which are mod_perl based and something I would be more comfortable hacking on, so it could be we might switch to that in the near future.
+
+Ultimately I would like to see a C apache module that implementsmost of the functionality in C that would then provide (XS) glue to mod_perl and such if someone wants to do something more dynamic with it. If I can find the time I will probably
+spend a few nights coding something like that together.
+
+There are still some minor bugs in the current version of my mailing list archive perl code that I hope to fix in the next few days. Once that is fixed I will have to write some documentation with it so people will know how to use it and I will ask the higher
+powers if they would be alright with me throwing the code on <a HREF="http://search.cpan.org/search?author=SVANZOEST">CPAN</a>.
+
+I will try to keep you all posted.

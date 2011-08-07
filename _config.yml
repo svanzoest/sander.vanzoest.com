@@ -1,10 +1,13 @@
+owner-name: Sander van Zoest
+owner-page: Behind the Scenes
+owner-email: sander+blog@vanzoest.com
+license: CC-BY 3.0
+server: false
+lsi: false
 markdown: rdiscount
-auto: true
-
-exclude: ["README.md", "LICENSE.md", "TODO.md", "build", "test"]
-
-owner-name: your name
-owner-page: your homepage
-owner-email: your email
-
-license: your license of choice
+pygments: true
+permalink: /:title
+paginate: 10
+category_dir: topics
+category_title_prefix: 
+exclude: ["lib", "blog.rb", "Capfile", "config", "log", "Rakefile", "tmp","README.md", "LICENSE.md","build", "test"]

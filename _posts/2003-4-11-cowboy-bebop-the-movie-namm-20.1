@@ -1,0 +1,22 @@
+--- 
+layout: post
+title: "Cowboy Bebop: The Movie. NAMM 2003, VoiceXML Grammars"
+date: 2003-04-11 18:10:03 +00:00
+mt_id: 53
+---
+<b> Cowboy Bebop: The movie</b>
+
+This week we went to go see <a href="http://www.sonypictures.com/cthe/cowboybebop/">Cowboy  Bebop</a> at the Ken. I am always amazed how great of a series Cowboy Bebop is. The movie's plot was abruptly resolved, but it was entertaining none the less. It is also one of the few Anime's that has a sound track made up of a wide variety of genres of music. 
+
+<b>NAMM 2003</b>
+
+Lots of great new tools coming out this year. You can tell that we are moving to a more of a component rack system, where the filters, oscillators, knobs and faders can be combined with a USB/IEEE 1394 interface to create a virtual patch bay with custom hardware. The most exciting pieces are the new <a href="http://www.clavia.se/News/G2_1.htm">Nord Modular G2 Engine</a> and the Waldorf <a href="http://www.waldorf-music.com/afb/">AFB16</a>. Combine that some of the generic MIDI controller interfaces and you got a very flexible setup.
+
+<b>Apple to buy Universal Music</b>
+
+It is an interesting move, I am just hoping that Apple will use it to try to bring a consumer friendly online music service. There have been many that tried and failed, let's just hope that it doesn't take the rest of apple with it.
+Dan Gillmor has some <a href="http://weblog.siliconvalley.com/column/dangillmor/archives/000931.shtml#000931">valid concerns</a> on the subject as well. Lots of discussion and speculation going around with some good points by these <a href="http://www.pholist.org/">pholks</a>, such as <a href="http://blogs.it/0100198/2003/04/11.html#a918">Jobs' deal with Disney is up</a> and the thought that with DRM Apple might not be a platform the music industry will cater towards. I am actually pretty thrilled with Apple's stance on DRM.
+
+<b>VoiceXML 2.0 Grammars</b>
+
+Building an extensive front end interface with VoiceXML has been a great experience and is a giant leap forward from the old IVR systems. The main thing right now that bothers me is the trouble it takes to make the SRGS grammars handle both DTMF and voice input. Something as simple as &quot;Please enter your phone number or press star for more options&quot; seems to be pretty difficult to do. It seems that with most systems either want to use the <tt>&lt;grammar mode=&quot;voice&quot; /&gt;</tt> where the query string will actually contain the words/numbers matched by the grammar. Or you would use <tt>&lt;grammar mode=&quot;dtmf&quot; /&gt;</tt> and you would get everything entered but with the dtmf-* keywords (such as <tt>  ?num=dtmf-1+dtmf-8+dtmf-0&quot; </tt>, etc).  With the voice mode it is very hard to match dtmf-star, where when I use the dmtf mode, I need to strip dtmf- from the keys entered. I haven't found a better way, which is really a bummer, since it seems to me that a lot of people would have expected this to work similarly to how the default types (such as 'digits') work.

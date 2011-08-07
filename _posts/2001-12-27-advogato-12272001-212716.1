@@ -1,0 +1,61 @@
+--- 
+layout: post
+title: Advogato    12/27/2001 21:27:16
+date: 2001-12-27 21:27:16 +00:00
+mt_id: 48
+---
+      
+        <p>
+          <b>Vacation</b>
+        </p>
+        <p>
+After doing some minor consulting and hanging out for a
+couple of months, reading things and catching up on what has been going on in the world. I just recently took on a new
+full-time job. I will be doing more Network and System Architecture work for an old school dot.com.
+
+</p>
+        <p>
+During the time off, I ended up reading a few books, playing games, watching lots of ANIMEs and doing a trip along the
+southern states across the United States. It was a total
+of about 5,400 miles on the road in a little bit more then
+2 weeks. Other then that the significant other had other
+commitments that made her not able to join us on this trip.
+It was definitely worth it. While I have just about been
+everywhere in Europe, this was really the first time I made
+it to the east coast with some time to look around. It wasn't just for some conference where all you see is the insides of the hotel and (if you are lucky) a couple of
+bars around the corner.
+
+</p>
+        <p>
+          <b>Remote E-Mail</b>
+        </p>
+        <p>
+Now that I had a good trip where we wanted to do some remote
+logins to be able to check e-mail and such. Now that we have
+SSL based IMAP, POP3, S/MIME and PGP we are pretty good at
+securing e-mail body content and retrieval, but we still seem to be somewhat lacking in first delivery to the MTA.
+
+</p>
+        <p>
+On the windows client side there are a lot of MUA/MTAs that support the pop3 extensions [RFC2449], SASL [RFC2222] and
+SMTP Authentication [RFC2554]. On the UNIX side it tends to
+be a lot more slim. Since most clients tend to be just MUAs or only implement a short subset of the MTA. I wonder how
+some folks do MTA relaying of arbitrary mail messages? They
+must us static IPs in the ACLs, since that is about the only thing that I can see. 
+
+</p>
+        <p>
+Are any of you aware of a MTA client that supports SMTP Auth? Right now, I am just using a local
+qmail installation where I can just call 'qmail-inject -h' to have it delivered, but it would be better if I could have a way to sent it from the main MTA (via SMTP Auth).
+
+</p>
+        <p>
+          <b>Conferences and Proposals</b>
+        </p>
+        <p>
+Looks like it is time to start thinking of proposals for some of the conferences coming up such as the IETF, BSDCon and OSCon. It looks like another ApacheCon is pretty far out of reach, but I assume we are all just waiting for Apache HTTPD 2.0 to be released. I also have had thoughts of submitting a talk for the &quot;Emerging Technologies&quot; conference  put on by O'Reilly and Associates. Although, the deadline for that is in the next few days.
+
+</p>
+        <p><i>Happy New Year!, everyone!</i>.
+
+</p>
