@@ -1,0 +1,61 @@
+==================================================================
+https://keybase.io/svanzoest
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://sander.vanzoest.com
+  * I am svanzoest (https://keybase.io/svanzoest) on keybase.
+  * I have a public key with fingerprint 34C7 43B7 1434 A265 FD6F  B766 250C 5B20 35F9 9741
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "34c743b71434a265fd6fb766250c5b2035f99741",
+            "host": "keybase.io",
+            "key_id": "250C5B2035F99741",
+            "uid": "e05dfca9640b0a786282d8f6485fcf00",
+            "username": "svanzoest"
+        },
+        "service": {
+            "hostname": "sander.vanzoest.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1397422545,
+    "expire_in": 157680000,
+    "prev": "cee0cd3e062b50361638930cb799d27995d3598574a40692e2e6adb054c46a95",
+    "seqno": 6,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG/MacGPG2 v2.0.22 (Darwin)
+Comment: GPGTools - https://gpgtools.org
+
+owE1kUtrFEEQxye+wFXBhZxUNDSIl2Xt6dc8biqIePHgUXDtR81uq5mezEw2xpiD
+ePEQ8IHiLei38KIIAUE8rSjRi/gRvMkKUbuD24duqvr3/1cV9fjI3qjTPX342gKf
+vjg39/HdVEVXL08/rSHlzCrK19At2H0KWw6hrmpbtihHlOmEUZXEjDJJBC+MKFQi
+BOFYc0Uw5UWWJSxGPTRyTVB4GyUb6Fvncz4YWOOznr/Azwf+4oxf3v0AzE2hZSYY
+VlgmqSApMWkhWMoLXWAcwAbqUi6Cp5uxLO868IXWe8inx1ZDaDrUniGyNFD3Z2Bf
+u0XvUdWuddrd9sCobas86NvVKghWQA3+Ww2ULY2f3wvGUDfWlSiPPalbG7xj6lsn
+hDPeQ3CnsjUMbCB4IlLsTygDY2+pAbA2FLAgimMqYkHTjGKtkiwzxF/cUJ6lPGGS
+YZERICCkUZgzzYTMOArDLZUO5cK3KYdhLDssZbtcA1p/eH1f1O1EB/bvCQuMOgeP
+zta6LeeipxuTbf390in6WVbPn52Q0ea3nUMbvb+Pdq5Mjt34mUd/Fh78Pnn8682t
+rQ9vv/z6sfJys+vujc6+mcy/f3X/9Zkn8/8A
+=S2Ng
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/svanzoest
+
+==================================================================
+
