@@ -1,0 +1,69 @@
+==================================================================
+https://keybase.io/svanzoest
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://sander.vanzoest.com
+  * I am svanzoest (https://keybase.io/svanzoest) on keybase.
+  * I have a public key with fingerprint 34C7 43B7 1434 A265 FD6F  B766 250C 5B20 35F9 9741
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "01110ef4f438186f84dbd42a0ba0787f3213d8d3c737634da4ce04d6f61787e411cd0a",
+            "fingerprint": "34c743b71434a265fd6fb766250c5b2035f99741",
+            "host": "keybase.io",
+            "key_id": "250c5b2035f99741",
+            "kid": "01110ef4f438186f84dbd42a0ba0787f3213d8d3c737634da4ce04d6f61787e411cd0a",
+            "uid": "e05dfca9640b0a786282d8f6485fcf00",
+            "username": "svanzoest"
+        },
+        "revoke": {
+            "sig_ids": [
+                "082f7990e70fd26368f241e08b8d8a208f53f9868f8e2fe15243aaa20e5c4c620f"
+            ]
+        },
+        "service": {
+            "hostname": "sander.vanzoest.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1472163039,
+    "expire_in": 157680000,
+    "prev": "73f4920cabc2835f19de3a065b27d4432b219c2980384a33d488fd8e5922c0a3",
+    "seqno": 51,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Comment: GPGTools - https://gpgtools.org
+
+owGtUj1rFUEU3SQa9EXB4B+QEUHx8ZjvmX2F4A8Q7AwG85yPOy9Lkt3N7uZpDOkt
+JSBiYauCTdBCxIBVmthZiFgIIggpBEERLBRnH6azdJph7j3n3HPvnTvHp5LO7Jlj
+86fEz3sXJ17v2+TKq+VfG8gWfh31N9ASjC9Y9lA3g6XMoz7ChBAMgQfONNEyaO6t
+59Rga7DSKjBKmNeeOcWUZNwb7gBzL4MkMQ2cEOexQV0UsnwIVVlleRNlGXeKM6sI
+Z9xQKUJkWCUlFdgJSzETIU0VJ5G4WNQtI5qzpoZeVsRYfAzG9v6B/8++18ZygIUP
+zqSSY4uN0pJq6nWQXIvgAsYtsIYqNysQ0fXI5LeKOES02UUVjIolaAdbZ8Poukb9
+eYQ1DSpNMSgcPJVM6kA5Aayt9tpQrINgIdUxrIEGIIJyZkxMgHDcSYoDuha1Y8lR
+5sbi7ZgOypvcQ9U7MNFzxUr0V1ZFU7hiOQIWm6bso82dLmrWy5ZxA+zgr9bAZrmP
+u4qMEVR1VuSoT2Ip12StOOGKEskwS7sIbpZZBYOsRQglNY6nrQOjKKlY4CnFzlhH
+dVwPST0wg2XclvKcM2opSR1NNWaaG8Y81zp4DSKl1GHDUNvdal6gviDRpxm2jWXD
+3DRrFaDNzu2FQ8lsJ5k+PNl+4qRz9MTBz/48k/zWV7e/nK93L7990dv7tLP78Pq3
+s89Pzy1MbN/9+OPpycnRRPJk5s37R/vvZna+f31Gz10qtz6UUxtHmvsP5vYeb728
+MP0H
+=75zf
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/svanzoest
+
+==================================================================
