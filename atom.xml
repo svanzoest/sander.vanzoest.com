@@ -5,10 +5,10 @@ layout: nil
 <feed xmlns="http://www.w3.org/2005/Atom">
  
  <title>Sander van Zoest: Behind the Scenes</title>
- <link href="http://sander.vanzoest.com/atom.xml" rel="self" />
- <link href="http://sander.vanzoest.com/" />
+ <link href="https://sander.vanzoest.com/atom.xml" rel="self" />
+ <link href="https://sander.vanzoest.com/" />
  <updated>{{ site.time | date_to_xmlschema }}</updated>
- <id>http://sander.vanzoest.com<id>
+ <id>https://sander.vanzoest.com<id>
  <author>
    <name>Sander van Zoest</name>
    <email>sander+blog@vanzoest.com</email>
@@ -17,9 +17,9 @@ layout: nil
  {% for post in site.posts %}
  <entry>
    <title>{{ post.title }}</title>
-   <link href="http://sander.vanzoest.com{{ post.url }}" />
+   <link href="https://sander.vanzoest.com{{ post.url }}" />
    <updated>{{ post.date | date_to_xmlschema }}</updated>
-   <id>http://sander.vanzoest.com/{{ post.id }}</id>
+   <id>https://sander.vanzoest.com/{{ post.id }}</id>
    <content type="html">{{ post.content | xml_escape }}</content>
  </entry>
  {% endfor %}
