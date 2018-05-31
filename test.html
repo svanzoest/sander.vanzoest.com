@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html lang="en" ng-app="app" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="app" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Black Brook Golf Course | Teetimes Page</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/assets/images/teesnap-webclip.png" />
+    <link rel="shortcut icon" href="/assets/images/teesnap-webclip.png" />
+    <base href="https://blackbrook.teesnap.net/">
+
+                <link rel='stylesheet' href='/app/customer/_compile/prod/customer-1d1b4f1bcb.css' />
+        <!--[if lt IE 9]><script src="bower_components/html5shiv/dist/html5shiv.js"></script><![endif]-->
+</head>
+            <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-109029796-3', 'auto');
+        ga('send', 'pageview');
+        </script>
+    
+<body class="">
+        <div class="wrapper">
+        <div class="teetimes-select" ng-controller="TeetimesController">
+    <div class="teetimes-top">
+        <div ng-controller="HeaderController">
+        <div message-box></div>
+    <div class="header clear">
+        <div class="container header-content">
+            <div class="header-logo pull-left">
+				<a href="/" id="backto-course" class="link-no-underline">
+                                            <h2 class="property-name">Black Brook Golf Course</h2>
+                    
+                                                                
+                                    </a>
+            </div>
+            <div class="header-links pull-right hidden-xs">
+                <span>
+                                    <a href="http://www.blackbrookgolfcourse.com" class="link-no-underline">Course Homepage</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                
+									<a href="/" id="tee-times" class="link-no-underline">Tee Times</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+											<a class="link-no-underline" id="login-anchor" href="/login">Log In</a>
+									                </span>
+            </div>
+            <!-- Mobile Button -->
+            <div class="visible-xs menu-button" id="hamburger-menu" ng-class="{'open-menu':header.open, 'close-menu':!(header.open)}" ng-click="toggleMenu()">
+                <a href="">
+                    <span class="sr-only">Main menu toggle</span>
+                    <svg class="menu-button-container" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 22.5" enable-background="new 0 0 32 22.5" xml:space="preserve">
+                        <g class="menu-bars">
+                            <path class="bar" stroke="#000000" stroke-opacity="0.4" d="M20.945,8.75c0,0.69-0.5,1.25-1.117,1.25H3.141c-0.617,0-1.118-0.56-1.118-1.25l0,0c0-0.69,0.5-1.25,1.118-1.25h16.688C20.445,7.5,20.945,8.06,20.945,8.75L20.945,8.75z">
+                            </path>
+                            <path class="bar" stroke="#000000" stroke-opacity="0.4" d="M20.923,15c0,0.689-0.501,1.25-1.118,1.25H3.118C2.5,16.25,2,15.689,2,15l0,0c0-0.689,0.5-1.25,1.118-1.25 h16.687C20.422,13.75,20.923,14.311,20.923,15L20.923,15z">
+                            </path>
+                            <path class="bar" stroke="#000000" stroke-opacity="0.4" d="M20.969,21.25c0,0.689-0.5,1.25-1.117,1.25H3.164c-0.617,0-1.118-0.561-1.118-1.25l0,0c0-0.689,0.5-1.25,1.118-1.25h16.688C20.469,20,20.969,20.561,20.969,21.25L20.969,21.25z">
+                            </path>
+                            <rect fill="none"></rect>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <!-- Mobile Menu -->
+            <div class="mobile-menu visible-xs" ng-class="{'open-menu':(header.open)}">
+                <div class="list-background"></div>
+                <div class="list-menu">
+					                    	<p><a href="/" tabindex="{{header.open ? 0 : -1 }}" id="teetimes" class="link-no-underline link-color-white">Tee Times</a></p>
+					
+					                        <p><a href="http://www.blackbrookgolfcourse.com" id="course" tabindex="{{header.open ? 0 : -1 }}" class="link-no-underline link-color-white">Course Homepage</a></p>
+                    
+												                        <p><a href="/login" id="login" tabindex="{{header.open ? 0 : -1 }}" class="link-no-underline link-color-white">Log In</a></p>
+	                    					                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+        <div class="course-information">
+            <div class="container">
+                <div class="row">
+                    <div class="course-overview col-sm-5">
+                        <div class="overview-text" ng-hide="page.overview">
+                            <p class="hidden-xs">Established in 1927, Black Brook was designed by Bertie Way &ndash; who also designed The Country Club of Detroit, the Mayfield County Club and the famous South Course at Firestone Country Club in Akron. Black Brook Golf Course &amp; Practice Center has been owned and operated by the City of Mentor since 2005. The 18th hole was selected as one of News Channel 5&rsquo;s Dream 18, the Plain Dealer&rsquo;s Elite 18, and the course was voted one of the Best Places to Play by Golf Digest magazine. Black Brook Golf Course &amp; Practice Center has been named the &ldquo;Best of the Best&rdquo; in the golf course category by readers of The News-Herald four times!</p>
+                            <p class="visible-xs">Established in 1927, Black Brook was designed by Bertie Way &ndash; who also designed The Country Club of Detroit, the Mayfield County Club and the famous South Course at Firestone Country Club in Akron. Black Brook Golf Course &amp;...</p>
+                            <div class="btn-readmore">
+                                <a class="link-color-white visible-xs" ng-click="changeOverview(true)">Read More</a>
+                            </div>
+                        </div>
+
+                        <div class="overview-text ng-hide" ng-show="page.overview" ng-cloak>
+                            <p>Established in 1927, Black Brook was designed by Bertie Way &ndash; who also designed The Country Club of Detroit, the Mayfield County Club and the famous South Course at Firestone Country Club in Akron. Black Brook Golf Course &amp; Practice Center has been owned and operated by the City of Mentor since 2005. The 18th hole was selected as one of News Channel 5&rsquo;s Dream 18, the Plain Dealer&rsquo;s Elite 18, and the course was voted one of the Best Places to Play by Golf Digest magazine. Black Brook Golf Course &amp; Practice Center has been named the &ldquo;Best of the Best&rdquo; in the golf course category by readers of The News-Herald four times!</p>
+                            <div class="clearfix"></div>
+                            <div class="overview-center">
+                                <div class="visible-xs overview-data-mobile" ng-show="selections.course.slope && selections.course.par && selections.course.rating">
+                                    <div class="course-brief" ng-cloak>
+            <div class="brief-icon"><img class="golfer-image svg" alt="golfer" src="/assets/images/golfer-white.svg" /></div>
+        <div class="brief-info">
+        <div class="info-line">
+            <span class="info-data">{{selections.course.slope}}</span>
+            <span class="info-title">Slope</span>
+        </div>
+        <div class="info-line">
+            <span class="info-data">{{selections.course.par}}</span>
+            <span class="info-title">Par</span>
+        </div>
+        <div class="info-line">
+            <span class="info-data">{{selections.course.rating}}</span>
+            <span class="info-title">Rating</span>
+        </div>
+    </div>
+</div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="btn-readless">
+                                <a class="link-color-white visible-xs" ng-click="changeOverview(false)">Read Less</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hidden-xs col-md-2 col-md-offset-1 col-sm-3 col-sm-offset-0" ng-show="selections.course.slope && selections.course.par && selections.course.rating"><div class="course-brief" ng-cloak>
+            <div class="brief-icon"><img class="golfer-image svg" alt="golfer" src="/assets/images/golfer-white.svg" /></div>
+        <div class="brief-info">
+        <div class="info-line">
+            <span class="info-data">{{selections.course.slope}}</span>
+            <span class="info-title">Slope</span>
+        </div>
+        <div class="info-line">
+            <span class="info-data">{{selections.course.par}}</span>
+            <span class="info-title">Par</span>
+        </div>
+        <div class="info-line">
+            <span class="info-data">{{selections.course.rating}}</span>
+            <span class="info-title">Rating</span>
+        </div>
+    </div>
+</div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="teetimes-search" ng-cloak zum-waypoint="searchbar" down="flags.on" up="flags.off" ng-class="{'sticky': searchbar.flags.on}" ng-show="page.courses.length>0">
+        <div class="container">
+            <div class="row search-filters hidden-xs">
+                <div class="col-sm-8">
+
+                    <!-- Desktop Search Filters -->
+
+					<!-- Multi-course dropdown -->
+                    <div class="filters filters-help" ng-class="{'selected-menu': toggles.courses}">
+                        <div class="filters-selector course-selector" id="course-toggle" ng-click="toggleCourses()" ng-if="page.courses.length > 1">
+                            <div class="pull-left course-option">
+                                <span>{{ selections.course.name }}</span>
+                            </div>
+                            <span class="pull-right filter-arrow">
+                                <span class="svg"><a href=""><?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="10px" height="6.65625"
+     viewBox="0 0 12 8" style="enable-background:new 0 0 12 8;" xml:space="preserve">
+     <path d="M6.1,7.9c-0.2,0-0.4-0.1-0.5-0.2L0.2,1.2C-0.1,0.9,0,0.5,0.2,0.3C0.5,0,0.9,0.1,1.2,0.4l5,5.8l4.7-5.6c0.2-0.3,0.6-0.3,0.9-0.1c0.3,0.2,0.3,0.6,0.1,0.9L6.6,7.6C6.5,7.8,6.3,7.9,6.1,7.9C6.1,7.9,6.1,7.9,6.1,7.9z"/>
+</svg>
+<span class="sr-only">arrow down icon</span></a></span>
+                            </span>
+                        </div>
+                        <span ng-if="page.courses.length < 2">Show Tee Times <span class="hidden-sm">For</span>:</span>
+                        <div class="filters-dropdown" ng-show="toggles.courses">
+                            <div class="option" ng-repeat="course in page.courses" tabindex="0" id="course-{{course.id}}" ng-class="{active:selections.courseId==course.id}"  ng-click="event.click.selectCourse(course)" ng-keypress="event.keypress.selectCourse(course)">{{course.name}}</div>
+                        </div>
+                    </div>
+
+					<!-- Teetime calendar -->
+                    <div class="filters filters-calendar hidden-xs" ng-class="{'selected-menu': toggles.calendar}">
+                        <div class="filters-border filters-border-right"></div>
+                        <div class="filters-selector" id="calender-picker" ng-click="toggleCalendar()" >
+                            <span class="pull-left">
+                                <span class="visible-lg">{{selections.date | amDateFormat:'dddd, MMMM Do'}}</span>
+                                <span class="visible-md visible-xs">{{selections.date | amDateFormat:'ddd, MMMM Do'}}</span>
+                                <span class="visible-sm">{{selections.date | amDateFormat:'ddd, MMM Do'}}</span>
+                            </span>
+                            <span class="pull-right filter-arrow calendar-icon">
+                                <span class="svg">
+                                    <a href=""><span class="sr-only">calendar icon</span><?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="17.0625"
+   viewBox="0 0 15 16" style="enable-background:new 0 0 15 16;" xml:space="preserve">
+   <g>
+    <path d="M14.1,1.5h-3.7V0.7C10.4,0.3,10,0,9.7,0C9.3,0,9,0.3,9,0.7v0.8H6V0.7C6,0.3,5.7,0,5.3,0S4.6,0.3,4.6,0.7v0.8H0.9c-0.4,0-0.7,0.3-0.7,0.7v13.1c0,0.4,0.3,0.7,0.7,0.7h13.1c0.4,0,0.7-0.3,0.7-0.7V2.2C14.7,1.8,14.4,1.5,14.1,1.5z M4.6,2.9v0.4C4.6,3.7,5,4,5.3,4S6,3.7,6,3.3V2.9h3v0.4C9,3.7,9.3,4,9.7,4c0.4,0,0.7-0.3,0.7-0.7V2.9h3v3.8H1.6V2.9H4.6z M1.6,14.6V8.1h11.7v6.6H1.6z"/>
+    <rect x="2.7" y="11.5" width="2.2" height="2.2"/>
+    <rect x="6.4" y="11.5" width="2.2" height="2.2"/>
+    <rect x="10.1" y="11.5" width="2.2" height="2.2"/>
+    <rect x="2.7" y="8.7" width="2.2" height="2.2"/>
+    <rect x="6.4" y="8.7" width="2.2" height="2.2"/>
+    <rect x="10.1" y="8.7" width="2.2" height="2.2"/>
+</g>
+</svg>
+</a>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="filters-dropdown" ng-show="toggles.calendar">
+                            <div class="option calendar-option">
+                                <div class="pickadate-container" id="date-picker" pickadate ng-model="selections.searchDate" format="yyyy-mm-dd" default-date="'2018-05-31'" min-date="'2018-05-31'" max-date="selections.course.end_date" select-other-months="both" on-date-select="changeDate(date)" no-extra-rows></div>
+                            </div>
+                        </div>
+                    </div>
+
+					<!-- 9 or 18 hole dropdown -->
+                    <div class="filters filters-holes" id="hole-dropdown" ng-click="toggleHoles()" ng-class="{'selected-menu': toggles.holes}">
+                        <div class="filters-border filters-border-right"></div>
+                        <div class="filters-selector">
+                            <span class="pull-left">{{ selections.holes }} holes</span>
+                            <span class="pull-right filter-arrow">
+                                <span class="svg"><a href=""><span class="sr-only">arrow down icon</span><?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="10px" height="6.65625"
+     viewBox="0 0 12 8" style="enable-background:new 0 0 12 8;" xml:space="preserve">
+     <path d="M6.1,7.9c-0.2,0-0.4-0.1-0.5-0.2L0.2,1.2C-0.1,0.9,0,0.5,0.2,0.3C0.5,0,0.9,0.1,1.2,0.4l5,5.8l4.7-5.6c0.2-0.3,0.6-0.3,0.9-0.1c0.3,0.2,0.3,0.6,0.1,0.9L6.6,7.6C6.5,7.8,6.3,7.9,6.1,7.9C6.1,7.9,6.1,7.9,6.1,7.9z"/>
+</svg>
+</a></span>
+                            </span>
+                        </div>
+                        <div class="filters-dropdown" ng-show="toggles.holes">
+                            <div class="option" id="hole-{{hole}}" tabindex="0" ng-repeat="hole in selections.course.holes_array" ng-class="{active: selections.holes==hole}" ng-click="event.click.selectHoles(hole)" ng-keypress="event.keypress.selectHoles(hole)">{{hole}} holes</div>
+                        </div>
+                    </div>
+
+					<!-- Number of players -->
+                    <div class="filters filters-players" id="player-dropdown" ng-click="togglePlayers()" ng-class="{'selected-menu': toggles.players}">
+                        <div class="filters-border filters-border-right"></div>
+                        <div class="filters-selector">
+                            <span class="pull-left">{{ selections.players }} player{{ (selections.players > 1) ? 's' : null }}</span>
+                            <span class="pull-right filter-arrow">
+                                <span class="svg"><a href=""><span class="sr-only">arrow down icon</span><?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="10px" height="6.65625"
+     viewBox="0 0 12 8" style="enable-background:new 0 0 12 8;" xml:space="preserve">
+     <path d="M6.1,7.9c-0.2,0-0.4-0.1-0.5-0.2L0.2,1.2C-0.1,0.9,0,0.5,0.2,0.3C0.5,0,0.9,0.1,1.2,0.4l5,5.8l4.7-5.6c0.2-0.3,0.6-0.3,0.9-0.1c0.3,0.2,0.3,0.6,0.1,0.9L6.6,7.6C6.5,7.8,6.3,7.9,6.1,7.9C6.1,7.9,6.1,7.9,6.1,7.9z"/>
+</svg>
+</a></span>
+                            </span>
+                        </div>
+                        <div class="filters-dropdown" ng-show="toggles.players">
+                            <div class="hole-9 option" id="player-{{p}}" tabindex="0" ng-class="{active:selections.players==p}" ng-keypress="event.keypress.selectPlayers(p)" ng-click="event.click.selectPlayers(p)" ng-repeat="p in selections.course.players_array">{{p}} players</div>
+                        </div>
+                    </div>
+
+                    <div class="filters filters-search" ng-show="selections.course.addons=='unavailable'">
+                        <button ng-click="getSelectedTeesheet()" class="btn btn-default btn-block btn-custom">Search</button>
+                    </div>
+
+					<!-- Addons (with/without cart) -->
+                    <div class="filters filters-addons" id="addons-dropdown" ng-click="toggleAddons()" ng-class="{'selected-menu': toggles.addons}" ng-show="selections.course.addons!='unavailable'">
+                        <div class="filters-border"></div>
+                        <div class="filters-selector">
+                            <span class="pull-left">{{ selections.addons=='on' ? 'W/ Cart' : 'W/O Cart' }}</span>
+                            <span class="pull-right filter-arrow">
+                                <span class="svg"><a href=""><?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="10px" height="6.65625"
+     viewBox="0 0 12 8" style="enable-background:new 0 0 12 8;" xml:space="preserve">
+     <path d="M6.1,7.9c-0.2,0-0.4-0.1-0.5-0.2L0.2,1.2C-0.1,0.9,0,0.5,0.2,0.3C0.5,0,0.9,0.1,1.2,0.4l5,5.8l4.7-5.6c0.2-0.3,0.6-0.3,0.9-0.1c0.3,0.2,0.3,0.6,0.1,0.9L6.6,7.6C6.5,7.8,6.3,7.9,6.1,7.9C6.1,7.9,6.1,7.9,6.1,7.9z"/>
+</svg>
+</a></span>
+                            </span>
+                        </div>
+                        <div class="filters-dropdown" ng-show="toggles.addons">
+                            <div class="option" tabindex="0" ng-repeat="addons in selections.course.addons_array" ng-class="{active: selections.addons==addons}" ng-keypress="event.keypress.selectAddons(addons)" ng-click="event.click.selectAddons(addons)">{{page.addonSelectArray[addons]}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Search Filters -->
+            <div class="visible-xs mobile-filters">
+                <div class="filter-title filter-title-course">Show tee times for:</div>
+                <div class="filter-buttons filter-holes" ng-show="page.courses.length > 1">
+                    <div class="filter-button" ng-repeat="course in page.courses">
+                        <div class="filter-number" tabindex="0" id="mobile-course-{{course.id}}" ng-class="{'selected-option':selections.courseId==course.id}" ng-keypress="event.keypress.selectCourse(course)" ng-click="event.click.selectCourse(course)">{{course.name}}</div>
+                    </div>
+                </div>
+                 <div class="filter-buttons filter-calendar-container" ng-class="{'selected': toggles.calendar}">
+                    <div class="filter-calendar">
+                        <div class="filter-calendar-selected" ng-show="toggles.calendar">
+                            <div class="background-show"></div>
+                        </div>
+                        <div class="date-title" ng-show="page.courses.length > 1">Date Of Play:</div>
+                        <div class="filter-selector" ng-click="toggleCalendar()" id="mobile-calender-picker">
+                            <span class="pull-left">{{selections.date | amDateFormat:'dddd, MMMM Do'}}</span>
+                            <span class="pull-right svg"><a href=""><span class="sr-only">calendar icon</span><?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="17.0625"
+   viewBox="0 0 15 16" style="enable-background:new 0 0 15 16;" xml:space="preserve">
+   <g>
+    <path d="M14.1,1.5h-3.7V0.7C10.4,0.3,10,0,9.7,0C9.3,0,9,0.3,9,0.7v0.8H6V0.7C6,0.3,5.7,0,5.3,0S4.6,0.3,4.6,0.7v0.8H0.9c-0.4,0-0.7,0.3-0.7,0.7v13.1c0,0.4,0.3,0.7,0.7,0.7h13.1c0.4,0,0.7-0.3,0.7-0.7V2.2C14.7,1.8,14.4,1.5,14.1,1.5z M4.6,2.9v0.4C4.6,3.7,5,4,5.3,4S6,3.7,6,3.3V2.9h3v0.4C9,3.7,9.3,4,9.7,4c0.4,0,0.7-0.3,0.7-0.7V2.9h3v3.8H1.6V2.9H4.6z M1.6,14.6V8.1h11.7v6.6H1.6z"/>
+    <rect x="2.7" y="11.5" width="2.2" height="2.2"/>
+    <rect x="6.4" y="11.5" width="2.2" height="2.2"/>
+    <rect x="10.1" y="11.5" width="2.2" height="2.2"/>
+    <rect x="2.7" y="8.7" width="2.2" height="2.2"/>
+    <rect x="6.4" y="8.7" width="2.2" height="2.2"/>
+    <rect x="10.1" y="8.7" width="2.2" height="2.2"/>
+</g>
+</svg>
+</a></span>
+                        </div>
+                        <div class="filter-calendar-open" ng-show="toggles.calendar">
+                            <div class="pickadate-container" id="mobile-date-picker" pickadate ng-model="selections.searchDate" format="yyyy-mm-dd" default-date="'2018-05-31'" min-date="'2018-05-31'" max-date="selections.course.end_date" select-other-months="both" on-date-select="changeDate(date)" no-extra-rows></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-title">Number of holes</div>
+                <div class="filter-buttons filter-holes">
+                    <div class="filter-button" ng-repeat="hole in selections.course.holes_array">
+                        <div class="filter-number" tabindex="0" id="mobile-hole-{{hole}}" ng-class="{'selected-option': selections.holes==hole}" ng-keypress="event.keypress.selectHoles(hole)" ng-click="event.click.selectHoles(hole)">{{hole}} holes</div>
+                    </div>
+                </div>
+                <div class="filter-title">Number of players</div>
+                <div class="filter-buttons filter-players">
+                    <div class="filter-button" ng-repeat="player in selections.course.players_array">
+                        <div class="filter-number" tabindex="0" id="mobile-player-{{player}}" ng-class="{'selected-option': selections.players==player}" ng-keypress="event.keypress.selectPlayers(player)" ng-click="event.click.selectPlayers(player)">{{player}}</div>
+                    </div>
+                </div>
+                <div class="filter-title" ng-show="selections.course.addons!='unavailable'">Addons</div>
+                <div class="filter-buttons filter-addons" ng-show="selections.course.addons!='unavailable'">
+                    <div class="filter-button" ng-class="{'required-selection': selections.course.addons=='required'}">
+                        <div class="filter-number" tabindex="0" ng-class="{'selected-option': selections.addons=='on'}" ng-keypress="event.keypress.selectAddons('on')" ng-click="event.click.selectAddons('on')">With Cart</div>
+                    </div>
+                    <div class="filter-button">
+                        <div class="filter-number" tabindex="0" ng-hide="isAddonRequired()" ng-class="{'selected-option': selections.addons=='off'}" ng-keypress="event.keypress.selectAddons('off')" ng-click="event.click.selectAddons('off')">Without Cart</div>
+                    </div>
+                </div>
+                <div class="filter-search">
+                    <button ng-click="getSelectedTeesheet()" class="btn btn-default btn-block">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="teetimes-search-placeholder" ng-cloak ng-class="{'nothidden': searchbar.flags.on}"></div>
+
+    <div class="clearfix"></div>
+
+    <div class="teetimes-results" ng-cloak>
+        <div class="container">
+            <div ng-show="page.teetimesError || page.courses.length<1">
+                <div class="teetimes-error">
+                    <span><img alt="cloud-logo" src="assets/images/icons/logo-cloud-blue.svg" /></span>
+                    <h2>Tee times are currently unavailable due to maintenance. Please check back soon.</h2>
+                </div>
+            </div>
+
+            <div class="row" ng-hide="page.teetimesError || page.courses.length<1">
+				<!-- Left column - mobile - (Course info) -->
+                <div class="results-title col-xs-8">
+                    <div class="visible-xs results-info-small">
+                        <div class="info-block-description" ng-show="selections.course.infos.length > 0" ng-repeat="info in selections.course.infos">
+                            <div class="visible-xs">
+                                                                    <img class="svg info-icon-small" alt="info-icon" ng-src="/assets/images/icons/{{info.icon}}-blue.svg" />
+                                                            </div>
+                            <div class="info-message">
+                                <p>{{info.text}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+				<!-- Left column - desktop - (Course info, weather, Google map) -->
+                <div class="col-sm-2 hidden-xs results-info-column">
+                    <div class="results-info" ng-if="selections.course.infos.length > 0">
+                        <h3 class="info-title title-section-detail">Booking Information</h3>
+                        <div class="info-set" ng-repeat="(k, info) in selections.course.infos">
+                        <hr ng-show="k>0"/>
+                                                            <div class="info-icon"><img class="svg" alt="info-icon" ng-src="/assets/images/icons/{{info.icon}}-blue.svg" /></div>
+                                                        <div class="info-message">
+                                <p>{{info.text}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gift Card Balance Lookup -->
+                    <div class="results-info gift-card-wrapper"
+                        ng-if="page.property.gift_card_enabled"
+                        ng-class="{isLoading: giftCard.isLoading}"
+                        ng-include="'app/customer/teesheet/partials/gift-card-widget.html'">
+                    </div>
+
+                    <!-- Weather Forecast -->
+                    <div weather-info date="{{selections.searchDate}}" class="results-info" ng-if="page.property.weather_enabled"></div>
+
+                    <!-- Google Map -->
+                    <div class="results-info">
+                        <h3 class="info-title title-section-detail">Location</h3>
+                                                    <div class="info-set icon-map">
+                                <ng-map class="info-icon-map" center="41.715795, -81.3199" zoom="14" scrollwheel="false" disable-default-u-i="true">
+                                    <marker position="41.715795, -81.3199" title="Black Brook Golf Course"></marker>
+                                </ng-map>
+                            </div>
+                                                <div class="info-message info-map">
+                            <a href="http://maps.google.com/?q=8900 Lake Shore Blvd Mentor Ohio 44060" target="_blank" class="link-color-blue link-no-underline">
+                                8900 Lake Shore Blvd<br/>Mentor, Ohio 44060
+                                                                    <br/>Cleveland
+                                                            </a>
+                        </div>
+                    </div>
+                </div>
+
+				<!-- Teetime listings -->
+                <div class="col-sm-6 results-list">
+                    <div class="loader" ng-show="page.resultsLoading">
+                        <div class="teesnap-loader">
+                            <img alt="white-loader" src="assets/images/loading-white-76px.gif" />
+                        </div>
+                    </div>
+
+					<!-- Teetime listings -->
+                    <div ng-show="!page.resultsLoading && availableTimes.length">
+                        <table class="table results-table">
+                            <thead class="hidden-xs">
+                                <tr>
+                                    <th class="title-section-detail results-time">Time</th>
+                                    <th class="title-section-detail results-rate">Rate</th>
+                                    <th class="title-section-detail results-button"><span class="sr-only">Reserve</span></th>
+                                </tr>
+                            </thead>
+							<tbody>
+                                <tr class="teetime-row"
+                                    ng-if="teeTime.$$isInTheFuture"
+                                    ng-repeat="(key, teeTime) in availableTimes = (page.teetimes | filter: getAvailableTimes(teeTime))">
+
+                                    <td class="results-time">{{ dateTimeHelper.time(teeTime.teeTime) }}</td>
+									<td class="results-rate" ng-class="{'profile-discount': !!teeTime.$$pricingProfile, 'high-contrast': page.property.high_contrast_option}">
+										<div class="hidden-sm hidden-xs">
+											<span>${{ teeTimePrice(teeTime) }} ea</span>
+											<span ng-if="teeTime.$$pricingProfile" class="profile-name">{{ teeTime.$$pricingProfile }}</span>
+										</div>
+										<div class="visible-sm visible-xs">
+											<a ng-if="teeTime.$$pricingProfile" class="link-no-underline" uib-popover-html="mobilePopoverContent(teeTime)" popover-trigger="outsideClick">
+												<span>${{ teeTimePrice(teeTime) }}</span>
+												<span class="visible-sm-inline">ea</span>
+											</a>
+
+											<span ng-if="!teeTime.$$pricingProfile">
+												<span>${{ teeTimePrice(teeTime) }}</span>
+												<span class="visible-sm-inline">ea</span>
+											</span>
+										</div>
+									</td>
+
+									<td class="results-button hidden-xs">
+										<button ng-click="goToReserve(teeTime)" class="btn btn-primary btn-sm btn-custom btn-block">
+											<ng-pluralize count="selections.players" when="{
+												'1': 'Reserve {} player',
+												'other': 'Reserve {} players'
+											}"></ng-pluralize>
+										</button>
+									</td>
+									<td class="results-button visible-xs">
+										<button ng-click="goToReserve(teeTime)" class="btn btn-primary btn-sm btn-custom btn-block">
+											<ng-pluralize count="selections.players" when="{
+												'1': 'Reserve one',
+												'2': 'Reserve two',
+												'3': 'Reserve three',
+												'4': 'Reserve four'
+											}"></ng-pluralize>
+										</button>
+									</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+					<!-- No teetimes error/selection for another day -->
+                    <div ng-show="!page.resultsLoading && !availableTimes.length">
+                        <div class="search-message">
+                            <h3 class="title-section-detail hidden-xs">Message</h3>
+                            <p class="search-message-available" ng-if="!promotionToken">Sorry, there are no available tee times on <br class="visible-xs" /> {{selections.date | amDateFormat:'dddd, MMMM Do'}}. Please adjust the parameters selected above, or select from the next available days below.</p>
+                            <p class="search-message-available" ng-if="promotionToken">Sorry, all of the tee times have been booked! <a href="" ng-click="getSelectedTeesheet()">Click here</a> to view the rest of the day’s tee times.</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4 none-third" ng-repeat="time in page.nextTimes">
+                                <div class="search-row">
+                                    <p class="search-day">{{ time | amDateFormat:'dddd' }}</p>
+                                    <p class="search-date">{{ time | amDateFormat:'MMMM Do' }}</p>
+                                    <div class="search-tee-btn">
+                                        <button class="btn btn-primary" ng-click="changeDate(time)">VIEW TEE TIMES</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.courses = [{"id":396,"created_at":"2018-02-22 18:28:27","updated_at":"2018-02-22 20:39:49","deleted_at":null,"property_id":376,"key":"blackbrook","name":"Black Brook Golf Course","description":null,"cancellable":true,"advance":7,"min_players":1,"max_players":4,"core_id":503,"slope":"124","par":"71","rating":"70.3","enabled":true,"holes":"both_default_eighteen","addons":"available","cimage_id":null,"hours_cancellation":12,"section_options":"front_only","sequence":null,"start_date":"2018-05-15","players_array":[1,2,3,4],"holes_array":[9,18],"addons_array":["on","off"],"addons_default":"on","holes_default":18,"holes_regex":"\/(9|(18))\/","customer_enabled":true,"infos":[]}];
+    window.property = {"id":376,"created_at":"2018-02-22 18:10:26","updated_at":"2018-02-22 20:39:49","deleted_at":null,"tenant_id":343,"key":"blackbrook","name":"Black Brook Golf Course","email":"blackbrookgc@cityofmentor.com","phone":"4409510010","description":"Established in 1927, Black Brook was designed by Bertie Way \u2013 who also designed The Country Club of Detroit, the Mayfield County Club and the famous South Course at Firestone Country Club in Akron. Black Brook Golf Course & Practice Center has been owned and operated by the City of Mentor since 2005. The 18th hole was selected as one of News Channel 5\u2019s Dream 18, the Plain Dealer\u2019s Elite 18, and the course was voted one of the Best Places to Play by Golf Digest magazine. Black Brook Golf Course & Practice Center has been named the \u201cBest of the Best\u201d in the golf course category by readers of The News-Herald four times!","enabled":true,"thanks_code":null,"thanks_message":"Thank you for booking a Tee Time at Black Brook Golf Course. We look forward to serving you! If you have any questions, please feel free to contact the Golf Shop at (440) 951-0010.","core_id":500,"logo_url":null,"logo_white_url":null,"back_url":"http:\/\/www.blackbrookgolfcourse.com","address_street":"8900 Lake Shore Blvd","address_city":"Mentor","address_region":"Ohio","address_code":"44060","address_country":"US","address_metro":"Cleveland","time_zone":"America\/New_York","latitude":"41.715795","longitude":"-81.3199","marketing_icon":"golf-ball","marketing_text":null,"campaign_monitor_list_id":null,"facebook":"BlackBrookGolfCourse","twitter":"blackbrookgolf","pinterest":null,"google_plus":null,"youtube":null,"instagram":null,"tumblr":null,"login_message":false,"prop_name_logo":false,"high_contrast_option":false,"weather_enabled":true,"gift_card_enabled":true,"courses":[{"id":396,"created_at":"2018-02-22 18:28:27","updated_at":"2018-02-22 20:39:49","deleted_at":null,"property_id":376,"key":"blackbrook","name":"Black Brook Golf Course","description":null,"cancellable":true,"advance":7,"min_players":1,"max_players":4,"core_id":503,"slope":"124","par":"71","rating":"70.3","enabled":true,"holes":"both_default_eighteen","addons":"available","cimage_id":null,"hours_cancellation":12,"section_options":"front_only","sequence":null,"start_date":"2018-05-15","players_array":[1,2,3,4],"holes_array":[9,18],"addons_array":["on","off"],"addons_default":"on","holes_default":18,"holes_regex":"\/(9|(18))\/","customer_enabled":true,"infos":[]}],"revision_id":24630287,"self_registration":true,"short_description":"Established in 1927, Black Brook was designed by Bertie Way \u2013 who also designed The Country Club of Detroit, the Mayfield County Club and the famous South Course at Firestone Country Club in Akron. Black Brook Golf Course &","today_date":"2018-05-31","local_time":"2018-05-31T18:07","customer_enabled":true};
+    window.todayDate = "2018-05-31";
+    window.bookmark = null;
+    window.promotionToken = null;
+    window.promotionCourseId = null;
+</script>
+
+        <div class="push"></div>
+    </div>
+    <div loading-blocker></div>
+    <div class="footer" ng-controller="FooterController">
+    <div class="container">
+        <div class="row hidden-xs">
+            <div class="footer-block footer-branding col-md-2 col-sm-4">
+                <div class="block-title">&nbsp;</div>
+                <div class="block-content content-branding">
+                    <a href="https://www.teesnap.com/" target="_blank" class="link-no-underline">
+                                                    <img class="svg" alt="slate-logo" src="/assets/images/icons/logo-cloud-green.svg" />
+                                                <p class="block-first-line">Powered by Teesnap</p>
+                        <p class="version">v.3.0.2</p>
+                    </a>
+                </div>
+            </div>
+				            <div class="footer-block footer-contact col-md-2 col-sm-4">
+					<div class="block-title">Contact</div>
+	                <div class="block-content">
+	                    <p class="block-first-line"><a href="mailto:blackbrookgc@cityofmentor.com" class="link-no-underline">blackbrookgc@cityofmentor.com</a></p>
+	                    <p>4409510010</p>
+	                </div>
+	            </div>
+			
+			                <div class="footer-block footer-social col-md-1 col-sm-4">
+                    <div class="block-title">Social</div>
+                    <div class="block-content">
+                                                    <a href="https://facebook.com/BlackBrookGolfCourse" target="_blank" class="social-icon social-facebook link-no-underline"><span class="sr-only">Facebook</span><span class="fa fa-facebook"></span></a>
+                                                                                                                            <a href="https://twitter.com/blackbrookgolf" target="_blank" class="social-icon social-twitter link-no-underline"><span class="sr-only">Twitter</span><span class="fa fa-twitter"></span></a>
+                                            </div>
+                </div>
+			
+            
+        </div>
+
+        <!-- Footer Mobile -->
+        <div class="container-small visible-xs">
+            <div class="contact-number-small">
+                <p><a href="tel:4409510010" class="link-no-underline">4409510010</a></p>
+            </div>
+            <div class="contact-email-small">
+                <p><a href="mailto:blackbrookgc@cityofmentor.com" class="link-no-underline">blackbrookgc@cityofmentor.com</a></p>
+            </div>
+            <div class="contact-address-small">
+                <a href="http://maps.google.com/?q=8900 Lake Shore Blvd Mentor Ohio 44060" class="link-no-underline" target="_blank">8900 Lake Shore Blvd<br/>Mentor, Ohio 44060
+                                            <br/>Cleveland
+                                    </a>
+            </div>
+
+            
+                            <div class="contact-social-small">
+                                            <a href="https://facebook.com/BlackBrookGolfCourse" target="_blank" class="social-icon social-facebook link-no-underline"><span class="sr-only">Facebook</span><span class="fa fa-facebook"></span></a>
+                                                                                                        <a href="https://twitter.com/blackbrookgolf" target="_blank" class="social-icon social-twitter link-no-underline"><span class="sr-only">Twitter</span><span class="fa fa-twitter"></span></a>
+                                                                                                </div>
+                        <div class="contact-teesnap-small content-branding">
+                <a href="https://www.teesnap.com/" target="_blank" class="link-no-underline">
+                                            <img class="svg" alt="slate-logo" src="/assets/images/icons/logo-cloud-green.svg" />
+                                        <p class="block-first-line">Powered by Teesnap</p>
+                    <p class="version">v.3.0.2</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+    
+                <script src='/app/customer/_compile/prod/customer-7d0c8ab037.appy.js'></script>
+<script src='/app/customer/_compile/prod/customer-f76dbbbed1.templates.js'></script>
+    
+    <script src="//maps.google.com/maps/api/js?v=3.30&key=AIzaSyBe-7JWjvOdkTi8mvgv9kJI5Gj6wzJqjQA"></script>
+</body>
+</html>
