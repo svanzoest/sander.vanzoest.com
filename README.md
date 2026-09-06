@@ -152,8 +152,8 @@ Find out more about [320 and up][320andup].
 |  |  |-- dd_belatedpng.js
 |  |  |-- DOMAssistantCompressed-2.8.js
 |  |  |-- imgsizer.js
-|  |  |-- jquery-1.5.1.js
-|  |  |-- jquery-1.5.1.min.js
+|  |  |-- jquery-3.6.1.js
+|  |  |-- jquery-3.6.1.min.js
 |  |  |-- modernizr-1.7.min.js
 |  |  |-- respond.min.js
 |  |  |-- respond.src.js
